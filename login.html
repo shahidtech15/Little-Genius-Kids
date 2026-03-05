@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Little Genius</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Nunito:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: var(--bg-alt-color);
+        }
+
+        .login-container {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .login-box {
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .login-box h1 {
+            color: var(--card-purple);
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #EEE;
+            border-radius: 15px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        [data-theme="dark"] .form-group input {
+            background-color: #333;
+            border-color: #444;
+            color: #fff;
+        }
+
+        .login-btn-full {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 1rem;
+            border: none;
+            border-radius: 30px;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .login-btn-full:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .toggle-link {
+            margin-top: 1.5rem;
+            display: inline-block;
+            color: var(--accent-color);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar" style="justify-content: center;">
+        <div class="logo">
+            <a href="index.html">
+                <i class="fa-solid fa-graduation-cap"></i> Little Genius
+            </a>
+        </div>
+    </header>
+
+    <main class="login-container">
+        <div class="login-box">
+            <h1>Welcome Back!</h1>
+            <p class="mb-4">Sign in to sync your child's progress (Simulated)</p>
+
+            <form onsubmit="event.preventDefault(); window.location.href='parents.html';">
+                <div class="form-group">
+                    <label>Parent Email</label>
+                    <input type="email" placeholder="parent@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="login-btn-full">Sign In</button>
+            </form>
+
+            <a href="#" class="toggle-link">Don't have an account? Sign up</a>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

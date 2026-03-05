@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animals & Sounds | Little Genius</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Nunito:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Visuals Specific Stylesheet -->
+    <link rel="stylesheet" href="css/visuals.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <i class="fa-solid fa-graduation-cap"></i> Little Genius
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="abc.html">ABC</a>
+            <a href="numbers.html">Numbers</a>
+            <a href="colors-shapes.html">Colors & Shapes</a>
+            <a href="animals.html" class="active">Animals</a>
+            <a href="games.html">Games</a>
+        </nav>
+        <div class="nav-actions">
+            <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark Mode"><i
+                    class="fa-solid fa-moon"></i></button>
+            <a href="parents.html" class="btn-primary">Parents</a>
+            <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
+
+    <main class="visuals-container">
+        <header class="page-header">
+            <h1 class="bounce-in" style="color: var(--card-green);">Animals & Sounds</h1>
+            <p>Click on any animal to learn its name!</p>
+        </header>
+
+        <section class="animal-grid" id="animal-grid">
+            <!-- Javascript will populate this -->
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Little Genius Kids Learning.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/animals.js"></script>
+</body>
+
+</html>

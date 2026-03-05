@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Genius Kids | Learn & Play</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <i class="fa-solid fa-graduation-cap"></i> Little Genius
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="abc.html">ABC Learning</a>
+            <a href="numbers.html">Numbers</a>
+            <a href="colors-shapes.html">Colors & Shapes</a>
+            <a href="animals.html">Animals</a>
+            <a href="games.html">Games</a>
+        </nav>
+        <div class="nav-actions">
+            <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark Mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <a href="parents.html" class="btn-primary">Parents</a>
+            <button class="hamburger" id="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="menu-header">
+            <h3>Menu</h3>
+            <button id="close-menu" class="btn-icon"><i class="fa-solid fa-times"></i></button>
+        </div>
+        <nav class="mobile-nav-links">
+            <a href="index.html">Home</a>
+            <a href="abc.html">ABC Learning</a>
+            <a href="numbers.html">Numbers</a>
+            <a href="colors-shapes.html">Colors & Shapes</a>
+            <a href="animals.html">Animals</a>
+            <a href="rhymes.html">Rhymes</a>
+            <a href="games.html">Games</a>
+            <a href="worksheets.html">Worksheets</a>
+            <a href="parents.html">Parent Dashboard</a>
+            <a href="login.html">Login / Signup</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="bounce-in">Welcome to Little Genius Learning!</h1>
+            <p>A fun, safe, and colorful place for early childhood learning.</p>
+            <a href="#learning-zones" class="btn-large bounce-pulse">Let's Learn! <i class="fa-solid fa-rocket"></i></a>
+        </div>
+        <div class="hero-image">
+            <img src="https://img.freepik.com/free-vector/children-reading-books-together_1308-32326.jpg" alt="Happy Kids Learning">
+        </div>
+    </section>
+
+    <!-- Categories / Learning Zones -->
+    <section id="learning-zones" class="categories">
+        <h2>Choose a Learning Zone</h2>
+        <div class="category-grid">
+            <a href="abc.html" class="card card-purple scale-hover">
+                <i class="fa-solid fa-a fa-4x mb-2"></i>
+                <h3>ABC Learning</h3>
+                <p>Clickable letters & sounds</p>
+            </a>
+            <a href="numbers.html" class="card card-blue scale-hover">
+                <i class="fa-solid fa-1 fa-4x mb-2"></i>
+                <h3>Numbers 1-100</h3>
+                <p>Learn to count funly</p>
+            </a>
+            <a href="colors-shapes.html" class="card card-pink scale-hover">
+                <i class="fa-solid fa-shapes fa-4x mb-2"></i>
+                <h3>Colors & Shapes</h3>
+                <p>Visual and interactive</p>
+            </a>
+            <a href="animals.html" class="card card-green scale-hover">
+                <i class="fa-solid fa-hippo fa-4x mb-2"></i>
+                <h3>Animals & Sounds</h3>
+                <p>Meet friendly animals</p>
+            </a>
+            <a href="rhymes.html" class="card card-yellow scale-hover">
+                <i class="fa-solid fa-music fa-4x mb-2"></i>
+                <h3>Fun Rhymes</h3>
+                <p>Watch and sing along</p>
+            </a>
+            <a href="games.html" class="card card-orange scale-hover">
+                <i class="fa-solid fa-gamepad fa-4x mb-2"></i>
+                <h3>Interactive Games</h3>
+                <p>Logic, memory & sorting</p>
+            </a>
+            <a href="worksheets.html" class="card card-cyan scale-hover">
+                <i class="fa-solid fa-file-pdf fa-4x mb-2"></i>
+                <h3>Worksheets</h3>
+                <p>Downloadable PDFs for practice</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Little Genius Kids Learning. For educational purposes.</p>
+            <p>Created by AI Web Developer</p>
+        </div>
+    </footer>
+
+    <!-- Main Script -->
+    <script src="js/main.js"></script>
+</body>
+</html>

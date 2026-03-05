@@ -1,0 +1,62 @@
+{
+  "nouns": {
+    "level1": [
+      { "q": "What is the NOUN in this sentence?", "sentenceMsg": "The cat sleeps.", "options": ["The", "cat", "sleeps"], "answer": "cat" },
+      { "q": "Find the NOUN.", "sentenceMsg": "My apple is red.", "options": ["My", "apple", "red"], "answer": "apple" },
+      { "q": "Identify the NOUN.", "sentenceMsg": "The car is fast.", "options": ["The", "car", "fast"], "answer": "car" },
+      { "q": "Where is the NOUN?", "sentenceMsg": "The bird sings.", "options": ["The", "bird", "sings"], "answer": "bird" },
+      { "q": "Find the NOUN.", "sentenceMsg": "The ball bounces.", "options": ["The", "ball", "bounces"], "answer": "ball" }
+    ],
+    "level2": [
+      { "q": "Which word is a NOUN?", "sentenceMsg": "A big dog barks loudly.", "options": ["A", "big", "dog", "barks"], "answer": "dog" },
+      { "q": "Find the NOUN.", "sentenceMsg": "She reads a good book.", "options": ["She", "reads", "good", "book"], "answer": "book" },
+      { "q": "Identify the NOUN.", "sentenceMsg": "The sun shines brightly.", "options": ["sun", "shines", "brightly"], "answer": "sun" },
+      { "q": "Where is the NOUN?", "sentenceMsg": "He drives a fast car.", "options": ["He", "drives", "fast", "car"], "answer": "car" },
+      { "q": "Which word is a NOUN?", "sentenceMsg": "The tall tree sways in the wind.", "options": ["tall", "tree", "sways", "wind"], "answer": "tree" }
+    ],
+    "level3": [
+      { "q": "Identify the proper NOUN.", "sentenceMsg": "Emily loves to eat sweet strawberries.", "options": ["Emily", "loves", "sweet", "strawberries"], "answer": "Emily" },
+      { "q": "Find the NOUN that is an object.", "sentenceMsg": "The mysterious box was hidden under the old wooden bed.", "options": ["mysterious", "box", "hidden", "wooden"], "answer": "box" }
+    ]
+  },
+  "verbs": {
+    "level1": [
+      { "q": "What is the VERB?", "sentenceMsg": "I run fast.", "options": ["I", "run", "fast"], "answer": "run" },
+      { "q": "Find the VERB.", "sentenceMsg": "Birds fly.", "options": ["Birds", "fly"], "answer": "fly" },
+      { "q": "Identify the VERB.", "sentenceMsg": "He jumps.", "options": ["He", "jumps"], "answer": "jumps" },
+      { "q": "Find the action word.", "sentenceMsg": "She sings.", "options": ["She", "sings"], "answer": "sings" },
+      { "q": "What is the VERB?", "sentenceMsg": "We walk.", "options": ["We", "walk"], "answer": "walk" }
+    ],
+    "level2": [
+      { "q": "Which word is an action word (VERB)?", "sentenceMsg": "The kids play in the park.", "options": ["kids", "play", "park"], "answer": "play" },
+      { "q": "Find the VERB.", "sentenceMsg": "She sang a beautiful song yesterday.", "options": ["She", "sang", "beautiful", "yesterday"], "answer": "sang" },
+      { "q": "Identify the VERB.", "sentenceMsg": "The dog barks at night.", "options": ["dog", "barks", "night"], "answer": "barks" },
+      { "q": "Find the action word.", "sentenceMsg": "He quickly jumped over the fence.", "options": ["He", "quickly", "jumped", "fence"], "answer": "jumped" },
+      { "q": "Which word is a VERB?", "sentenceMsg": "They eagerly opened the shiny gifts.", "options": ["eagerly", "opened", "shiny", "gifts"], "answer": "opened" }
+    ],
+    "level3": [
+        { "q": "Find the VERB.", "sentenceMsg": "The majestic eagle soared across the clear blue sky.", "options": ["majestic", "eagle", "soared", "sky"], "answer": "soared" },
+        { "q": "Identify the state of being VERB.", "sentenceMsg": "She is the best player on the team.", "options": ["She", "is", "best", "player"], "answer": "is" }
+    ]
+  },
+  "adjectives": {
+    "level1": [
+      { "q": "What is the ADJECTIVE?", "sentenceMsg": "A happy boy.", "options": ["A", "happy", "boy"], "answer": "happy" },
+      { "q": "Find the ADJECTIVE.", "sentenceMsg": "The sad cat.", "options": ["The", "sad", "cat"], "answer": "sad" },
+      { "q": "Identify the ADJECTIVE.", "sentenceMsg": "It is hot.", "options": ["It", "is", "hot"], "answer": "hot" },
+      { "q": "Find the describing word.", "sentenceMsg": "A cold drink.", "options": ["A", "cold", "drink"], "answer": "cold" },
+      { "q": "What is the ADJECTIVE?", "sentenceMsg": "A big dog.", "options": ["A", "big", "dog"], "answer": "big" }
+    ],
+    "level2": [
+      { "q": "Which word is a describing word (ADJECTIVE)?", "sentenceMsg": "She wears a blue dress.", "options": ["She", "wears", "blue", "dress"], "answer": "blue" },
+      { "q": "Find the ADJECTIVE.", "sentenceMsg": "A loud noise woke me up.", "options": ["loud", "noise", "woke"], "answer": "loud" },
+      { "q": "Identify the ADJECTIVE.", "sentenceMsg": "He has a shiny new bike.", "options": ["He", "shiny", "bike"], "answer": "shiny" },
+      { "q": "Find the describing word.", "sentenceMsg": "The tiny mouse ran into the hole.", "options": ["The", "tiny", "mouse", "ran"], "answer": "tiny" },
+      { "q": "Which word is an ADJECTIVE?", "sentenceMsg": "We ate a delicious chocolate cake.", "options": ["We", "ate", "delicious", "cake"], "answer": "delicious" }
+    ],
+    "level3": [
+        { "q": "Identify the ADJECTIVE.", "sentenceMsg": "The magnificent ancient castle stood proudly on the hill.", "options": ["magnificent", "castle", "stood", "proudly"], "answer": "magnificent" },
+        { "q": "Find the ADJECTIVE.", "sentenceMsg": "An incredibly soft blanket kept her warm during the blizzard.", "options": ["incredibly", "soft", "blanket", "warm"], "answer": "soft" }
+    ]
+  }
+}

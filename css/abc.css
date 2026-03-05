@@ -1,0 +1,199 @@
+/* =========================================================================
+   ABC Learning Page Specific Styles
+   ========================================================================= */
+
+.abc-container {
+    padding: 3rem 5%;
+    text-align: center;
+    min-height: 80vh;
+}
+
+.page-header {
+    margin-bottom: 3rem;
+}
+
+.page-header h1 {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.alphabet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.letter-btn {
+    background-color: var(--card-bg);
+    border: 3px solid transparent;
+    border-radius: 15px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.letter-btn:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.letter-btn.played {
+    border-color: #FFD700;
+}
+
+/* Color patterns for letters */
+.letter-btn:nth-child(5n+1) {
+    background-color: var(--card-pink);
+    color: #fff;
+}
+
+.letter-btn:nth-child(5n+2) {
+    background-color: var(--card-blue);
+    color: #fff;
+}
+
+.letter-btn:nth-child(5n+3) {
+    background-color: var(--card-yellow);
+    color: #333;
+}
+
+.letter-btn:nth-child(5n+4) {
+    background-color: var(--card-green);
+    color: #fff;
+}
+
+.letter-btn:nth-child(5n+5) {
+    background-color: var(--card-purple);
+    color: #fff;
+}
+
+/* Display Modal */
+.letter-display {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.display-card {
+    background-color: var(--card-bg);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+}
+
+.display-card h2 {
+    font-size: 6rem;
+    color: var(--primary-color);
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+.display-content {
+    margin: 2rem 0;
+}
+
+.display-content p {
+    font-size: 2rem;
+    font-family: var(--font-heading);
+    margin-bottom: 1rem;
+}
+
+.display-content i {
+    color: var(--accent-color);
+}
+
+/* Tracing Game Styles */
+#tracing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#tracing-title {
+    font-size: 2.5rem;
+    color: var(--card-orange);
+    margin-bottom: 1rem;
+    font-family: var(--font-heading);
+}
+
+.canvas-wrapper {
+    position: relative;
+    background-color: var(--bg-alt-color);
+    border: 4px solid var(--accent-color);
+    border-radius: var(--border-radius);
+    padding: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    display: inline-block;
+}
+
+#tracing-canvas {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    cursor: crosshair;
+    touch-action: none;
+    /* Prevent scrolling while tracing on mobile */
+    max-width: 100%;
+}
+
+.tracing-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.display-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+#tracing-success-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#tracing-success-overlay p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--card-green);
+    margin: 0;
+}
