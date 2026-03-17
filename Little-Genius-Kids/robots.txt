@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Disallow admin/private paths (if any in future)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+
+# Sitemap location
+Sitemap: https://littlegeniuskids.com/sitemap.xml
+
+# Crawl-delay (optional, courteous to crawlers)
+Crawl-delay: 1

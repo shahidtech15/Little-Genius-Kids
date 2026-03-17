@@ -1,0 +1,144 @@
+/* =========================================================================
+   Numbers Page Specific Styles
+   ========================================================================= */
+
+.numbers-container {
+    padding: 3rem 5%;
+    text-align: center;
+    min-height: 80vh;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    font-size: 3.5rem;
+    color: var(--card-blue);
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.number-btn {
+    background-color: var(--card-bg);
+    border: 3px solid transparent;
+    border-radius: 10px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.number-btn:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.number-btn.played {
+    border-color: var(--card-orange);
+}
+
+.number-btn.active-play {
+    background-color: var(--card-cyan);
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* Coloring odd/even for visual distinction */
+.number-btn:nth-child(even) {
+    background-color: var(--card-yellow);
+    color: #333;
+}
+
+.number-btn:nth-child(odd) {
+    background-color: var(--card-green);
+    color: #fff;
+}
+
+/* Overrides for specific multiples to make it colorful */
+.number-btn:nth-child(5n) {
+    background-color: var(--card-pink);
+    color: #fff;
+}
+
+.number-btn:nth-child(10n) {
+    background-color: var(--card-purple);
+    color: #fff;
+}
+
+/* Display Modal */
+.counting-display {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+[data-theme="dark"] .counting-display {
+    background-color: rgba(30, 30, 30, 0.9);
+}
+
+.display-card {
+    background-color: var(--card-bg);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.display-card h2 {
+    font-size: 5rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    line-height: 1;
+}
+
+.dots-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 3rem;
+    min-height: 100px;
+}
+
+.dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.1);
+}

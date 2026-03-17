@@ -3,213 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Little Genius Kids – Get in Touch</title>
-    <meta name="description" content="Contact Little Genius Kids for support, feedback, or inquiries. We respond within 24–48 hours. We'd love to hear from parents, teachers, and educators.">
-    <meta name="keywords" content="contact little genius kids, kids education support, preschool learning contact, parent educator feedback">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://littlegeniuskids.com/contact.html">
-    <meta property="og:title" content="Contact Us | Little Genius Kids">
-    <meta property="og:description" content="Have a question or feedback? We'd love to hear from you. Reach out and we'll reply within 24–48 hours.">
-    <meta property="og:type" content="website">
-    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Contact Us | Little Genius Kids</title>
+    <!-- Google Fonts: Fredoka One and Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/pages.css">
+    <style>
+        .contact-hero {
+            padding: 8rem 5% 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--p-pink) 0%, var(--p-orange) 100%);
+            border-bottom-left-radius: 80px;
+            border-bottom-right-radius: 80px;
+            color: #fff;
+        }
+        .contact-hero h1 { font-size: 4rem; margin-bottom: 1rem; }
+        .contact-hero p { font-size: 1.5rem; max-width: 800px; margin: 0 auto; opacity: 0.9; }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            margin: 4rem 0;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: var(--card-bg);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-premium);
+        }
+        .contact-info h2 { font-size: 2.2rem; color: var(--primary-color); margin-bottom: 2rem; }
+
+        .info-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+        .info-text h4 { font-size: 1.2rem; color: var(--text-color); margin-bottom: 0.3rem; }
+        .info-text p, .info-text a { font-size: 1.1rem; opacity: 0.8; color: inherit; }
+
+        .contact-form-card {
+            background: #fff;
+            padding: 4rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-premium);
+            border: 2px solid var(--p-blue);
+        }
+        .contact-form-card h2 { font-size: 2.5rem; color: var(--p-blue-dark); margin-bottom: 1rem; }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .form-group label { font-weight: 600; font-size: 1rem; color: var(--text-color); }
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            border: 2px solid #eee;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            background: #fdfdfd;
+            transition: var(--transition-bounce);
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--p-blue);
+            outline: none;
+            box-shadow: 0 0 0 4px hsla(208, 100%, 82%, 0.2);
+        }
+        .form-group.full { grid-column: span 2; }
+        
+        .submit-btn {
+            width: 100%;
+            background: var(--p-blue-dark);
+            color: #fff;
+            padding: 1.2rem;
+            border-radius: var(--btn-radius);
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            margin-top: 1rem;
+        }
+        .submit-btn:hover {
+            background: var(--p-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px hsla(208, 100%, 70%, 0.3);
+        }
+
+        @media (max-width: 900px) {
+            .contact-layout { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full { grid-column: span 1; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Navigation -->
-    <header class="navbar">
-        <div class="logo">
-            <a href="index.html">
-                <img src="images/logo.png" alt="Little Genius Kids Logo" class="brand-logo"> Little Genius
-            </a>
-        </div>
-        <nav class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="blog/index.html">Blog</a>
-            <a href="games.html">Games</a>
-            <a href="worksheets.html">Worksheets</a>
-            <a href="about.html">About</a>
-            <a href="contact.html" class="active">Contact</a>
-        </nav>
-        <div class="nav-actions">
-            <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark Mode">
-                <i class="fa-solid fa-moon"></i>
-            </button>
-            <a href="parents.html" class="btn-primary">Parents</a>
-            <button class="hamburger" id="hamburger" aria-label="Open Menu">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
-    </header>
-
-    <div class="mobile-menu" id="mobile-menu">
-        <div class="menu-header">
-            <h3>Menu</h3>
-            <button id="close-menu" class="btn-icon" aria-label="Close Menu"><i class="fa-solid fa-times"></i></button>
-        </div>
-        <nav class="mobile-nav-links">
-            <a href="index.html">Home</a>
-            <a href="blog/index.html">Blog</a>
-            <a href="games.html">Games</a>
-            <a href="worksheets.html">Worksheets</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="parents.html">Parents</a>
-        </nav>
+<header>
+  <div class="container">
+    <div class="logo">
+        <a href="index.html">
+            <i class="fa-solid fa-graduation-cap"></i> Little Genius
+        </a>
     </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="blog/index.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </div>
+</header>
 
-    <!-- Hero -->
+<main>
     <section class="contact-hero">
-        <h1>💌 Get in Touch</h1>
-        <p>Have a question, suggestion, or just want to say hello? We'd love to hear from parents, teachers, and educators. We're here to help!</p>
+        <div class="container">
+            <h1 class="bounce-in">💌 Get in Touch</h1>
+            <p>Have a question or just want to say hello? We'd love to hear from you!</p>
+        </div>
     </section>
 
-    <!-- Contact Layout -->
-    <div class="contact-layout">
-
-        <!-- Left: Info -->
-        <div class="contact-info">
-            <h2>Contact Information</h2>
-
-            <div class="contact-info-card">
-                <div class="info-icon">📧</div>
-                <div>
-                    <h4>Email Us</h4>
-                    <p><a href="mailto:shahidali.shahid@gmail.com">shahidali.shahid@gmail.com</a></p>
-                </div>
-            </div>
-
-            <div class="contact-info-card">
-                <div class="info-icon">📞</div>
-                <div>
-                    <h4>Phone / WhatsApp</h4>
-                    <p><a href="tel:+923443834084">+92 344 383 4084</a></p>
-                </div>
-            </div>
-
-            <div class="contact-info-card">
-                <div class="info-icon">💬</div>
-                <div>
-                    <h4>General Enquiries</h4>
-                    <p>Questions about our content, resources, or the website? Use the form or email us directly.</p>
-                </div>
-            </div>
-
-            <div class="contact-info-card">
-                <div class="info-icon">🤝</div>
-                <div>
-                    <h4>Collaboration &amp; Partnerships</h4>
-                    <p>Interested in collaborating with Little Genius Kids? We welcome partnerships with educators and educational brands.</p>
-                </div>
-            </div>
-
-            <div class="contact-info-card">
-                <div class="info-icon">🐞</div>
-                <div>
-                    <h4>Report an Issue</h4>
-                    <p>Found a broken link or technical problem? Let us know and we'll fix it promptly.</p>
-                </div>
-            </div>
-
-            <div class="response-badge">
-                <span class="badge-icon">⏰</span>
-                <p>We read every message and typically respond within <strong>24–48 hours</strong> on weekdays.</p>
-            </div>
-        </div>
-
-        <!-- Right: Form -->
-        <div class="contact-form-wrap">
-            <h2>Send Us a Message</h2>
-            <p class="form-subtitle">Fill in the form below and we'll get back to you as soon as possible.</p>
-
-            <form id="contact-form" action="#" method="POST" novalidate>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="contact-name">Your Name <span>*</span></label>
-                        <input type="text" id="contact-name" name="name" placeholder="e.g. Sarah Ahmed" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-email">Email Address <span>*</span></label>
-                        <input type="email" id="contact-email" name="email" placeholder="you@example.com" required>
+    <div class="container">
+        <div class="contact-layout">
+            <div class="contact-info">
+                <h2>Contact Info</h2>
+                
+                <div class="info-item">
+                    <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="info-text">
+                        <h4>Email Us</h4>
+                        <p><a href="mailto:shahidali.shahid@gmail.com">shahidali.shahid@gmail.com</a></p>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="contact-subject">Subject</label>
-                    <select id="contact-subject" name="subject">
-                        <option value="">— Select a topic —</option>
-                        <option value="general">General Enquiry</option>
-                        <option value="content">Content / Article Question</option>
-                        <option value="worksheets">Worksheets &amp; Printables</option>
-                        <option value="partnership">Partnership / Collaboration</option>
-                        <option value="bug">Report a Bug / Issue</option>
-                        <option value="other">Other</option>
-                    </select>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="info-text">
+                        <h4>Call / WhatsApp</h4>
+                        <p><a href="tel:+923443834084">+92 344 383 4084</a></p>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="contact-message">Your Message <span>*</span></label>
-                    <textarea id="contact-message" name="message" placeholder="Tell us how we can help…" required></textarea>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+                    <div class="info-text">
+                        <h4>Response Time</h4>
+                        <p>We typically reply within 24–48 hours on weekdays.</p>
+                    </div>
                 </div>
+                
+                <div class="info-item">
+                    <div class="info-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <div class="info-text">
+                        <h4>Partnerships</h4>
+                        <p>Interested in collaborating? We'd love to explore ways to work together.</p>
+                    </div>
+                </div>
+            </div>
 
-                <button type="submit" class="submit-btn">
-                    <i class="fa-solid fa-paper-plane"></i> Send Message
-                </button>
-                <p class="form-note">🔒 Your information is kept private and never shared with third parties.</p>
-            </form>
+            <div class="contact-form-card">
+                <h2>Send a Message</h2>
+                <form id="contact-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="e.g. Sarah Ahmed" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-group full">
+                            <label for="subject">Subject</label>
+                            <select id="subject">
+                                <option value="general">General Enquiry</option>
+                                <option value="support">Technical Support</option>
+                                <option value="partnership">Partnership</option>
+                            </select>
+                        </div>
+                        <div class="form-group full">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="5" placeholder="How can we help?" required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
         </div>
     </div>
+</main>
 
-    <!-- Site Footer -->
-    <footer class="site-footer">
-        <div class="footer-inner">
-            <div class="footer-col">
-                <h4>Little Genius Kids</h4>
-                <p>A fun, safe, and colorful place for early childhood learning.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="blog/index.html">Blog</a></li>
-                    <li><a href="worksheets.html">Worksheets</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms &amp; Conditions</a></li>
-                    <li><a href="disclaimer.html">Disclaimer</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Connect</h4>
-                <div class="footer-social">
-                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
-                </div>
-                <p style="margin-top:1rem;">shahidali.shahid@gmail.com</p>
-                <p>📞 <a href="tel:+923443834084">+92 344 383 4084</a></p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Little Genius Kids. All rights reserved.</p>
-            <div class="footer-bottom-links">
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms.html">Terms &amp; Conditions</a>
-                <a href="disclaimer.html">Disclaimer</a>
-            </div>
-        </div>
-    </footer>
+<footer>
+  <div class="container">
+    <p>© 2026 Little Genius Kids</p>
+    <div class="footer-links">
+        <a href="about.html">About</a> |
+        <a href="privacy-policy.html">Privacy Policy</a> |
+        <a href="terms-and-conditions.html">Terms</a> |
+        <a href="disclaimer.html">Disclaimer</a> |
+        <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
 
-    <script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
