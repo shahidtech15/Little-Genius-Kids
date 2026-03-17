@@ -127,6 +127,14 @@ ul {
     margin-bottom: 1rem;
 }
 
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
 .text-center {
     text-align: center;
 }
@@ -577,6 +585,12 @@ nav a:hover {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+}
+
+.card.cta-card {
+    padding: 4rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .card::before {
