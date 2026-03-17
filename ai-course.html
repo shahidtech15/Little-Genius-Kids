@@ -63,6 +63,40 @@
         }
         .hero-btn:hover { transform: scale(1.05); box-shadow: 0 15px 25px rgba(255, 64, 129, 0.4); }
 
+        /* Registration Buttons */
+        .registration-group {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .reg-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition-bounce);
+            font-size: 1.1rem;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            color: #fff;
+        }
+        .reg-btn i { font-size: 1.4rem; }
+        
+        .btn-whatsapp { background: #25D366; }
+        .btn-form { background: #3f51b5; }
+        .btn-email { background: #ff4081; }
+        
+        .reg-btn:hover { 
+            transform: scale(1.05); 
+            filter: brightness(1.1); 
+            box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+            color: #fff;
+        }
+
         .container-narrow { max-width: 1000px; margin: 0 auto; padding: 5rem 5%; }
 
         .section-header { text-align: center; margin-bottom: 4rem; }
@@ -152,7 +186,11 @@
         <div class="container">
             <h1 class="bounce-in">AI Course for Kids 🚀</h1>
             <p>Learn Artificial Intelligence in a fun, simple, and interactive way! Designed to spark curiosity and build future-ready skills.</p>
-            <a href="contact.html" class="hero-btn">Start Learning (Free)</a>
+            <div class="registration-group">
+                <a href="https://wa.me/923000000000" class="reg-btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Join via WhatsApp</a>
+                <a href="https://forms.gle/placeholder" class="reg-btn btn-form"><i class="fa-solid fa-file-signature"></i> Fill Google Form</a>
+                <a href="mailto:support@little-genius-kids.vercel.app" class="reg-btn btn-email"><i class="fa-solid fa-envelope"></i> Email Signup</a>
+            </div>
         </div>
     </section>
 
@@ -223,7 +261,11 @@
         <div class="cta-box">
             <h2 class="bounce-in">Start Your Child’s AI Journey Today!</h2>
             <p>Join our growing community of young innovators and explore the magical world of Artificial Intelligence.</p>
-            <a href="contact.html" class="hero-btn" style="background: #fff; color: #1a237e;">Join the Course Now</a>
+            <div class="registration-group">
+                <a href="https://wa.me/923000000000" class="reg-btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Join via WhatsApp</a>
+                <a href="https://forms.gle/placeholder" class="reg-btn btn-form" style="background:rgba(255,255,255,0.2);"><i class="fa-solid fa-file-signature"></i> Fill Google Form</a>
+                <a href="mailto:support@little-genius-kids.vercel.app" class="reg-btn btn-email" style="background:#fff; color:#1a237e;"><i class="fa-solid fa-envelope"></i> Email Signup</a>
+            </div>
         </div>
 
         <!-- RELATED BLOGS -->
