@@ -10,6 +10,15 @@
     --p-orange: hsl(33, 100%, 82%);
     --p-cyan: hsl(186, 100%, 80%);
 
+    /* Card Backgrounds - Standardized for Legibility */
+    --card-purple: hsl(279, 44%, 65%);
+    --card-blue:   hsl(208, 100%, 65%);
+    --card-pink:   hsl(343, 100%, 65%);
+    --card-green:  hsl(110, 50%, 50%);
+    --card-yellow: hsl(48, 100%, 75%);
+    --card-orange: hsl(30, 100%, 60%);
+    --card-cyan:   hsl(186, 100%, 65%);
+
     /* Theme Colors */
     --primary-color: var(--p-pink);
     --secondary-color: hsl(300, 100%, 89%);
@@ -18,8 +27,8 @@
     --bg-color: hsl(210, 100%, 99%);
     --bg-alt-color: hsl(25, 100%, 95%);
     
-    --nav-bg: hsla(0, 0%, 100%, 0.8);
-    --card-bg: hsla(0, 0%, 100%, 0.7);
+    --nav-bg: hsla(0, 0%, 100%, 0.9);
+    --card-bg: hsla(0, 0%, 100%, 0.85);
     --glass-border: hsla(0, 0%, 100%, 0.2);
 
     /* Typography */
@@ -32,7 +41,7 @@
     --btn-radius: 50px;
     --shadow-sm: 0 4px 15px hsla(0, 0%, 0%, 0.05);
     --shadow-md: 0 8px 30px hsla(0, 0%, 0%, 0.08);
-    --shadow-premium: 0 20px 40px hsla(235, 21%, 35%, 0.1);
+    --shadow-premium: 0 10px 30px hsla(235, 21%, 35%, 0.08);
     --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -231,8 +240,8 @@ ul {
    ========================================================================= */
 header {
     background-color: var(--nav-bg);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
     border-bottom: 2px solid var(--glass-border);
     position: sticky;
     top: 0;
@@ -274,8 +283,8 @@ nav a:hover {
     align-items: center;
     padding: 1rem 5%;
     background-color: var(--nav-bg);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
     border-bottom: 2px solid var(--glass-border);
     position: sticky;
     top: 0;
@@ -476,9 +485,9 @@ nav a:hover {
 .hero-content {
     flex: 1;
     max-width: 600px;
-    background: hsla(0, 0%, 100%, 0.15);
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
+    background: hsla(0, 0%, 100%, 0.25);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
     padding: 4rem;
     border-radius: var(--border-radius-lg);
     border: 2px solid hsla(0, 0%, 100%, 0.3);
@@ -552,12 +561,12 @@ nav a:hover {
 }
 
 .card {
-    background: var(--card-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background-color: var(--card-bg);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     padding: 3rem 1.5rem;
     border-radius: var(--border-radius-lg);
-    border: 1px solid var(--glass-border);
+    border: 2px solid var(--glass-border);
     text-align: center;
     box-shadow: var(--shadow-md);
     transition: var(--transition-bounce);
