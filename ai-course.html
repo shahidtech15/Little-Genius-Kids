@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Course for Kids - Learn Artificial Intelligence Basics | Little Genius Kids</title>
+    <meta name="description" content="Join our free AI course for kids to learn artificial intelligence in a simple and fun way. Perfect for beginners with activities, games, and projects.">
+    <meta name="keywords" content="AI course kids, artificial intelligence basics for children, learn AI for free, kids technology education">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Course Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "AI Course for Kids",
+      "description": "Learn Artificial Intelligence in a fun, simple, and interactive way! Perfect for kids aged 5-12.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Little Genius Kids",
+        "sameAs": "https://little-genius-kids.vercel.app"
+      }
+    }
+    </script>
+
+    <style>
+        .course-hero {
+            padding: 10rem 5% 6rem;
+            text-align: center;
+            background: linear-gradient(135deg, #3f51b5 0%, #1a237e 100%);
+            border-bottom-left-radius: 80px;
+            border-bottom-right-radius: 80px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .course-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/cubes.png');
+            opacity: 0.1;
+        }
+        .course-hero h1 { font-size: 3.8rem; margin-bottom: 1.5rem; line-height: 1.2; font-family: 'Fredoka One', cursive; }
+        .course-hero p { font-size: 1.4rem; opacity: 0.9; max-width: 700px; margin: 0 auto 2.5rem; }
+        
+        .hero-btn {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background: #ff4081;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: var(--transition-bounce);
+        }
+        .hero-btn:hover { transform: scale(1.05); box-shadow: 0 15px 25px rgba(255, 64, 129, 0.4); }
+
+        .container-narrow { max-width: 1000px; margin: 0 auto; padding: 5rem 5%; }
+
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-size: 2.5rem; color: #1a237e; margin-bottom: 1rem; }
+        .section-header p { font-size: 1.2rem; opacity: 0.7; }
+
+        /* Glass Cards */
+        .glass-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 3rem 2rem;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            transition: var(--transition-bounce);
+        }
+        .glass-card:hover { transform: translateY(-10px); background: #fff; }
+        .glass-card i { font-size: 3rem; color: #3f51b5; margin-bottom: 1.5rem; display: block; }
+        .glass-card h3 { font-size: 1.4rem; color: #1a237e; margin-bottom: 1rem; }
+        .glass-card p { font-size: 1.05rem; opacity: 0.8; line-height: 1.6; }
+
+        /* Info Sections */
+        .info-row { display: flex; gap: 4rem; align-items: center; margin-bottom: 6rem; flex-wrap: wrap; }
+        .info-content { flex: 1; min-width: 300px; }
+        .info-content h2 { font-size: 2.2rem; color: #1a237e; margin-bottom: 1.5rem; }
+        .info-content p { font-size: 1.2rem; line-height: 1.8; opacity: 0.8; margin-bottom: 1.5rem; }
+        .info-content ul { list-style: none; padding: 0; }
+        .info-content li { 
+            font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;
+            background: #e8eaf6; padding: 1rem 1.5rem; border-radius: 15px; border-left: 5px solid #3f51b5;
+        }
+        .info-content li i { color: #3f51b5; }
+
+        .cta-box {
+            background: linear-gradient(135deg, #1a237e, #3f51b5);
+            padding: 5rem;
+            border-radius: 50px;
+            text-align: center;
+            color: #fff;
+            margin-top: 4rem;
+        }
+        .cta-box h2 { font-size: 2.8rem; margin-bottom: 1.5rem; }
+        .cta-box p { font-size: 1.3rem; opacity: 0.9; margin-bottom: 2.5rem; }
+
+        /* Related Blogs */
+        .related-blogs { margin-top: 5rem; padding-top: 4rem; border-top: 2px dashed #e0e0e0; }
+        .related-blogs h3 { font-size: 2rem; color: #1a237e; margin-bottom: 2.5rem; text-align: center; }
+        .blog-mini-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .blog-link-card {
+            background: #fff; padding: 2rem; border-radius: 20px; text-decoration: none; color: inherit;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 1rem;
+            transition: var(--transition-bounce);
+        }
+        .blog-link-card:hover { transform: translateX(10px); background: #e8eaf6; }
+        .blog-link-card i { color: #3f51b5; }
+        .blog-link-card span { font-weight: 600; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo">
+        <a href="index.html">
+            <i class="fa-solid fa-graduation-cap"></i> Little Genius
+        </a>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="ai-course.html" class="active">AI Course</a>
+      <a href="blog/index.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+    <section class="course-hero">
+        <div class="container">
+            <h1 class="bounce-in">AI Course for Kids 🚀</h1>
+            <p>Learn Artificial Intelligence in a fun, simple, and interactive way! Designed to spark curiosity and build future-ready skills.</p>
+            <a href="contact.html" class="hero-btn">Start Learning (Free)</a>
+        </div>
+    </section>
+
+    <div class="container-narrow">
+        <!-- ABOUT -->
+        <div class="info-row">
+            <div class="info-content">
+                <h2>About This Course</h2>
+                <p>This beginner-friendly AI course is designed especially for kids. It introduces artificial intelligence concepts through games, activities, and simple projects.</p>
+                <p>We believe every child should understand the basics of the technology that will shape their future. Our curriculum focuses on "The Why" and "The How" of smart machines, making complex ideas as easy as playing with blocks.</p>
+            </div>
+            <div class="info-content">
+                <img src="https://img.freepik.com/free-vector/children-coding-concept-illustration_114360-10111.jpg" alt="Kids Learning" style="width: 100%; border-radius: 30px; box-shadow: var(--shadow-lg);">
+            </div>
+        </div>
+
+        <!-- WHAT THEY LEARN -->
+        <div class="section-header">
+            <h2>What Kids Will Learn</h2>
+            <p>A comprehensive journey from basics to building your own projects.</p>
+        </div>
+
+        <div class="glass-grid">
+            <div class="glass-card">
+                <i class="fa-solid fa-brain"></i>
+                <h3>Basics of AI</h3>
+                <p>Understand what AI is and how it works in real-world applications like self-driving cars and voice assistants.</p>
+            </div>
+            <div class="glass-card">
+                <i class="fa-solid fa-puzzle-piece"></i>
+                <h3>Fun AI Activities</h3>
+                <p>Learn through hands-on games and interactive exercises that make training an AI feel like child's play.</p>
+            </div>
+            <div class="glass-card">
+                <i class="fa-solid fa-code"></i>
+                <h3>Coding Concepts</h3>
+                <p>Get a friendly introduction to logical thinking and block-based coding, the building blocks of technology.</p>
+            </div>
+            <div class="glass-card">
+                <i class="fa-solid fa-robot"></i>
+                <h3>Simple Projects</h3>
+                <p>Bring ideas to life by creating small projects like chatbots, smart games, and simple image recognizers.</p>
+            </div>
+        </div>
+
+        <!-- WHO IT'S FOR & BENEFITS -->
+        <div class="info-row" style="flex-direction: row-reverse;">
+            <div class="info-content">
+                <h2>Who is This Course For?</h2>
+                <ul>
+                    <li><i class="fa-solid fa-child"></i> Kids aged 5–12 years old</li>
+                    <li><i class="fa-solid fa-star"></i> Beginners with no coding experience</li>
+                    <li><i class="fa-solid fa-heart"></i> Parents wanting to introduce tech early</li>
+                </ul>
+            </div>
+            <div class="info-content">
+                <h2>Benefits of Learning AI</h2>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Improves problem-solving skills</li>
+                    <li><i class="fa-solid fa-check"></i> Enhances creativity & imagination</li>
+                    <li><i class="fa-solid fa-check"></i> Prepares kids for future careers</li>
+                    <li><i class="fa-solid fa-check"></i> Builds strong logical thinking</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-box">
+            <h2 class="bounce-in">Start Your Child’s AI Journey Today!</h2>
+            <p>Join our growing community of young innovators and explore the magical world of Artificial Intelligence.</p>
+            <a href="contact.html" class="hero-btn" style="background: #fff; color: #1a237e;">Join the Course Now</a>
+        </div>
+
+        <!-- RELATED BLOGS -->
+        <div class="related-blogs">
+            <h3>Learn More from Our Blog</h3>
+            <div class="blog-mini-grid">
+                <a href="blog/what-is-ai-for-kids.html" class="blog-link-card">
+                    <i class="fa-solid fa-robot fa-2x"></i>
+                    <span>What is AI for Kids?</span>
+                </a>
+                <a href="blog/importance-of-ai-for-kids.html" class="blog-link-card">
+                    <i class="fa-solid fa-brain fa-2x"></i>
+                    <span>Importance of AI</span>
+                </a>
+                <a href="blog/how-kids-can-learn-ai.html" class="blog-link-card">
+                    <i class="fa-solid fa-rocket fa-2x"></i>
+                    <span>How Kids Can Learn AI</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Little Genius Kids. All rights reserved.</p>
+    <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
+    <div class="footer-links">
+        <a href="privacy-policy.html">Privacy Policy</a> |
+        <a href="terms-and-conditions.html">Terms</a> |
+        <a href="disclaimer.html">Disclaimer</a> |
+        <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
