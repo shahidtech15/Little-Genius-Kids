@@ -13,6 +13,41 @@
 .blog-hero h1 { font-size: 4rem; color: #fff; text-shadow: 3px 3px 0 rgba(0,0,0,0.2); margin-bottom: 1rem; }
 .blog-hero p { font-size: 1.4rem; color: rgba(255,255,255,0.95); max-width: 700px; margin: 0 auto; }
 
+/* ---- Quick Links Strip ---- */
+.quick-links-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.2rem 5%;
+    background: var(--card-bg);
+    border-bottom: 3px dashed var(--secondary-color);
+}
+.quick-links-label {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    white-space: nowrap;
+}
+.quick-link {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.4rem 1.2rem;
+    background: var(--bg-alt-color);
+    color: var(--text-color);
+    border-radius: 50px;
+    border: 2px solid var(--secondary-color);
+    transition: var(--transition);
+    white-space: nowrap;
+}
+.quick-link:hover {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
 /* ---- Category Filter Tabs ---- */
 .category-tabs {
     display: flex;
