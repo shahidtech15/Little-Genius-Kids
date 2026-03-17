@@ -1,15 +1,304 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Little Genius Kids | Learn & Play</title>
+
+    <!-- SEO Title & Description -->
+    <title>Little Genius Kids | Free Early Childhood Learning – ABCs, Numbers, Games &amp; More</title>
+    <meta name="description" content="Little Genius Kids is a free, safe educational platform for toddlers and preschoolers aged 2–7. Learn ABCs, numbers, colors, shapes, animals, and more through fun interactive games, worksheets, and activities.">
+    <meta name="keywords" content="early childhood education, kids learning games, preschool activities, toddler learning, teach ABCs kids, numbers for toddlers, free kids educational website, kindergarten learning">
+    <meta name="author" content="Little Genius Kids">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://littlegeniuskids.com/">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Little Genius Kids | Free Early Childhood Learning">
+    <meta property="og:description" content="A fun, safe, and colorful place for toddlers and preschoolers to learn ABCs, numbers, shapes, animals, and more — absolutely free!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://littlegeniuskids.com/">
+    <meta property="og:site_name" content="Little Genius Kids">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Little Genius Kids | Free Early Childhood Learning">
+    <meta name="twitter:description" content="Free, safe educational activities, games, and worksheets for toddlers and preschoolers aged 2–7.">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Little Genius Kids",
+        "url": "https://littlegeniuskids.com",
+        "description": "A free early childhood educational platform offering interactive games, worksheets, and activities for children aged 2-7.",
+        "educationalLevel": "Early Childhood Education",
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Parents, Teachers, Toddlers, Preschoolers"
+        }
+    }
+    </script>
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Little Genius Kids Logo" class="brand-logo"> Little Genius
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="blog/index.html">Blog</a>
+            <a href="abc.html">ABC</a>
+            <a href="numbers.html">Numbers</a>
+            <a href="games.html">Games</a>
+            <a href="worksheets.html">Worksheets</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="nav-actions">
+            <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark Mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <a href="parents.html" class="btn-primary">Parents</a>
+            <button class="hamburger" id="hamburger" aria-label="Open Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="menu-header">
+            <h3>Menu</h3>
+            <button id="close-menu" class="btn-icon" aria-label="Close Menu"><i class="fa-solid fa-times"></i></button>
+        </div>
+        <nav class="mobile-nav-links">
+            <a href="index.html">Home</a>
+            <a href="blog/index.html">📚 Blog</a>
+            <a href="abc.html">ABC Learning</a>
+            <a href="numbers.html">Numbers</a>
+            <a href="colors-shapes.html">Colors &amp; Shapes</a>
+            <a href="animals.html">Animals</a>
+            <a href="rhymes.html">Rhymes</a>
+            <a href="games.html">Games</a>
+            <a href="worksheets.html">Worksheets</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="parents.html">Parent Dashboard</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="bounce-in">Welcome to Little Genius Learning!</h1>
+            <p>A fun, safe, and colorful place for early childhood learning — for toddlers and preschoolers aged 2–7.</p>
+            <a href="#learning-zones" class="btn-large bounce-pulse">Let's Learn! <i class="fa-solid fa-rocket"></i></a>
+        </div>
+        <div class="hero-image">
+            <img src="https://img.freepik.com/free-vector/children-reading-books-together_1308-32326.jpg" alt="Happy Kids Learning Together" loading="lazy">
+        </div>
+    </section>
+
+    <!-- Categories / Learning Zones -->
+    <section id="learning-zones" class="categories">
+        <h2>Choose a Learning Zone</h2>
+        <div class="category-grid">
+            <a href="abc.html" class="card card-purple scale-hover">
+                <i class="fa-solid fa-a fa-4x mb-2"></i>
+                <h3>ABC Learning</h3>
+                <p>Clickable letters &amp; sounds</p>
+            </a>
+            <a href="numbers.html" class="card card-blue scale-hover">
+                <i class="fa-solid fa-1 fa-4x mb-2"></i>
+                <h3>Numbers 1-100</h3>
+                <p>Learn to count funly</p>
+            </a>
+            <a href="colors-shapes.html" class="card card-pink scale-hover">
+                <i class="fa-solid fa-shapes fa-4x mb-2"></i>
+                <h3>Colors &amp; Shapes</h3>
+                <p>Visual and interactive</p>
+            </a>
+            <a href="animals.html" class="card card-green scale-hover">
+                <i class="fa-solid fa-hippo fa-4x mb-2"></i>
+                <h3>Animals &amp; Sounds</h3>
+                <p>Meet friendly animals</p>
+            </a>
+            <a href="rhymes.html" class="card card-yellow scale-hover">
+                <i class="fa-solid fa-music fa-4x mb-2"></i>
+                <h3>Fun Rhymes</h3>
+                <p>Watch and sing along</p>
+            </a>
+            <a href="games.html" class="card card-orange scale-hover">
+                <i class="fa-solid fa-gamepad fa-4x mb-2"></i>
+                <h3>Interactive Games</h3>
+                <p>Logic, memory &amp; sorting</p>
+            </a>
+            <a href="worksheets.html" class="card card-cyan scale-hover">
+                <i class="fa-solid fa-file-pdf fa-4x mb-2"></i>
+                <h3>Worksheets</h3>
+                <p>Downloadable PDFs for practice</p>
+            </a>
+            <a href="blog/index.html" class="card scale-hover" style="background: linear-gradient(135deg,#6A4C93,#1982C4); color:#fff;">
+                <i class="fa-solid fa-book-open-reader fa-4x mb-2"></i>
+                <h3>Parent Blog</h3>
+                <p>Tips, guides &amp; expert advice</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Free Worksheets Section -->
+    <section class="home-section alt">
+        <h2 class="section-title">📄 Free Printable Worksheets</h2>
+        <div class="divider-center"></div>
+        <p class="section-subtitle">Download and print beautifully designed worksheets to practice letters, numbers, tracing, and more — completely free!</p>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <span class="icon">🔤</span>
+                <h3>Alphabet Tracing</h3>
+                <p>Large uppercase and lowercase letter tracing sheets with picture prompts. Perfect for developing fine motor skills in 3–5 year olds.</p>
+                <a href="worksheets.html">Download Free →</a>
+            </div>
+            <div class="feature-card">
+                <span class="icon">🔢</span>
+                <h3>Number Writing Practice</h3>
+                <p>Trace and write numbers 1–20 with counting objects on each sheet. Reinforces number recognition and basic counting skills.</p>
+                <a href="worksheets.html">Download Free →</a>
+            </div>
+            <div class="feature-card">
+                <span class="icon">🎨</span>
+                <h3>Colors &amp; Shapes Activity</h3>
+                <p>Color-by-shape and match-the-color worksheets that make learning visual concepts fun and hands-on for toddlers.</p>
+                <a href="worksheets.html">Download Free →</a>
+            </div>
+            <div class="feature-card">
+                <span class="icon">🐾</span>
+                <h3>Animal Recognition Sheets</h3>
+                <p>Match animals to their names, color them in, and practice writing simple animal words. Great for vocabulary building.</p>
+                <a href="worksheets.html">Download Free →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Learning Activities -->
+    <section class="home-section">
+        <h2 class="section-title">☀️ Daily Learning Activities</h2>
+        <div class="divider-center"></div>
+        <p class="section-subtitle">Short, fun daily activities that fit into your family's routine — no prep time needed!</p>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <span class="icon">🌅</span>
+                <h3>Morning Activity (5 mins)</h3>
+                <p>Start the day with our ABC sound game! Click each letter, hear its sound, and name something that starts with it. A joyful wake-up for little minds.</p>
+                <a href="abc.html">Start Now →</a>
+            </div>
+            <div class="feature-card">
+                <span class="icon">🎲</span>
+                <h3>Afternoon Game (10 mins)</h3>
+                <p>Pick one of our interactive games — memory matching, number sorting, or color puzzles. Just enough challenge to build skills without frustration.</p>
+                <a href="games.html">Play Games →</a>
+            </div>
+            <div class="feature-card">
+                <span class="icon">🌙</span>
+                <h3>Bedtime Rhyme (5 mins)</h3>
+                <p>Wind down with a soothing nursery rhyme video. Bedtime songs build language, rhythm awareness, and create a cozy learning ritual before sleep.</p>
+                <a href="rhymes.html">Watch Rhymes →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parent Guides Section -->
+    <section class="home-section alt">
+        <h2 class="section-title">👨‍👩‍👧 Parent Guides &amp; Tips</h2>
+        <div class="divider-center"></div>
+        <p class="section-subtitle">Expert-backed advice to help you support your child's learning at home — even on your busiest days.</p>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <span class="icon">📖</span>
+                <h3>Teaching ABCs at Home</h3>
+                <p>You don't need to be a teacher to teach your child the alphabet. Our complete guide covers phonics, songs, books, and multi-sensory techniques that actually work.</p>
+                <a href="blog/article-1.html">Read Guide →</a>
+            </div>
+            <div class="feature-card">
+                <span class="icon">🧠</span>
+                <h3>How Kids' Brains Develop</h3>
+                <p>Understanding the science of early brain development helps you make smarter choices about play, learning, routines, and screen time in your child's daily life.</p>
+                <a href="blog/article-3.html">Read Guide →</a>
+            </div>
+            <div class="feature-card">
+                <span class="icon">📱</span>
+                <h3>Screen Time: The Real Guide</h3>
+                <p>What do WHO and pediatric experts actually say about screen time? Get clear, guilt-free guidance on healthy limits and making every screen minute count.</p>
+                <a href="blog/article-2.html">Read Guide →</a>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:3rem;">
+            <a href="blog/index.html" class="btn-primary" style="font-size:1.3rem;">View All Articles &amp; Guides →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h4>Little Genius Kids</h4>
+                <p>A fun, safe, and colorful place for early childhood learning. Trusted by parents and teachers worldwide since 2024.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog/index.html">Blog</a></li>
+                    <li><a href="worksheets.html">Worksheets</a></li>
+                    <li><a href="games.html">Games</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                    <li><a href="disclaimer.html">Disclaimer</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect With Us</h4>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+                </div>
+                <p style="margin-top:1rem; font-size:0.95rem;">contact@littlegeniuskids.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Little Genius Kids. All rights reserved. | Made with ❤️ for little learners everywhere.</p>
+            <div class="footer-bottom-links">
+                <a href="privacy-policy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="disclaimer.html">Disclaimer</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main Script -->
+    <script src="js/main.js"></script>
+</body>
+</html>
 </head>
 <body>
     <!-- Navigation Bar -->
