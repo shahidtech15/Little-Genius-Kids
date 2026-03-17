@@ -1,40 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-<url>
-  <loc>https://little-genius-kids.vercel.app/</loc>
-</url>
+  <!-- Homepage -->
+  <url>
+    <loc>https://little-genius-kids.vercel.app/</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>1.0</priority>
+  </url>
 
-<url>
-  <loc>https://little-genius-kids.vercel.app/blog/index.html</loc>
-</url>
+  <!-- Main Pages -->
+  <url>
+    <loc>https://little-genius-kids.vercel.app/about.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.8</priority>
+  </url>
 
-<url>
-  <loc>https://little-genius-kids.vercel.app/about.html</loc>
-</url>
+  <url>
+    <loc>https://little-genius-kids.vercel.app/contact.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.8</priority>
+  </url>
 
-<url>
-  <loc>https://little-genius-kids.vercel.app/contact.html</loc>
-</url>
+  <url>
+    <loc>https://little-genius-kids.vercel.app/privacy-policy.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.7</priority>
+  </url>
 
-<url>
-  <loc>https://little-genius-kids.vercel.app/privacy-policy.html</loc>
-</url>
+  <url>
+    <loc>https://little-genius-kids.vercel.app/terms.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.7</priority>
+  </url>
 
-<url>
-  <loc>https://little-genius-kids.vercel.app/terms-and-conditions.html</loc>
-</url>
+  <url>
+    <loc>https://little-genius-kids.vercel.app/disclaimer.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.7</priority>
+  </url>
 
-<url>
-  <loc>https://little-genius-kids.vercel.app/disclaimer.html</loc>
-</url>
+  <!-- Blog Index -->
+  <url>
+    <loc>https://little-genius-kids.vercel.app/blog/index.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.9</priority>
+  </url>
 
-<!-- BLOG POSTS -->
-<url><loc>https://little-genius-kids.vercel.app/blog/teach-abc.html</loc></url>
-<url><loc>https://little-genius-kids.vercel.app/blog/activities-for-kids.html</loc></url>
-<url><loc>https://little-genius-kids.vercel.app/blog/learn-numbers.html</loc></url>
-<url><loc>https://little-genius-kids.vercel.app/blog/simple-science-experiments.html</loc></url>
-<url><loc>https://little-genius-kids.vercel.app/blog/creative-art-craft-ideas.html</loc></url>
-<url><loc>https://little-genius-kids.vercel.app/blog/teach-colors-to-kids.html</loc></url>
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://little-genius-kids.vercel.app/blog/teach-abc.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://little-genius-kids.vercel.app/blog/activities-for-kids.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://little-genius-kids.vercel.app/blog/learn-numbers.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://little-genius-kids.vercel.app/blog/simple-science-experiments.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://little-genius-kids.vercel.app/blog/free-worksheets.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://little-genius-kids.vercel.app/blog/teach-colors-to-kids.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://little-genius-kids.vercel.app/blog/best-educational-apps.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.9</priority>
+  </url>
 
 </urlset>
