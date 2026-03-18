@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Card Match - Little Genius Kids</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .game-hero {
+            padding: 8rem 5% 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, #2196F3 0%, #673AB7 100%);
+            color: #fff;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+        .game-hero h1 { font-family: 'Fredoka One', cursive; font-size: 3rem; margin-bottom: 1rem; }
+        .game-container { max-width: 600px; margin: 4rem auto; padding: 3rem; background: #fff; border-radius: 30px; box-shadow: var(--shadow-lg); text-align: center; }
+        .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+        .card-placeholder { aspect-ratio: 1; background: #e3f2fd; border-radius: 15px; border: 3px dashed #2196F3; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #2196F3; transition: 0.3s; }
+        .card-placeholder:hover { background: #bbdefb; transform: scale(1.05); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"><a href="../index.html"><i class="fa-solid fa-graduation-cap"></i> Little Genius</a></div>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../ai-course.html">AI Course</a>
+                <a href="../games.html" class="active">Games</a>
+                <a href="../blog/index.html">Blog</a>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="game-hero">
+            <h1>Memory Card Match 🃏</h1>
+            <p>Match the cards to clear the board!</p>
+        </section>
+        <div class="game-container">
+            <div class="game-stats" style="display:flex; justify-content: space-around; margin-bottom: 2rem; font-family: 'Fredoka One', cursive; font-size: 1.2rem; color: #1a237e;">
+                <div>Moves: <span id="moves">0</span></div>
+                <div>Pairs: <span id="pairs">0</span>/8</div>
+            </div>
+
+            <div id="game-grid" class="memory-grid">
+                <!-- Cards will be generated via JavaScript -->
+            </div>
+
+            <div id="result-message" style="margin-top: 2rem; font-family: 'Fredoka One', cursive; font-size: 1.5rem; display: none;"></div>
+            
+            <button id="reset-btn" class="btn-primary" style="margin: 2rem auto; padding: 1rem 3rem; border-radius: 50px; border: none; background: #2196F3; color: #fff; font-weight: 700; cursor: pointer; transition: 0.3s;" onclick="initGame()">Restart Game 🔄</button>
+
+            <a href="../games.html" class="btn-back" style="display:inline-block; margin-top:1rem; color:#673AB7; font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Back to Games</a>
+        </div>
+    </main>
+
+    <style>
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .memory-card {
+            aspect-ratio: 1;
+            position: relative;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .memory-card.flipped {
+            transform: rotateY(180deg);
+        }
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            font-size: 2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card-front {
+            background: #e3f2fd;
+            border: 3px solid #2196F3;
+            color: #2196F3;
+        }
+        .card-back {
+            background: linear-gradient(135deg, #2196F3 0%, #673AB7 100%);
+            color: #fff;
+            transform: rotateY(180deg);
+        }
+        .memory-card.matched .card-back {
+            background: #4CAF50;
+            border-color: #4CAF50;
+        }
+    </style>
+
+    <script>
+        const icons = [
+            'fa-cat', 'fa-dog', 'fa-robot', 'fa-rocket', 
+            'fa-star', 'fa-ghost', 'fa-hippo', 'fa-dragon'
+        ];
+        let cards = [...icons, ...icons];
+        let flippedCards = [];
+        let matchedPairs = 0;
+        let moves = 0;
+        let canFlip = true;
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[array[j]]] = [array[array[j]], array[i]];
+            }
+            return array;
+        }
+
+        function createCard(iconClass) {
+            const card = document.createElement('div');
+            card.className = 'memory-card';
+            card.innerHTML = `
+                <div class="card-face card-front"><i class="fa-solid fa-question"></i></div>
+                <div class="card-face card-back"><i class="fa-solid ${iconClass}"></i></div>
+            `;
+            card.addEventListener('click', () => flipCard(card, iconClass));
+            return card;
+        }
+
+        function flipCard(card, iconClass) {
+            if (!canFlip || flippedCards.includes(card) || card.classList.contains('matched')) return;
+
+            card.classList.add('flipped');
+            flippedCards.push({ card, iconClass });
+
+            if (flippedCards.length === 2) {
+                moves++;
+                document.getElementById('moves').innerText = moves;
+                canFlip = false;
+                checkMatch();
+            }
+        }
+
+        function checkMatch() {
+            const [c1, c2] = flippedCards;
+            if (c1.iconClass === c2.iconClass) {
+                c1.card.classList.add('matched');
+                c2.card.classList.add('matched');
+                matchedPairs++;
+                document.getElementById('pairs').innerText = matchedPairs;
+                flippedCards = [];
+                canFlip = true;
+                if (matchedPairs === 8) winGame();
+            } else {
+                setTimeout(() => {
+                    c1.card.classList.remove('flipped');
+                    c2.card.classList.remove('flipped');
+                    flippedCards = [];
+                    canFlip = true;
+                }, 1000);
+            }
+        }
+
+        function winGame() {
+            const msg = document.getElementById('result-message');
+            msg.innerHTML = `You Win! 🎉<br>Finished in ${moves} moves!`;
+            msg.style.display = 'block';
+            msg.style.color = '#4CAF50';
+        }
+
+        function initGame() {
+            const grid = document.getElementById('game-grid');
+            grid.innerHTML = '';
+            shuffle(cards);
+            cards.forEach(icon => {
+                grid.appendChild(createCard(icon));
+            });
+            matchedPairs = 0;
+            moves = 0;
+            flippedCards = [];
+            canFlip = true;
+            document.getElementById('moves').innerText = '0';
+            document.getElementById('pairs').innerText = '0';
+            document.getElementById('result-message').style.display = 'none';
+        }
+
+        initGame();
+    </script>
+</body>
+</html>

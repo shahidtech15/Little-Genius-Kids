@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Search - Little Genius Kids</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .game-hero {
+            padding: 8rem 5% 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, #4CAF50 0%, #009688 100%);
+            color: #fff;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+        .game-hero h1 { font-family: 'Fredoka One', cursive; font-size: 3rem; margin-bottom: 1rem; }
+        .game-container { max-width: 800px; margin: 4rem auto; padding: 3rem; background: #fff; border-radius: 30px; box-shadow: var(--shadow-lg); text-align: center; }
+        .word-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 0.5rem; width: 400px; margin: 0 auto; border: 3px solid #4CAF50; padding: 1rem; border-radius: 15px; }
+        .letter-cell { aspect-ratio: 1; background: #f1f8e9; display: flex; align-items: center; justify-content: center; font-weight: 700; cursor: pointer; border-radius: 5px; }
+        .letter-cell:hover { background: #c8e6c9; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"><a href="../index.html"><i class="fa-solid fa-graduation-cap"></i> Little Genius</a></div>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../ai-course.html">AI Course</a>
+                <a href="../games.html" class="active">Games</a>
+                <a href="../blog/index.html">Blog</a>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="game-hero">
+            <h1>Word Search Hub 🔍</h1>
+            <p>Find all the hidden words in the grid!</p>
+        </section>
+        <div class="game-container">
+            <div class="word-grid">
+                <div class="letter-cell">A</div><div class="letter-cell">P</div><div class="letter-cell">P</div><div class="letter-cell">L</div><div class="letter-cell">E</div><div class="letter-cell">X</div><div class="letter-cell">Y</div><div class="letter-cell">Z</div>
+                <div class="letter-cell">B</div><div class="letter-cell">A</div><div class="letter-cell">N</div><div class="letter-cell">A</div><div class="letter-cell">N</div><div class="letter-cell">A</div><div class="letter-cell">Q</div><div class="letter-cell">W</div>
+                <!-- ... more cells ... -->
+            </div>
+            <p style="margin-top:2rem;">Look for fruits, animals, and colors! Full game coming soon.</p>
+            <a href="../games.html" class="btn-back" style="display:inline-block; margin-top:2rem; color:#009688; font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Back to Games</a>
+        </div>
+    </main>
+</body>
+</html>

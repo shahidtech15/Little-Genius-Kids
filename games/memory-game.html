@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game - Little Genius Kids</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .game-hero {
+            padding: 8rem 5% 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, #2196F3 0%, #673AB7 100%);
+            color: #fff;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+        .game-hero h1 { font-family: 'Fredoka One', cursive; font-size: 3rem; margin-bottom: 1rem; }
+        .game-container { max-width: 600px; margin: 4rem auto; padding: 3rem; background: #fff; border-radius: 30px; box-shadow: var(--shadow-lg); text-align: center; }
+        .memory-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+        .card-placeholder { aspect-ratio: 1; background: #e3f2fd; border-radius: 15px; border: 3px dashed #2196F3; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #2196F3; transition: 0.3s; }
+        .card-placeholder:hover { background: #bbdefb; transform: scale(1.05); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"><a href="../index.html"><i class="fa-solid fa-graduation-cap"></i> Little Genius</a></div>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../ai-course.html">AI Course</a>
+                <a href="../games.html" class="active">Games</a>
+                <a href="../blog/index.html">Blog</a>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="game-hero">
+            <h1>Memory Game 🧠</h1>
+            <p>Find the matching pairs!</p>
+        </section>
+        <div class="game-container">
+            <div class="memory-grid">
+                <div class="card-placeholder" onclick="alert('Card flipped!')"><i class="fa-solid fa-question"></i></div>
+                <div class="card-placeholder" onclick="alert('Card flipped!')"><i class="fa-solid fa-question"></i></div>
+                <div class="card-placeholder" onclick="alert('Card flipped!')"><i class="fa-solid fa-question"></i></div>
+                <div class="card-placeholder" onclick="alert('Card flipped!')"><i class="fa-solid fa-question"></i></div>
+                <div class="card-placeholder" onclick="alert('Card flipped!')"><i class="fa-solid fa-question"></i></div>
+                <div class="card-placeholder" onclick="alert('Card flipped!')"><i class="fa-solid fa-question"></i></div>
+            </div>
+            <p style="margin-top:2rem;">Full game logic coming soon!</p>
+            <a href="../games.html" class="btn-back" style="display:inline-block; margin-top:2rem; color:#673AB7; font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Back to Games</a>
+        </div>
+    </main>
+</body>
+</html>

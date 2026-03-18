@@ -1,459 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Games | Little Genius</title>
+    <title>Fun Learning Games for Kids - Play & Learn | Little Genius Kids</title>
+    <meta name="description" content="Play fun educational games for kids! Math puzzles, memory games, coloring activities, and AI quizzes to make learning enjoyable and interactive.">
+    <meta name="keywords" content="kids learning games, educational games, math puzzles for kids, memory games, coloring activities, AI quiz for kids">
+    
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Nunito:wght@400;600;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
-    <!-- Games Stylesheet -->
-    <link rel="stylesheet" href="css/games.css">
-</head>
 
+    <style>
+        :root {
+            --games-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            --games-hero-bg: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .hero-games {
+            padding: 10rem 5% 6rem;
+            text-align: center;
+            background: var(--games-hero-bg);
+            border-bottom-left-radius: 80px;
+            border-bottom-right-radius: 80px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-games::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/circles.png');
+            opacity: 0.1;
+        }
+        .hero-games h1 { font-size: 3.8rem; margin-bottom: 1.5rem; font-family: 'Fredoka One', cursive; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .hero-games p { font-size: 1.4rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+        .section-header { text-align: center; margin: 5rem 0 3rem; }
+        .section-header h2 { font-size: 2.5rem; color: #d32f2f; font-family: 'Fredoka One', cursive; margin-bottom: 1rem; }
+        
+        /* Game Grid */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+        .game-card {
+            background: rgba(255, 255, 255, 0.8);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 2.5rem;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            transition: var(--transition-bounce);
+            text-decoration: none;
+            color: inherit;
+        }
+        .game-card:hover { transform: translateY(-10px); background: #fff; box-shadow: 0 20px 40px rgba(245, 87, 108, 0.2); }
+        .game-card i { font-size: 3.5rem; margin-bottom: 1.5rem; display: block; background: var(--games-hero-bg); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .game-card h3 { font-size: 1.6rem; color: #1a237e; margin-bottom: 1rem; font-family: 'Fredoka One', cursive; }
+        .game-card p { font-size: 1.1rem; opacity: 0.8; line-height: 1.6; margin-bottom: 1.5rem; }
+        
+        .play-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #f5576c;
+            color: #fff;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: var(--transition-bounce);
+        }
+        .game-card:hover .play-btn { transform: scale(1.1); }
+
+        /* Embed Section */
+        .embed-section {
+            background: #fff5f5;
+            padding: 5rem 0;
+            border-radius: 50px;
+            margin-bottom: 5rem;
+        }
+        .embed-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        .embed-container {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+        .embed-container h3 { margin-bottom: 1.5rem; color: #333; font-family: 'Fredoka One', cursive; }
+        .embed-frame {
+            width: 100%;
+            aspect-ratio: 4/3;
+            border-radius: 20px;
+            border: none;
+            background: #eee;
+        }
+
+        @media (max-width: 600px) {
+            .embed-grid { grid-template-columns: 1fr; }
+            .hero-games h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
 <body>
-    <!-- Navigation Bar -->
-    <header class="navbar">
-        <div class="logo">
-            <a href="index.html">
-                <i class="fa-solid fa-graduation-cap"></i> Little Genius
+
+<header>
+  <div class="container">
+    <div class="logo">
+        <a href="index.html">
+            <i class="fa-solid fa-graduation-cap"></i> Little Genius
+        </a>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="ai-course.html">AI Course</a>
+      <a href="games.html" class="active">Games</a>
+      <a href="blog/index.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+    <section class="hero-games">
+        <div class="container">
+            <h1 class="bounce-in">Fun Learning Games 🎮</h1>
+            <p>Explore interactive games that make learning exciting and fun. From math puzzles to AI quizzes, there's always something new to discover!</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- 1. Math & Logic Games -->
+        <div class="section-header">
+            <h2>Math & Logic Games 🧮</h2>
+            <p>Master numbers and logic with these fun challenges!</p>
+        </div>
+        <div class="game-grid">
+            <a href="games/math-puzzle.html" class="game-card">
+                <i class="fa-solid fa-calculator"></i>
+                <h3>Addition & Subtraction</h3>
+                <p>Sharpen your math skills with fun number puzzles!</p>
+                <span class="play-btn">Play Now</span>
+            </a>
+            <a href="games/multiplication-challenge.html" class="game-card">
+                <i class="fa-solid fa-xmark"></i>
+                <h3>Multiplication Challenge</h3>
+                <p>Test your times tables in a fun racing game!</p>
+                <span class="play-btn">Play Now</span>
+            </a>
+            <a href="games/number-maze.html" class="game-card">
+                <i class="fa-solid fa-route"></i>
+                <h3>Number Maze</h3>
+                <p>Find your way through numeric obstacles!</p>
+                <span class="play-btn">Play Now</span>
             </a>
         </div>
-        <nav class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="abc.html">ABC</a>
-            <a href="numbers.html">Numbers</a>
-            <a href="colors-shapes.html">Colors & Shapes</a>
-            <a href="animals.html">Animals</a>
-            <a href="games.html" class="active">Games</a>
-        </nav>
-        <div class="nav-actions">
-            <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark Mode"><i
-                    class="fa-solid fa-moon"></i></button>
-            <a href="parents.html" class="btn-primary">Parents</a>
-            <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
-        </div>
-    </header>
 
-    <!-- Mobile Navigation Overlay -->
-    <div class="mobile-menu" id="mobile-menu">
-        <div class="menu-header">
-            <h3>Menu</h3>
-            <button id="close-menu" class="btn-icon"><i class="fa-solid fa-times"></i></button>
+        <!-- 2. Memory & Brain Games -->
+        <div class="section-header">
+            <h2>Memory & Brain Games 🧠</h2>
+            <p>Train your brain with these interactive puzzles.</p>
         </div>
-        <nav class="mobile-nav-links">
-            <a href="index.html">Home</a>
-            <a href="abc.html">ABC Learning</a>
-            <a href="numbers.html">Numbers</a>
-            <a href="colors-shapes.html">Colors & Shapes</a>
-            <a href="animals.html">Animals</a>
-            <a href="rhymes.html">Rhymes</a>
-            <a href="games.html" class="active">Games</a>
-            <a href="worksheets.html">Worksheets</a>
-            <a href="parents.html">Parent Dashboard</a>
-        </nav>
+        <div class="game-grid">
+            <a href="games/memory-card.html" class="game-card">
+                <i class="fa-solid fa-clone"></i>
+                <h3>Memory Card Match</h3>
+                <p>Find all the matching pairs as fast as you can!</p>
+                <span class="play-btn">Play Now</span>
+            </a>
+            <a href="games/sequence-recall.html" class="game-card">
+                <i class="fa-solid fa-list-ol"></i>
+                <h3>Sequence Recall</h3>
+                <p>Watch the pattern and repeat it correctly.</p>
+                <span class="play-btn">Play Now</span>
+            </a>
+            <a href="games/pattern-recognition.html" class="game-card">
+                <i class="fa-solid fa-shapes"></i>
+                <h3>Pattern Recognition</h3>
+                <p>Spot the odd one out or complete the series!</p>
+                <span class="play-btn">Play Now</span>
+            </a>
+        </div>
+
+        <!-- 3. Coloring & Creativity Games -->
+        <div class="section-header">
+            <h2>Coloring & Creativity 🎨</h2>
+            <p>Unleash your inner artist with these creative tools.</p>
+        </div>
+        <div class="game-grid">
+            <a href="games/digital-coloring.html" class="game-card">
+                <i class="fa-solid fa-paint-brush"></i>
+                <h3>Digital Coloring</h3>
+                <p>Paint beautiful scenes with a click of a button!</p>
+                <span class="play-btn">Play Now</span>
+            </a>
+            <a href="games/shape-drawing.html" class="game-card">
+                <i class="fa-solid fa-pencil"></i>
+                <h3>Shape Drawing</h3>
+                <p>Learn to draw complex shapes with simple steps.</p>
+                <span class="play-btn">Play Now</span>
+            </a>
+            <a href="games/emoji-art.html" class="game-card">
+                <i class="fa-solid fa-face-smile"></i>
+                <h3>Emoji Art</h3>
+                <p>Create masterpieces using only your favorite emojis!</p>
+                <span class="play-btn">Play Now</span>
+            </a>
+        </div>
+
+        <!-- 4. Science & AI Games -->
+        <div class="section-header">
+            <h2>Science & AI Games 🤖</h2>
+            <p>Explore the wonders of technology and science.</p>
+        </div>
+        <div class="game-grid">
+            <a href="games/ai-quiz.html" class="game-card">
+                <i class="fa-solid fa-robot"></i>
+                <h3>AI Quiz for Kids</h3>
+                <p>Learn about smart machines with our interactive quiz!</p>
+                <span class="play-btn">Play Now</span>
+            </a>
+            <a href="games/science-lab.html" class="game-card">
+                <i class="fa-solid fa-flask"></i>
+                <h3>Science Lab</h3>
+                <p>Conduct safe and fun virtual experiments!</p>
+                <span class="play-btn">Play Now</span>
+            </a>
+            <a href="games/ai-puzzle.html" class="game-card">
+                <i class="fa-solid fa-puzzle-piece"></i>
+                <h3>AI Puzzle Challenge</h3>
+                <p>Help the robot reassemble its memory blocks!</p>
+                <span class="play-btn">Play Now</span>
+            </a>
+        </div>
+
+        <!-- 5. Language & Reading Games -->
+        <div class="section-header">
+            <h2>Language & Reading 📚</h2>
+            <p>Improve your vocabulary and reading skills.</p>
+        </div>
+        <div class="game-grid">
+            <a href="games/word-search.html" class="game-card">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <h3>Word Search</h3>
+                <p>Find hidden words in a grid of letters!</p>
+                <span class="play-btn">Play Now</span>
+            </a>
+            <a href="games/alphabet-puzzle.html" class="game-card">
+                <i class="fa-solid fa-font"></i>
+                <h3>Alphabet Puzzle</h3>
+                <p>Connect the letters to reveal secret words!</p>
+                <span class="play-btn">Play Now</span>
+            </a>
+            <a href="games/story-builder.html" class="game-card">
+                <i class="fa-solid fa-book-open"></i>
+                <h3>Story Builder</h3>
+                <p>Create your own adventure by choosing what happens next!</p>
+                <span class="play-btn">Play Now</span>
+            </a>
+        </div>
+
+        <!-- 6. Interactive Coding Games -->
+        <div class="embed-section">
+            <div class="container">
+                <div class="section-header" style="margin-top:0">
+                    <h2>Interactive Coding Games 💻</h2>
+                    <p>Try these amazing activities from our partners.</p>
+                </div>
+
+                <div class="embed-grid">
+                    <div class="embed-container">
+                        <h3>Scratch Coding Adventure</h3>
+                        <p style="margin-bottom:1.5rem">Learn the basics of coding while playing!</p>
+                        <iframe src="https://scratch.mit.edu/projects/123456789/embed" class="embed-frame" allowtransparency="true" title="Scratch Coding Game"></iframe>
+                    </div>
+                    <div class="embed-container">
+                        <h3>Code.org Activity</h3>
+                        <p style="margin-bottom:1.5rem">Puzzle-solving at its finest through visual blocks.</p>
+                        <iframe src="https://studio.code.org/projects/applab/abcdefgh/embed" class="embed-frame" title="Code.org Activity"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</main>
 
-    <main class="games-container">
-        <header class="page-header">
-            <h1 class="bounce-in">Play & Learn Games</h1>
-            <p>Earn stars by completing fun puzzles and matching games!</p>
-        </header>
+<footer>
+  <div class="container">
+    <p>© 2026 Little Genius Kids. All rights reserved.</p>
+    <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
+    <div class="footer-links">
+        <a href="privacy-policy.html">Privacy Policy</a> |
+        <a href="terms-and-conditions.html">Terms</a> |
+        <a href="disclaimer.html">Disclaimer</a> |
+        <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
 
-        <!-- Game Selection Tabs -->
-        <div class="game-tabs mb-4" style="flex-wrap: wrap;">
-            <button class="btn-primary active-tab" id="tab-alphabet">Alphabet Match</button>
-            <button class="btn-primary" style="background-color: var(--accent-color);"
-                id="tab-numbers">Counting</button>
-            <button class="btn-primary" style="background-color: var(--card-green);" id="tab-colors">Colors</button>
-            <button class="btn-primary" style="background-color: var(--card-purple);" id="tab-animals">Animal
-                Sounds</button>
-            <button class="btn-primary" style="background-color: var(--card-orange);" id="tab-shapes">Shape
-                Match</button>
-            <button class="btn-primary" style="background-color: var(--card-blue);" id="tab-color-catch">Color
-                Catch</button>
-            <button class="btn-primary" style="background-color: var(--card-yellow);" id="tab-farm-count">Counting
-                Farm</button>
-            <button class="btn-primary" style="background-color: var(--primary-color);" id="tab-grammar">Grammar
-                Adventure</button>
-            <button class="btn-primary" style="background-color: var(--card-cyan);" id="tab-sentence">Sentence
-                Builder</button>
-            <button class="btn-primary" style="background-color: var(--card-pink);" id="tab-detective">Word
-                Detective</button>
-            <button class="btn-primary" style="background-color: #ffb3ba;" id="tab-edtech-grammar">Grammar
-                Challenge</button>
-        </div>
-
-        <!-- 1. Alphabet Matching Game -->
-        <section id="alphabet-game" class="game-section active-game">
-            <h2>Alphabet Match</h2>
-            <p class="mb-4">Drag the capital letter to its matching lowercase letter!</p>
-            <div class="alphabet-area">
-                <div class="draggables" id="alphabet-draggables"></div>
-                <div class="drop-zones" id="alphabet-drop-zones"></div>
-            </div>
-            <div id="alphabet-win-msg" class="win-message" style="display: none;">
-                <h3>🎉 Brilliant! 🎉</h3>
-                <p>You earned 5 stars!</p>
-                <button class="btn-primary mt-4" id="btn-restart-alphabet">Play Again</button>
-            </div>
-        </section>
-
-        <!-- 2. Number Counting Game -->
-        <section id="numbers-game" class="game-section" style="display: none;">
-            <h2>Count the Apples</h2>
-            <p class="mb-4">How many apples do you see?</p>
-            <div class="counting-area">
-                <div class="objects-container" id="counting-objects"></div>
-                <div class="options-container" id="counting-options"></div>
-            </div>
-            <div id="numbers-win-msg" class="win-message" style="display: none;">
-                <h3>🎉 Great Counting! 🎉</h3>
-                <p>You earned 5 stars!</p>
-                <button class="btn-primary mt-4" id="btn-restart-numbers">Play Again</button>
-            </div>
-        </section>
-
-        <!-- 3. Color Identification Game -->
-        <section id="colors-game" class="game-section" style="display: none;">
-            <h2>Find the Color</h2>
-            <p class="mb-4" id="color-instruction">Find the Red balloon!</p>
-            <div class="colors-area" id="colors-options"></div>
-            <div id="colors-win-msg" class="win-message" style="display: none;">
-                <h3>🎉 Perfect Match! 🎉</h3>
-                <p>You earned 5 stars!</p>
-                <button class="btn-primary mt-4" id="btn-restart-colors">Play Again</button>
-            </div>
-        </section>
-
-        <!-- 4. Animal Sound Guessing Game -->
-        <section id="animals-game" class="game-section" style="display: none;">
-            <h2>Who Makes This Sound?</h2>
-            <p class="mb-4">Listen to the sound and click the right animal!</p>
-            <button class="btn-large mb-4 play-sound-btn" id="btn-play-animal-sound">
-                <i class="fa-solid fa-volume-high"></i> Play Sound
-            </button>
-            <div class="animals-area" id="animals-options"></div>
-            <div id="animals-win-msg" class="win-message" style="display: none;">
-                <h3>🎉 You Got It! 🎉</h3>
-                <p>You earned 5 stars!</p>
-                <button class="btn-primary mt-4" id="btn-restart-animals">Play Again</button>
-            </div>
-        </section>
-
-        <!-- 5. Shape Matching Game -->
-        <section id="shapes-game" class="game-section" style="display: none;">
-            <h2>Shape Match</h2>
-            <p class="mb-4">Drag the shapes to their outlines!</p>
-            <div class="sorting-area">
-                <div class="draggables flex-wrap" id="shape-draggables"></div>
-                <div class="drop-zones flex-wrap" id="shape-drop-zones"></div>
-            </div>
-            <div id="shapes-win-msg" class="win-message" style="display: none;">
-                <h3>🎉 Amazing Job! 🎉</h3>
-                <p>You earned 5 stars!</p>
-                <button class="btn-primary mt-4" id="btn-restart-shapes">Play Again</button>
-            </div>
-        </section>
-
-        <!-- 6. Color Catch Game -->
-        <section id="color-catch-game" class="game-section" style="display: none;">
-            <h2>Color Catch</h2>
-            <div class="cc-header">
-                <p class="cc-instruction" id="cc-instruction">Catch the RED balloons!</p>
-                <div class="cc-score">Stars: <span id="cc-stars">0</span>/10</div>
-            </div>
-
-            <div class="color-catch-area" id="color-catch-area">
-                <!-- Balloons will fall here -->
-            </div>
-
-            <div id="color-catch-win-msg" class="win-message" style="display: none;">
-                <h3>🎉 Ribbon Winner! 🎉</h3>
-                <p>You caught 10 balloons and earned a badge!</p>
-                <button class="btn-primary mt-4" id="btn-restart-color-catch">Play Again</button>
-            </div>
-        </section>
-        <!-- 7. Counting Farm Game -->
-        <section id="farm-count-game" class="game-section" style="display: none;">
-            <h2>Counting Farm</h2>
-            <div class="fc-header"
-                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding: 0 1rem;">
-                <p class="fc-instruction" id="fc-instruction"
-                    style="font-size: 1.8rem; font-weight: bold; color: var(--text-color);">How many cows are there?</p>
-                <div class="fc-score"
-                    style="font-size: 1.5rem; font-weight: bold; color: var(--card-green); background: white; padding: 0.5rem 1rem; border-radius: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                    Round: <span id="fc-round">1</span>/10 <br>
-                    Stars: <span id="fc-stars">0</span>
-                </div>
-            </div>
-
-            <div class="farm-area" id="farm-area">
-                <!-- Farm animals will be rendered here -->
-            </div>
-
-            <div class="options-container" id="fc-options" style="margin-top: 2rem;">
-                <!-- 3 number buttons go here -->
-            </div>
-
-            <div id="fc-win-msg" class="win-message" style="display: none;">
-                <h3>🎉 Farm Complete! 🎉</h3>
-                <p>You scored <span id="fc-final-score">0</span> out of 10!</p>
-                <button class="btn-primary mt-4" id="btn-restart-farm">Play Again</button>
-            </div>
-        </section>
-        <!-- 8. Grammar Adventure Game -->
-        <section id="grammar-game" class="game-section" style="display: none;">
-            <h2>Grammar Adventure</h2>
-
-            <!-- Map/Level Select View -->
-            <div id="grammar-level-select" class="grammar-container">
-                <p class="mb-4">Choose a level to practice your English!</p>
-                <div class="grammar-levels">
-                    <!-- Levels injected via JS -->
-                </div>
-            </div>
-
-            <!-- Active Quiz View -->
-            <div id="grammar-quiz-view" class="grammar-container" style="display: none;">
-                <div class="grammar-header">
-                    <span id="grammar-level-title" class="grammar-badge">Level 1: Nouns</span>
-                    <span class="grammar-badge score-badge">Score: <span id="grammar-score">0</span></span>
-                    <span class="grammar-badge">Q: <span id="grammar-qnum">1</span>/10</span>
-                </div>
-
-                <div class="grammar-question-box">
-                    <div id="grammar-emoji" class="grammar-emoji">🌟</div>
-                    <p id="grammar-question-text" class="grammar-question-text">Question goes here?</p>
-                </div>
-
-                <div id="grammar-options" class="grammar-options">
-                    <!-- 3 Buttons injected via JS -->
-                </div>
-
-                <p id="grammar-feedback"
-                    style="opacity: 0; transition: opacity 0.3s ease; text-align: center; font-size: 1.5rem; font-weight: bold; margin-top: 1rem; color: var(--card-red);">
-                    Oops, let's try again! You can do it!</p>
-            </div>
-
-            <!-- End of Level View -->
-            <div id="grammar-win-msg" class="win-message" style="display: none;">
-                <h3 id="grammar-win-title">🎉 Level Complete! 🎉</h3>
-                <p>You scored <span id="grammar-final-score">0</span> out of 10!</p>
-                <div class="grammar-actions mt-4">
-                    <button class="btn-primary" id="btn-grammar-menu">Back to Map</button>
-                    <button class="btn-primary" id="btn-grammar-next"
-                        style="background-color: var(--card-green); display: none;">Next Level</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- 9. Sentence Builder Game -->
-        <section id="sentence-game" class="game-section" style="display: none;">
-            <h2>Sentence Builder</h2>
-            <div class="sb-header"
-                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding: 0 1rem;">
-                <p class="sb-instruction" id="sb-instruction"
-                    style="font-size: 1.8rem; font-weight: bold; color: var(--text-color);">Drag words to make a
-                    sentence!</p>
-                <div class="sb-score"
-                    style="font-size: 1.5rem; font-weight: bold; color: var(--card-green); background: var(--card-bg); padding: 0.5rem 1rem; border-radius: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                    Round: <span id="sb-round">1</span>/10 <br>
-                    Stars: <span id="sb-stars">0</span>
-                </div>
-            </div>
-
-            <div class="sentence-builder-area">
-                <div class="sb-words-container" id="sb-words-container">
-                    <!-- Draggable words injected via JS -->
-                </div>
-
-                <div class="sb-dropzone-container" id="sb-dropzone-container">
-                    <!-- Drop zones injected via JS based on word count -->
-                </div>
-            </div>
-
-            <div class="text-center mt-4">
-                <button class="btn-large" id="btn-sb-check" style="display: none;">Check Answer</button>
-            </div>
-
-            <div id="sb-win-msg" class="win-message" style="display: none;">
-                <h3>🎉 Sentence Master! 🎉</h3>
-                <p>You scored <span id="sb-final-score">0</span> stars!</p>
-                <button class="btn-primary mt-4" id="btn-restart-sb">Play Again</button>
-            </div>
-        </section>
-
-        <!-- 10. Word Detective Game -->
-        <section id="detective-game" class="game-section" style="display: none;">
-            <h2>Word Detective</h2>
-
-            <!-- Difficulty Selection -->
-            <div id="wd-level-select" class="text-center">
-                <p class="mb-4" style="font-size: 1.5rem; color: var(--text-color);">Choose a case to solve!</p>
-                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                    <button class="btn-large" id="btn-wd-lvl-1" style="background-color: var(--card-blue);">Level 1
-                        (Easy)</button>
-                    <button class="btn-large" id="btn-wd-lvl-2" style="background-color: var(--card-yellow);">Level 2
-                        (Medium)</button>
-                    <button class="btn-large" id="btn-wd-lvl-3" style="background-color: var(--card-orange);">Level 3
-                        (Hard)</button>
-                </div>
-            </div>
-
-            <!-- Game Arena -->
-            <div id="wd-arena" style="display: none;">
-                <div class="wd-header"
-                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                    <p class="wd-instruction" id="wd-instruction"
-                        style="font-size: 2rem; font-weight: bold; color: var(--text-color);">Find the <span
-                            id="wd-target-type"
-                            style="color: var(--primary-color); text-transform: uppercase;">NOUN</span></p>
-                    <div class="wd-score"
-                        style="font-size: 1.5rem; font-weight: bold; color: var(--card-orange); background: var(--card-bg); padding: 0.5rem 1rem; border-radius: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                        Round: <span id="wd-round">1</span>/10 <br>
-                        Stars: <span id="wd-stars">0</span>
-                    </div>
-                </div>
-
-                <div class="wd-sentence-container text-center" id="wd-sentence-container"
-                    style="margin-bottom: 2rem; min-height: 100px;">
-                    <!-- Clickable words injected via JS -->
-                </div>
-
-                <div id="wd-feedback" class="text-center"
-                    style="font-size: 1.8rem; font-weight: bold; min-height: 40px; margin-bottom: 1rem;">
-                    <!-- Feedback injected via JS -->
-                </div>
-            </div>
-
-            <!-- End Screen -->
-            <div id="wd-win-msg" class="win-message" style="display: none;">
-                <h3>🔍 Case Closed! 🔍</h3>
-                <p>You found <span id="wd-final-score">0</span> out of 10 clues!</p>
-                <div class="mt-4" style="display: flex; justify-content: center; gap: 1rem;">
-                    <button class="btn-primary" id="btn-wd-menu">Choose Another Case</button>
-                    <button class="btn-primary" id="btn-wd-next"
-                        style="background-color: var(--card-green); display: none;">Next Level</button>
-                </div>
-            </div>
-            </div>
-        </section>
-
-        <!-- 11. EdTech Grammar Challenge (Premium Module) -->
-        <section id="edtech-grammar-game" class="game-section" style="display: none;">
-            <h2>Grammar Challenge</h2>
-
-            <!-- Dashboard and Controls -->
-            <div id="eg-dashboard"
-                style="display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); padding: 1rem 2rem; border-radius: var(--border-radius); box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
-                <div class="eg-stats text-center">
-                    <span
-                        style="font-size: 1.2rem; color: #666; font-weight: bold; text-transform: uppercase;">Topic</span><br>
-                    <span id="eg-topic-display"
-                        style="font-size: 1.5rem; color: var(--primary-color); font-weight: bold;">--</span>
-                </div>
-                <div class="eg-stats text-center">
-                    <span
-                        style="font-size: 1.2rem; color: #666; font-weight: bold; text-transform: uppercase;">Level</span><br>
-                    <span id="eg-level-display"
-                        style="font-size: 1.5rem; color: var(--accent-color); font-weight: bold;">1</span>
-                </div>
-                <div class="eg-stats text-center">
-                    <span
-                        style="font-size: 1.2rem; color: #666; font-weight: bold; text-transform: uppercase;">Score</span><br>
-                    <span id="eg-score-display"
-                        style="font-size: 1.5rem; color: var(--card-green); font-weight: bold;">0</span>
-                </div>
-                <div class="eg-stats text-center" id="eg-timer-container">
-                    <span
-                        style="font-size: 1.2rem; color: #666; font-weight: bold; text-transform: uppercase;">Time</span><br>
-                    <span id="eg-timer-display"
-                        style="font-size: 1.5rem; color: var(--card-red); font-weight: bold;">--</span>
-                </div>
-            </div>
-
-            <!-- Topic Selection Screen -->
-            <div id="eg-topic-select" class="text-center">
-                <p class="mb-4" style="font-size: 1.5rem; color: var(--text-color);">Select a topic to master!</p>
-                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                    <button class="btn-large" id="btn-eg-nouns"
-                        style="background-color: var(--card-blue);">Nouns</button>
-                    <button class="btn-large" id="btn-eg-verbs"
-                        style="background-color: var(--card-red);">Verbs</button>
-                    <button class="btn-large" id="btn-eg-adjectives"
-                        style="background-color: var(--card-orange);">Adjectives</button>
-                </div>
-                <div class="mt-4">
-                    <label
-                        style="font-size: 1.4rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
-                        <input type="checkbox" id="eg-timer-mode" style="transform: scale(1.5);"> Enable Challenge Timer
-                    </label>
-                </div>
-            </div>
-
-            <!-- Game Arena -->
-            <div id="eg-arena"
-                style="display: none; background: white; padding: 3rem 2rem; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); position: relative; overflow: hidden; border: 4px solid var(--primary-color);">
-                <div class="eg-progress-bar"
-                    style="width: 100%; height: 10px; background: #eee; position: absolute; top: 0; left: 0;">
-                    <div id="eg-progress-fill"
-                        style="height: 100%; background: var(--card-green); width: 0%; transition: width 0.3s ease;">
-                    </div>
-                </div>
-
-                <div class="text-center mb-4">
-                    <h3 id="eg-question-text" style="font-size: 2.2rem; color: var(--text-color); margin-bottom: 1rem;">
-                        ...</h3>
-                    <p id="eg-sentence-text"
-                        style="font-size: 1.8rem; background: var(--bg-alt-color); padding: 1rem; border-radius: 10px; display: inline-block; font-weight: bold; border-left: 5px solid var(--accent-color);">
-                        ...</p>
-                </div>
-
-                <div id="eg-options-container"
-                    style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
-                    <!-- Options injected via JS -->
-                </div>
-
-                <div id="eg-feedback" class="text-center"
-                    style="font-size: 1.8rem; font-weight: bold; min-height: 40px;">
-                    <!-- Feedback injected via JS -->
-                </div>
-            </div>
-
-            <!-- End Screen -->
-            <div id="eg-win-msg" class="win-message" style="display: none;">
-                <h3>🏆 Topic Mastered! 🏆</h3>
-                <p>You scored <span id="eg-final-score">0</span> points!</p>
-                <div id="eg-badge-container" class="mt-4 mb-4" style="font-size: 4rem;">
-                    <!-- Badge injected via JS -->
-                </div>
-                <div class="mt-4" style="display: flex; justify-content: center; gap: 1rem;">
-                    <button class="btn-primary" id="btn-eg-menu">Back to Topics</button>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2026 Little Genius Kids Learning.</p>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="js/main.js"></script>
-    <script src="js/games.js"></script>
-    <script src="js/grammar.js"></script>
-    <script src="js/sentence.js"></script>
-    <script src="js/detective.js"></script>
-    <script src="js/edtech-grammar.js"></script>
+<script src="js/main.js"></script>
 </body>
-
 </html>

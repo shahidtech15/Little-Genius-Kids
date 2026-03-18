@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequence Recall - Little Genius Kids</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .game-hero {
+            padding: 8rem 5% 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, #2196F3 0%, #673AB7 100%);
+            color: #fff;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+        .game-hero h1 { font-family: 'Fredoka One', cursive; font-size: 3rem; margin-bottom: 1rem; }
+        .game-container { max-width: 600px; margin: 4rem auto; padding: 3rem; background: #fff; border-radius: 30px; box-shadow: var(--shadow-lg); text-align: center; }
+        .sequence-box { display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; }
+        .seq-circle { width: 60px; height: 60px; border-radius: 50%; background: #e0e0e0; transition: 0.3s; }
+        .active-red { background: #f44336; transform: scale(1.1); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"><a href="../index.html"><i class="fa-solid fa-graduation-cap"></i> Little Genius</a></div>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../ai-course.html">AI Course</a>
+                <a href="../games.html" class="active">Games</a>
+                <a href="../blog/index.html">Blog</a>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="game-hero">
+            <h1>Sequence Recall 🔢</h1>
+            <p>Repeat the sequence correctly!</p>
+        </section>
+        <div class="game-container">
+            <div class="sequence-box">
+                <div class="seq-circle active-red"></div>
+                <div class="seq-circle"></div>
+                <div class="seq-circle"></div>
+                <div class="seq-circle"></div>
+            </div>
+            <p>Can you remember the pattern?</p>
+            <button class="btn-primary" style="padding:1rem 2rem; border-radius:50px; border:none; background:#2196F3; color:#fff; font-weight:700; margin-top:1rem; cursor:pointer;" onclick="alert('Game starts!')">Start Game</button>
+            <a href="../games.html" class="btn-back" style="display:inline-block; margin-top:2rem; color:#673AB7; font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Back to Games</a>
+        </div>
+    </main>
+</body>
+</html>

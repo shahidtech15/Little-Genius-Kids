@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Puzzle Challenge - Little Genius Kids</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .game-hero {
+            padding: 8rem 5% 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, #6200EA 0%, #03A9F4 100%);
+            color: #fff;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+        .game-hero h1 { font-family: 'Fredoka One', cursive; font-size: 3rem; margin-bottom: 1rem; }
+        .game-container { max-width: 800px; margin: 4rem auto; padding: 3rem; background: #fff; border-radius: 30px; box-shadow: var(--shadow-lg); text-align: center; }
+        .puzzle-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; width: 300px; margin: 0 auto; }
+        .puzzle-piece { aspect-ratio: 1; background: #e8eaf6; border: 2px solid #6200EA; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"><a href="../index.html"><i class="fa-solid fa-graduation-cap"></i> Little Genius</a></div>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../ai-course.html">AI Course</a>
+                <a href="../games.html" class="active">Games</a>
+                <a href="../blog/index.html">Blog</a>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="game-hero">
+            <h1>AI Puzzle Challenge 🤖</h1>
+            <p>Assemble the robot's logic core!</p>
+        </section>
+        <div class="game-container">
+            <div class="puzzle-grid">
+                <div class="puzzle-piece">1</div><div class="puzzle-piece">2</div><div class="puzzle-piece">3</div>
+                <div class="puzzle-piece">4</div><div class="puzzle-piece">5</div><div class="puzzle-piece">6</div>
+                <div class="puzzle-piece">7</div><div class="puzzle-piece">8</div><div class="puzzle-piece"> </div>
+            </div>
+            <p style="margin-top:2rem;">Slide the tiles to complete the image.</p>
+            <a href="../games.html" class="btn-back" style="display:inline-block; margin-top:2rem; color:#6200EA; font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Back to Games</a>
+        </div>
+    </main>
+</body>
+</html>

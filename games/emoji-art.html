@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Art - Little Genius Kids</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .game-hero {
+            padding: 8rem 5% 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, #E91E63 0%, #FFEB3B 100%);
+            color: #fff;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+        .game-hero h1 { font-family: 'Fredoka One', cursive; font-size: 3rem; margin-bottom: 1rem; }
+        .game-container { max-width: 800px; margin: 4rem auto; padding: 3rem; background: #fff; border-radius: 30px; box-shadow: var(--shadow-lg); text-align: center; }
+        .emoji-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-top: 2rem; }
+        .emoji-item { font-size: 3rem; cursor: pointer; transition: 0.3s; }
+        .emoji-item:hover { transform: scale(1.2); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"><a href="../index.html"><i class="fa-solid fa-graduation-cap"></i> Little Genius</a></div>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../ai-course.html">AI Course</a>
+                <a href="../games.html" class="active">Games</a>
+                <a href="../blog/index.html">Blog</a>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="game-hero">
+            <h1>Emoji Art 🤩</h1>
+            <p>Create masterpieces with your favorite emojis!</p>
+        </section>
+        <div class="game-container">
+            <div class="emoji-grid">
+                <span class="emoji-item">🍎</span><span class="emoji-item">🚀</span><span class="emoji-item">🎨</span><span class="emoji-item">🤖</span><span class="emoji-item">🧩</span>
+                <span class="emoji-item">🌈</span><span class="emoji-item">🍦</span><span class="emoji-item">🐱</span><span class="emoji-item">🌟</span><span class="emoji-item">🎸</span>
+            </div>
+            <p style="margin-top:2rem;">Drag and drop emojis to build your art!</p>
+            <a href="../games.html" class="btn-back" style="display:inline-block; margin-top:2rem; color:#E91E63; font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Back to Games</a>
+        </div>
+    </main>
+</body>
+</html>
