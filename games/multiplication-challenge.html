@@ -44,12 +44,106 @@
             <p>Race against time to solve these math problems!</p>
         </section>
         <div class="game-container">
-            <div class="puzzle-box">7 x 8 = ?</div>
-            <input type="number" class="answer-input" placeholder="?">
-            <button class="submit-btn" onclick="alert('Fast as lightning! Correct!')">Submit Answer</button>
-            <p>Ready for the next level? Coming soon!</p>
-            <a href="../games.html" class="btn-back" style="display:inline-block; margin-top:2rem; color:#F44336; font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Back to Games</a>
+            <div id="game-stats" style="display:flex; justify-content: space-between; margin-bottom: 2rem; font-family: 'Fredoka One', cursive; color: #1a237e;">
+                <div>Level: <span id="level">1</span> (Beginner)</div>
+                <div>Score: <span id="score">0</span></div>
+            </div>
+
+            <div id="quest-container">
+                <div id="question" class="puzzle-box">7 x 8 = ?</div>
+                <input type="number" id="answer-input" class="answer-input" placeholder="?">
+                <button id="submit-btn" class="submit-btn" onclick="checkAnswer()">Submit Answer</button>
+            </div>
+
+            <div id="result" style="font-size: 1.5rem; font-weight: 700; margin-top: 1rem; min-height: 2.5rem;"></div>
+            
+            <div id="level-up" style="display:none; margin-top: 1.5rem; padding: 1rem; background: #fff9c4; border-radius: 15px; border: 2px solid #fbc02d; color: #f57f17; font-weight: 700; animation: bounce 0.5s infinite alternate;">
+                🚀 Level Up! Things are getting faster!
+            </div>
+
+            <a href="../games.html" class="btn-back" style="display:inline-block; margin-top:3rem; color:#F44336; font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Back to Games</a>
         </div>
     </main>
+
+    <style>
+        @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-5px); } }
+        .puzzle-box { transition: 0.3s; }
+        .correct-anim { transform: scale(1.1); color: #4CAF50 !important; }
+    </style>
+
+    <script>
+        let num1, num2, correctAns;
+        let score = 0;
+        let level = 1;
+        let canSubmit = true;
+
+        function generateQuestion() {
+            if (level === 1) {
+                // Easier numbers: 1, 2, 5, 10
+                const easy = [1, 2, 3, 4, 5, 10];
+                num1 = easy[Math.floor(Math.random() * easy.length)];
+                num2 = Math.floor(Math.random() * 10) + 1;
+            } else {
+                // Harder: Random up to 12
+                num1 = Math.floor(Math.random() * 10) + 3;
+                num2 = Math.floor(Math.random() * 10) + 3;
+            }
+            
+            correctAns = num1 * num2;
+            document.getElementById("question").innerText = `${num1} x ${num2} = ?`;
+            document.getElementById("answer-input").value = "";
+            document.getElementById("result").innerText = "";
+            document.getElementById("answer-input").focus();
+            canSubmit = true;
+        }
+
+        function checkAnswer() {
+            if (!canSubmit) return;
+            
+            const userAns = parseInt(document.getElementById("answer-input").value);
+            const resultDiv = document.getElementById("result");
+            const qBox = document.getElementById("question");
+            
+            if (isNaN(userAns)) return;
+
+            canSubmit = false;
+
+            if (userAns === correctAns) {
+                score += 10;
+                resultDiv.innerText = "Excellent! Moving to next... 🌟";
+                resultDiv.style.color = "#4CAF50";
+                qBox.classList.add('correct-anim');
+                
+                // Level Up Check
+                if (score >= 50 && level === 1) {
+                    level = 2;
+                    document.getElementById('level').innerText = "2 (Pro)";
+                    document.getElementById('level-up').style.display = 'block';
+                }
+
+                setTimeout(() => {
+                    qBox.classList.remove('correct-anim');
+                    generateQuestion();
+                }, 1500);
+            } else {
+                resultDiv.innerText = `Try again! ${num1} x ${num2} is ${correctAns} 😅`;
+                resultDiv.style.color = "#F44336";
+                setTimeout(() => {
+                    generateQuestion();
+                }, 2000);
+            }
+            
+            document.getElementById("score").innerText = score;
+        }
+
+        // Listen for Enter key
+        document.getElementById("answer-input").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkAnswer();
+            }
+        });
+
+        generateQuestion();
+    </script>
 </body>
 </html>

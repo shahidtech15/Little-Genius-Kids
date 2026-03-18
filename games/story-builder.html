@@ -44,16 +44,123 @@
             <p>Create your own unique adventure!</p>
         </section>
         <div class="game-container">
-            <div class="story-box">
-                Once upon a time, a brave young explorer entered a magical forest...
+            <div id="game-ui">
+                <div class="story-progress" style="display:flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+                    <div id="step-1" class="step-dot active" style="width:15px; height:15px; border-radius:50%; background:#4CAF50;"></div>
+                    <div id="step-2" class="step-dot" style="width:15px; height:15px; border-radius:50%; background:#ddd;"></div>
+                    <div id="step-3" class="step-dot" style="width:15px; height:15px; border-radius:50%; background:#ddd;"></div>
+                </div>
+
+                <div id="story-display" class="story-box" style="background: #fffdf9; border: 2px dashed #4CAF50; min-height: 120px; display: flex; align-items: center; justify-content: center; font-style: italic;">
+                    Once upon a time...
+                </div>
+
+                <h3 id="choice-prompt" style="font-family: 'Fredoka One', cursive; color: #1b5e20; margin-bottom: 1.5rem;">Who is our hero?</h3>
+                
+                <div id="choice-container" class="choice-list">
+                    <!-- Choices populated via JS -->
+                </div>
             </div>
-            <div class="choice-list">
-                <button class="choice-btn" onclick="alert('He saw a talking rabbit!')">A) He saw a talking rabbit!</button>
-                <button class="choice-btn" onclick="alert('He found a silver key!')">B) He found a silver key!</button>
-                <button class="choice-btn" onclick="alert('A friendly robot appeared!')">C) A friendly robot appeared!</button>
+
+            <div id="final-story-ui" style="display:none; text-align: center;">
+                <div class="story-card" style="background: #fff; padding: 3rem; border-radius: 30px; border: 4px solid #4CAF50; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <i class="fa-solid fa-book-open fa-4x" style="color: #4CAF50; margin-bottom: 1.5rem;"></i>
+                    <h2 style="font-family: 'Fredoka One', cursive; color: #1b5e20; margin-bottom: 1.5rem;">Your Masterpiece</h2>
+                    <p id="full-story-text" style="font-size: 1.4rem; line-height: 1.8; color: #333; margin-bottom: 2rem;"></p>
+                </div>
+                <button onclick="resetGame()" class="btn-primary" style="background: #4CAF50; color: #fff; border: none; padding: 1.2rem 3rem; border-radius: 50px; font-weight: 700; font-size: 1.2rem; cursor: pointer; transition: 0.3s;"><i class="fa-solid fa-rotate"></i> Write Another Story</button>
             </div>
-            <a href="../games.html" class="btn-back" style="display:inline-block; margin-top:2rem; color:#009688; font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Back to Games</a>
+
+            <a href="../games.html" class="btn-back" style="display:inline-block; margin-top:3rem; color:#009688; font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Back to Games</a>
         </div>
     </main>
+
+    <script>
+        const storySteps = [
+            {
+                prompt: "Who is our hero?",
+                options: [
+                    { icon: "cat", text: "a curious little cat", label: "A Brave Cat" },
+                    { icon: "robot", text: "a friendly robot named Sparky", label: "Sparky the Robot" },
+                    { icon: "user-astronaut", text: "a daring space explorer", label: "A Space Explorer" }
+                ]
+            },
+            {
+                prompt: "Where did they go?",
+                options: [
+                    { icon: "tree", text: "wandered into a magical glowing forest", label: "Magical Forest" },
+                    { icon: "shuttle-space", text: "flew to a busy space station", label: "Space Station" },
+                    { icon: "water", text: "dived deep into an underwater city", label: "Underwater City" }
+                ]
+            },
+            {
+                prompt: "What did they find?",
+                options: [
+                    { icon: "gem", text: "and found a chest full of shiny gems!", label: "Shiny Treasure" },
+                    { icon: "face-smile", text: "and met a group of friendly aliens!", label: "Friendly Aliens" },
+                    { icon: "ice-cream", text: "and discovered a mountain made of ice cream!", label: "Ice Cream Mountain" }
+                ]
+            }
+        ];
+
+        let currentStep = 0;
+        let storyParts = ["Once upon a time,"];
+
+        function initGame() {
+            currentStep = 0;
+            storyParts = ["Once upon a time,"];
+            document.getElementById('game-ui').style.display = 'block';
+            document.getElementById('final-story-ui').style.display = 'none';
+            updateUI();
+        }
+
+        function updateUI() {
+            const step = storySteps[currentStep];
+            document.getElementById('choice-prompt').innerText = step.prompt;
+            document.getElementById('story-display').innerText = storyParts.join(' ');
+            
+            // Update dots
+            document.querySelectorAll('.step-dot').forEach((dot, index) => {
+                dot.style.background = index <= currentStep ? '#4CAF50' : '#ddd';
+            });
+
+            const choiceContainer = document.getElementById('choice-container');
+            choiceContainer.innerHTML = '';
+
+            step.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'choice-btn';
+                btn.innerHTML = `<i class="fa-solid fa-${opt.icon}"></i> ${opt.label}`;
+                btn.onclick = () => makeChoice(opt.text);
+                choiceContainer.appendChild(btn);
+            });
+        }
+
+        function makeChoice(text) {
+            storyParts.push(text);
+            currentStep++;
+
+            if (currentStep < storySteps.length) {
+                updateUI();
+            } else {
+                showFinalStory();
+            }
+        }
+
+        function showFinalStory() {
+            document.getElementById('game-ui').style.display = 'none';
+            const finalUI = document.getElementById('final-story-ui');
+            finalUI.style.display = 'block';
+            
+            const fullStory = storyParts.join(' ') + " It was the most amazing day ever!";
+            document.getElementById('full-story-text').innerText = fullStory;
+        }
+
+        function resetGame() {
+            initGame();
+        }
+
+        initGame();
+    </script>
 </body>
 </html>

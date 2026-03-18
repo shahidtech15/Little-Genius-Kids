@@ -17,10 +17,75 @@
             border-bottom-right-radius: 50px;
         }
         .game-hero h1 { font-family: 'Fredoka One', cursive; font-size: 3rem; margin-bottom: 1rem; }
-        .game-container { max-width: 800px; margin: 4rem auto; padding: 3rem; background: #fff; border-radius: 30px; box-shadow: var(--shadow-lg); text-align: center; }
-        .canvas-placeholder { width: 100%; height: 400px; background: #fafafa; border: 4px solid #E91E63; border-radius: 20px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: #999; }
-        .palette { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; }
-        .color-circle { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #ddd; cursor: pointer; }
+        .game-container { max-width: 900px; margin: 4rem auto; padding: 2rem; background: #fff; border-radius: 30px; box-shadow: var(--shadow-lg); text-align: center; }
+        
+        #drawing-canvas {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            cursor: crosshair;
+            touch-action: none; /* vital to prevent touch scrolling */
+            width: 100%;
+            height: auto;
+            border: 4px solid #E91E63;
+        }
+
+        .tools-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            background: #fdfdfd;
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            border: 3px dashed #FFEB3B;
+        }
+        
+        .tool-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            padding: 0 15px;
+            border-right: 2px solid #eee;
+        }
+        .tool-group:last-child { border-right: none; }
+
+        .tool-group-title { font-family: 'Fredoka One', cursive; color: #E91E63; font-size: 1.2rem; margin-right: 10px; }
+
+        .color-circle {
+            width: 35px; height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: transform 0.2s;
+        }
+        .color-circle:hover { transform: scale(1.1); }
+        .color-circle.active { border-color: #333; transform: scale(1.2); box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        
+        .brush-size {
+            padding: 8px 15px; background: #eee; border-radius: 20px; cursor: pointer;
+            font-family: 'Outfit', sans-serif; font-weight: 700; color: #555;
+            transition: background 0.2s, color 0.2s;
+        }
+        .brush-size.active { background: #E91E63; color: white; }
+        
+        .action-btn {
+            color: #fff; padding: 10px 20px; border: none;
+            border-radius: 20px; cursor: pointer; font-family: 'Fredoka One', cursive;
+            transition: transform 0.2s;
+            font-size: 1.1rem;
+        }
+        .action-btn.clear { background: #f44336; }
+        .action-btn.save { background: #4CAF50; }
+        .action-btn.eraser { background: #000; color:#fff;}
+        .action-btn:hover { transform: scale(1.05); }
+        
+        @media (max-width: 768px) {
+            .tool-group { border-right: none; border-bottom: 2px solid #eee; padding-bottom: 10px; width: 100%; justify-content: center; }
+        }
     </style>
 </head>
 <body>
@@ -37,194 +102,69 @@
             </nav>
         </div>
     </header>
+    
     <main>
         <section class="game-hero">
             <h1>Digital Coloring 🎨</h1>
-            <p>Pick a color and start painting!</p>
+            <p>Pick a brush, choose a color, and unleash your creativity!</p>
         </section>
-        <div class="game-container" style="max-width: 900px;">
-            <div class="canvas-wrapper" style="position: relative; background: #fafafa; border: 4px solid #E91E63; border-radius: 20px; overflow: hidden; margin-bottom: 2rem; cursor: crosshair;">
-                <canvas id="coloring-canvas" width="800" height="500" style="width: 100%; display: block;"></canvas>
-            </div>
-
-            <div class="controls" style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; align-items: center; background: #fdfdfd; padding: 1.5rem; border-radius: 20px; border: 1px solid #eee;">
-                <div class="palette-group">
-                    <p style="margin-bottom: 1rem; font-weight: 700; color: #E91E63;">Pick a Color</p>
-                    <div id="palette" class="palette" style="display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center;">
-                        <div class="color-circle" style="background:#f44336" data-color="#f44336"></div>
-                        <div class="color-circle" style="background:#e91e63" data-color="#e91e63"></div>
-                        <div class="color-circle" style="background:#9c27b0" data-color="#9c27b0"></div>
-                        <div class="color-circle" style="background:#2196f3" data-color="#2196f3"></div>
-                        <div class="color-circle" style="background:#03a9f4" data-color="#03a9f4"></div>
-                        <div class="color-circle" style="background:#4caf50" data-color="#4caf50"></div>
-                        <div class="color-circle" style="background:#ffeb3b" data-color="#ffeb3b"></div>
-                        <div class="color-circle" style="background:#ff9800" data-color="#ff9800"></div>
-                        <div class="color-circle" style="background:#795548" data-color="#795548"></div>
-                        <div class="color-circle" style="background:#000000" data-color="#000000"></div>
-                        <div class="color-circle eraser" style="background:#ffffff; border: 2px dashed #ccc;" data-color="#ffffff"><i class="fa-solid fa-eraser" style="color: #999; font-size: 0.8rem;"></i></div>
-                    </div>
+        
+        <div class="game-container">
+            <!-- Tools Palette -->
+            <div class="tools-panel">
+                <div class="tool-group">
+                    <span class="tool-group-title">Colors</span>
+                    <div class="color-circle active" style="background:#000000" data-color="#000000"></div>
+                    <div class="color-circle" style="background:#f44336" data-color="#f44336"></div>
+                    <div class="color-circle" style="background:#E91E63" data-color="#E91E63"></div>
+                    <div class="color-circle" style="background:#9c27b0" data-color="#9c27b0"></div>
+                    <div class="color-circle" style="background:#2196f3" data-color="#2196f3"></div>
+                    <div class="color-circle" style="background:#00bcd4" data-color="#00bcd4"></div>
+                    <div class="color-circle" style="background:#4caf50" data-color="#4caf50"></div>
+                    <div class="color-circle" style="background:#ffeb3b" data-color="#ffeb3b"></div>
+                    <div class="color-circle" style="background:#ff9800" data-color="#ff9800"></div>
+                    <div class="color-circle" style="background:#795548" data-color="#795548"></div>
                 </div>
-
-                <div class="brush-group">
-                    <p style="margin-bottom: 1rem; font-weight: 700; color: #E91E63;">Brush Size</p>
-                    <div class="brush-sizes" style="display: flex; gap: 1rem; align-items: center;">
-                        <div class="brush-circle" data-size="5" style="width: 15px; height: 15px; background: #333; border-radius: 50%; cursor: pointer;"></div>
-                        <div class="brush-circle active" data-size="12" style="width: 25px; height: 25px; background: #333; border-radius: 50%; cursor: pointer; border: 3px solid #E91E63;"></div>
-                        <div class="brush-circle" data-size="25" style="width: 35px; height: 35px; background: #333; border-radius: 50%; cursor: pointer;"></div>
-                    </div>
+                
+                <div class="tool-group">
+                    <span class="tool-group-title">Brush</span>
+                    <div class="brush-size" data-size="3">Thin</div>
+                    <div class="brush-size active" data-size="8">Normal</div>
+                    <div class="brush-size" data-size="20">Thick</div>
+                    <button class="action-btn eraser" id="eraser-btn"><i class="fa-solid fa-eraser"></i> Eraser</button>
                 </div>
-
-                <div class="action-group" style="display: flex; gap: 1rem;">
-                    <button onclick="clearCanvas()" class="btn-primary" style="background: #ccc; padding: 0.8rem 1.5rem; border-radius: 50px; border: none; font-weight: 700; cursor: pointer; color: #333;"><i class="fa-solid fa-trash"></i> Clear</button>
-                    <button onclick="saveImage()" class="btn-primary" style="background: #4CAF50; padding: 0.8rem 1.5rem; border-radius: 50px; border: none; font-weight: 700; cursor: pointer; color: #fff;"><i class="fa-solid fa-download"></i> Save</button>
+                
+                <div class="tool-group" style="gap:15px;">
+                    <button class="action-btn clear" id="clear-btn"><i class="fa-solid fa-trash"></i> Clear</button>
+                    <button class="action-btn save" id="save-btn"><i class="fa-solid fa-download"></i> Save Art</button>
                 </div>
             </div>
 
-            <a href="../games.html" class="btn-back" style="display:inline-block; margin-top:2rem; color:#E91E63; font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Back to Games</a>
+            <!-- The Drawing Canvas -->
+            <canvas id="drawing-canvas"></canvas>
+
+            <div style="margin-top: 3rem;">
+                <a href="../games.html" class="btn-back" style="color: #E91E63; font-weight: 700;">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Games
+                </a>
+            </div>
         </div>
     </main>
 
-    <style>
-        .color-circle {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.2s;
-            border: 3px solid transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .color-circle.active {
-            border-color: #E91E63;
-            transform: scale(1.1);
-        }
-        .color-circle:hover {
-            transform: scale(1.1);
-        }
-        .brush-circle:hover {
-            transform: scale(1.2);
-        }
-        .brush-circle.active {
-            box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.3);
-        }
-    </style>
+    <footer>
+        <div class="container">
+            <p>© 2026 Little Genius Kids. All rights reserved.</p>
+            <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
+            <div class="footer-links">
+                <a href="../privacy-policy.html">Privacy Policy</a> |
+                <a href="../terms-and-conditions.html">Terms</a> |
+                <a href="../disclaimer.html">Disclaimer</a> |
+                <a href="../contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
 
-    <script>
-        const canvas = document.getElementById('coloring-canvas');
-        const ctx = canvas.getContext('2d');
-        const palette = document.getElementById('palette');
-        const brushCircles = document.querySelectorAll('.brush-circle');
-        
-        // Settings
-        let isDrawing = false;
-        let currentColor = '#f44336';
-        let currentSize = 12;
-
-        // Initialize Canvas
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.lineJoin = 'round';
-        ctx.lineCap = 'round';
-
-        // Event Listeners for Drawing
-        canvas.addEventListener('mousedown', startDrawing);
-        canvas.addEventListener('mousemove', draw);
-        canvas.addEventListener('mouseup', stopDrawing);
-        canvas.addEventListener('mouseout', stopDrawing);
-
-        // Touch Support
-        canvas.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            const touch = e.touches[0];
-            const mouseEvent = new MouseEvent('mousedown', {
-                clientX: touch.clientX,
-                clientY: touch.clientY
-            });
-            canvas.dispatchEvent(mouseEvent);
-        }, false);
-
-        canvas.addEventListener('touchmove', (e) => {
-            e.preventDefault();
-            const touch = e.touches[0];
-            const mouseEvent = new MouseEvent('mousemove', {
-                clientX: touch.clientX,
-                clientY: touch.clientY
-            });
-            canvas.dispatchEvent(mouseEvent);
-        }, false);
-
-        canvas.addEventListener('touchend', () => {
-            canvas.dispatchEvent(new MouseEvent('mouseup'));
-        }, false);
-
-        function startDrawing(e) {
-            isDrawing = true;
-            const { x, y } = getCoord(e);
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-        }
-
-        function draw(e) {
-            if (!isDrawing) return;
-            const { x, y } = getCoord(e);
-            ctx.lineWidth = currentSize;
-            ctx.strokeStyle = currentColor;
-            ctx.lineTo(x, y);
-            ctx.stroke();
-        }
-
-        function stopDrawing() {
-            if (isDrawing) {
-                ctx.closePath();
-                isDrawing = false;
-            }
-        }
-
-        function getCoord(e) {
-            const rect = canvas.getBoundingClientRect();
-            const scaleX = canvas.width / rect.width;
-            const scaleY = canvas.height / rect.height;
-            return {
-                x: (e.clientX - rect.left) * scaleX,
-                y: (e.clientY - rect.top) * scaleY
-            };
-        }
-
-        // Palette Logic
-        document.querySelectorAll('.color-circle').forEach(circle => {
-            if (circle.dataset.color === currentColor) circle.classList.add('active');
-            
-            circle.addEventListener('click', () => {
-                document.querySelector('.color-circle.active')?.classList.remove('active');
-                circle.classList.add('active');
-                currentColor = circle.dataset.color;
-            });
-        });
-
-        // Brush Logic
-        brushCircles.forEach(circle => {
-            circle.addEventListener('click', () => {
-                document.querySelector('.brush-circle.active')?.classList.remove('active');
-                circle.classList.add('active');
-                currentSize = parseInt(circle.dataset.size);
-            });
-        });
-
-        function clearCanvas() {
-            if (confirm('Clear your masterpiece and start over? 🖌️')) {
-                ctx.fillStyle = '#ffffff';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-            }
-        }
-
-        function saveImage() {
-            const link = document.createElement('a');
-            link.download = 'little-genius-art.png';
-            link.href = canvas.toDataURL();
-            link.click();
-        }
-    </script>
+    <script src="../js/main.js"></script>
+    <script src="../js/digital-coloring.js"></script>
 </body>
 </html>

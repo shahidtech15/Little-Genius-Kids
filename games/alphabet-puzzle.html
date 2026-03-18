@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alphabet Puzzle - Little Genius Kids</title>
+    <title>Word Scramble Quest - Little Genius Kids</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -18,8 +18,58 @@
         }
         .game-hero h1 { font-family: 'Fredoka One', cursive; font-size: 3rem; margin-bottom: 1rem; }
         .game-container { max-width: 800px; margin: 4rem auto; padding: 3rem; background: #fff; border-radius: 30px; box-shadow: var(--shadow-lg); text-align: center; }
-        .abc-piece { display: inline-block; padding: 1.5rem; background: #e0f2f1; border: 3px solid #009688; border-radius: 15px; margin: 0.5rem; font-size: 2.5rem; font-family: 'Fredoka One', cursive; color: #009688; cursor: pointer; transition: 0.3s; }
-        .abc-piece:hover { transform: translateY(-5px); background: #b2dfdb; }
+        
+        .letter-box {
+            display: inline-block;
+            background: #e0f2f1;
+            border: 3px solid #009688;
+            border-radius: 12px;
+            padding: 0.8rem 1.2rem;
+            margin: 0.4rem;
+            font-size: 2.8rem;
+            font-family: 'Fredoka One', cursive;
+            color: #009688;
+            min-width: 70px;
+            text-align: center;
+            box-shadow: 0 6px 0 #00796b;
+            transition: 0.3s;
+        }
+        
+        .input-box {
+            font-size: 1.8rem;
+            padding: 1.2rem 2rem;
+            border-radius: 50px;
+            border: 4px solid #009688;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .game-btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+        }
+        .btn-check { background: #009688; color: #fff; }
+        .btn-hint { background: #fff; color: #009688; border: 2px solid #009688; }
+        .btn-next { background: #FFC107; color: #333; margin-top: 1.5rem; }
+        
+        .game-btn:hover { transform: scale(1.05); }
+        .game-btn:active { transform: scale(0.95); }
+
+        @keyframes successBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .success-anim { animation: successBounce 0.5s ease infinite; }
     </style>
 </head>
 <body>
@@ -36,18 +86,116 @@
             </nav>
         </div>
     </header>
+
     <main>
         <section class="game-hero">
-            <h1>Alphabet Puzzle 🔠</h1>
-            <p>Drag the letters to spell the words!</p>
+            <h1>Word Scramble Quest 🔠</h1>
+            <p>Unscramble the letters to find the hidden word!</p>
         </section>
+
         <div class="game-container">
-            <div>
-                <span class="abc-piece">A</span><span class="abc-piece">B</span><span class="abc-piece">C</span>
+            <div style="display:flex; justify-content: space-between; margin-bottom: 2rem; font-family: 'Fredoka One', cursive; color: #00796b; font-size: 1.3rem;">
+                <div>Word: <span id="word-num">1</span></div>
+                <div>Points: <span id="score">0</span></div>
             </div>
-            <p style="margin-top:2rem;">Spell "CAT" to win! Full interactivity coming soon.</p>
-            <a href="../games.html" class="btn-back" style="display:inline-block; margin-top:2rem; color:#009688; font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Back to Games</a>
+
+            <div id="scramble-display" style="margin-bottom: 3rem; min-height: 100px;">
+                <!-- Letters will appear here -->
+            </div>
+
+            <div class="game-controls">
+                <input type="text" id="user-input" class="input-box" placeholder="Your Answer..." autofocus>
+                <div style="display:flex; gap: 1rem; justify-content: center;">
+                    <button class="game-btn btn-check" onclick="app.check()"><i class="fa-solid fa-check"></i> Check</button>
+                    <button class="game-btn btn-hint" onclick="app.hint()"><i class="fa-solid fa-lightbulb"></i> Hint</button>
+                </div>
+            </div>
+
+            <div id="feedback" style="margin-top: 2rem; font-size: 1.5rem; font-weight: 700; min-height: 3rem;"></div>
+            
+            <button id="next-btn" class="game-btn btn-next" style="display:none;" onclick="app.next()">Next Word ➡️</button>
+
+            <a href="../games.html" style="display:inline-block; margin-top:3rem; color:#009688; font-weight:700; text-decoration: none;">
+                <i class="fa-solid fa-arrow-left"></i> Back to Games
+            </a>
         </div>
     </main>
+
+    <script>
+        // WORD SCRAMBLE ENGINE V1.0
+        const app = {
+            words: ["APPLE", "BANANA", "ROBOT", "HAPPY", "GAMES", "ORANGE", "TIGER", "COMPUTER", "SPACE", "GENIUS", "LEARN", "SCHOOL"],
+            current: "",
+            score: 0,
+            count: 1,
+
+            init() {
+                console.log("Game Initializing...");
+                this.next();
+            },
+
+            scramble(word) {
+                let s = word.split('').sort(() => Math.random() - 0.5).join('');
+                return (s === word) ? this.scramble(word) : s;
+            },
+
+            next() {
+                this.current = this.words[Math.floor(Math.random() * this.words.length)];
+                const scrambled = this.scramble(this.current);
+                
+                console.log("New Challenge:", this.current, "->", scrambled);
+
+                // Render Letters
+                const display = document.getElementById('scramble-display');
+                display.innerHTML = "";
+                [...scrambled].forEach(char => {
+                    const span = document.createElement('span');
+                    span.className = 'letter-box';
+                    span.innerText = char;
+                    display.appendChild(span);
+                });
+
+                // Reset UI
+                document.getElementById('user-input').value = "";
+                document.getElementById('feedback').innerText = "";
+                document.getElementById('next-btn').style.display = "none";
+                document.getElementById('word-num').innerText = this.count++;
+                document.getElementById('user-input').focus();
+            },
+
+            check() {
+                const guess = document.getElementById('user-input').value.trim().toUpperCase();
+                const feedback = document.getElementById('feedback');
+
+                if (guess === this.current) {
+                    this.score += 10;
+                    document.getElementById('score').innerText = this.score;
+                    feedback.innerText = "Fantastic! You found it! 🎉";
+                    feedback.style.color = "#4CAF50";
+                    document.getElementById('next-btn').style.display = "inline-block";
+                    
+                    // Bounce
+                    document.querySelectorAll('.letter-box').forEach(el => el.classList.add('success-anim'));
+                } else {
+                    feedback.innerText = "Not quite right! Try again! 🤔";
+                    feedback.style.color = "#F44336";
+                }
+            },
+
+            hint() {
+                const feedback = document.getElementById('feedback');
+                feedback.innerText = `Hint: The first letter is "${this.current[0]}"`;
+                feedback.style.color = "#009688";
+            }
+        };
+
+        // Start when ready
+        window.onload = () => app.init();
+
+        // Enter key
+        document.getElementById('user-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') app.check();
+        });
+    </script>
 </body>
 </html>

@@ -45,14 +45,146 @@
             <p>How much do you know about smart machines?</p>
         </section>
         <div class="game-container">
-            <div class="quiz-question">Question 1: What does AI stand for?</div>
-            <div class="option-list">
-                <button class="option-btn" onclick="alert('Correct!')"><i class="fa-solid fa-circle-dot"></i> Artificial Intelligence</button>
-                <button class="option-btn" onclick="alert('Try again!')"><i class="fa-solid fa-circle-dot"></i> Automatic Internet</button>
-                <button class="option-btn" onclick="alert('Try again!')"><i class="fa-solid fa-circle-dot"></i> Awesome Invention</button>
+            <div id="quiz-ui">
+                <div class="quiz-stats" style="display:flex; justify-content: space-between; margin-bottom: 2rem; font-family: 'Fredoka One', cursive; font-size: 1.1rem; color: #1a237e;">
+                    <div>Question <span id="current-q">1</span>/5</div>
+                    <div>Score: <span id="score">0</span></div>
+                </div>
+                
+                <div class="progress-container" style="width:100%; height:12px; background:#f0f0f0; border-radius:10px; margin-bottom:2rem; overflow:hidden;">
+                    <div id="progress-bar" style="width:20%; height:100%; background:linear-gradient(90deg, #6200EA, #03A9F4); transition:0.4s;"></div>
+                </div>
+
+                <div id="question-box" class="quiz-question">What does AI stand for?</div>
+                <div id="options-box" class="option-list">
+                    <!-- Options populated via JS -->
+                </div>
             </div>
+
+            <div id="result-screen" style="display:none; padding: 2rem 0;">
+                <i class="fa-solid fa-trophy fa-5x" style="color: #FFD700; margin-bottom: 1.5rem;"></i>
+                <h2 style="font-family: 'Fredoka One', cursive; font-size: 2.5rem; color: #1a237e; margin-bottom: 1rem;">Quiz Complete!</h2>
+                <p id="final-score" style="font-size: 1.5rem; margin-bottom: 2rem; font-weight: 700;"></p>
+                <button onclick="resetQuiz()" class="btn-primary" style="padding: 1rem 3rem; background: #6200EA; color: #fff; border: none; border-radius: 50px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: 0.3s;">Play Again 🔄</button>
+            </div>
+
             <a href="../games.html" class="btn-back" style="display:inline-block; margin-top:3rem; color:#6200EA; font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Back to Games</a>
         </div>
     </main>
+
+    <script>
+        const quizData = [
+            {
+                q: "What does AI stand for?",
+                options: ["Artificial Intelligence", "Automatic Internet", "Awesome Invention", "Amazing Ideas"],
+                a: "Artificial Intelligence"
+            },
+            {
+                q: "Which of these is a famous AI helper?",
+                options: ["Siri", "Super Mario", "Mickey Mouse", "Batman"],
+                a: "Siri"
+            },
+            {
+                q: "Can AI learn new things from data?",
+                options: ["Yes, that's Machine Learning", "No, it's just a program", "Only if it has a brain", "Sometimes on weekends"],
+                a: "Yes, that's Machine Learning"
+            },
+            {
+                q: "What is a robot's 'brain' normally made of?",
+                options: ["A computer chip", "Steel and iron", "Wires only", "Magical dust"],
+                a: "A computer chip"
+            },
+            {
+                q: "What do we call a self-driving car?",
+                options: ["Autonomous vehicle", "Teleporter", "Rocket car", "Invisible bus"],
+                a: "Autonomous vehicle"
+            }
+        ];
+
+        let currentQIndex = 0;
+        let score = 0;
+        let canAnswer = true;
+
+        function initQuiz() {
+            currentQIndex = 0;
+            score = 0;
+            document.getElementById('quiz-ui').style.display = 'block';
+            document.getElementById('result-screen').style.display = 'none';
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const data = quizData[currentQIndex];
+            document.getElementById('question-box').innerText = data.q;
+            document.getElementById('current-q').innerText = currentQIndex + 1;
+            document.getElementById('score').innerText = score;
+            document.getElementById('progress-bar').style.width = ((currentQIndex + 1) / quizData.length * 100) + '%';
+            
+            const optionsBox = document.getElementById('options-box');
+            optionsBox.innerHTML = '';
+            
+            data.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = `<i class="fa-solid fa-circle-dot"></i> ${opt}`;
+                btn.onclick = () => handleAnswer(opt, btn);
+                optionsBox.appendChild(btn);
+            });
+            canAnswer = true;
+        }
+
+        function handleAnswer(selected, btn) {
+            if (!canAnswer) return;
+            canAnswer = false;
+            
+            const correct = quizData[currentQIndex].a;
+            if (selected === correct) {
+                btn.style.background = '#e8f5e9';
+                btn.style.borderColor = '#4CAF50';
+                btn.innerHTML = `<i class="fa-solid fa-check" style="color:#4CAF50"></i> ${selected}`;
+                score += 10;
+            } else {
+                btn.style.background = '#ffebee';
+                btn.style.borderColor = '#F44336';
+                btn.innerHTML = `<i class="fa-solid fa-xmark" style="color:#F44336"></i> ${selected}`;
+                
+                // Show correct one
+                Array.from(document.querySelectorAll('.option-btn')).forEach(b => {
+                    if (b.innerText.trim() === correct) {
+                        b.style.borderColor = '#4CAF50';
+                        b.style.background = '#e8f5e9';
+                    }
+                });
+            }
+
+            setTimeout(() => {
+                currentQIndex++;
+                if (currentQIndex < quizData.length) {
+                    loadQuestion();
+                } else {
+                    showResults();
+                }
+            }, 1500);
+        }
+
+        function showResults() {
+            document.getElementById('quiz-ui').style.display = 'none';
+            const screen = document.getElementById('result-screen');
+            screen.style.display = 'block';
+            
+            let message = "";
+            if (score === 50) message = "Perfect Score! You're an AI Genius! 🌟";
+            else if (score >= 30) message = "Great Job! You know a lot about AI! 🤖";
+            else message = "Good effort! Keep learning and try again! 📚";
+            
+            document.getElementById('final-score').innerHTML = `Your Score: ${score}/50<br><span style="font-size:1.1rem; color:#666;">${message}</span>`;
+        }
+
+        function resetQuiz() {
+            initQuiz();
+        }
+
+        initQuiz();
+    </script>
 </body>
 </html>

@@ -11,16 +11,121 @@
         .game-hero {
             padding: 8rem 5% 4rem;
             text-align: center;
-            background: linear-gradient(135deg, #2196F3 0%, #673AB7 100%);
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
             color: #fff;
             border-bottom-left-radius: 50px;
             border-bottom-right-radius: 50px;
         }
         .game-hero h1 { font-family: 'Fredoka One', cursive; font-size: 3rem; margin-bottom: 1rem; }
-        .game-container { max-width: 600px; margin: 4rem auto; padding: 3rem; background: #fff; border-radius: 30px; box-shadow: var(--shadow-lg); text-align: center; }
-        .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
-        .card-placeholder { aspect-ratio: 1; background: #e3f2fd; border-radius: 15px; border: 3px dashed #2196F3; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #2196F3; transition: 0.3s; }
-        .card-placeholder:hover { background: #bbdefb; transform: scale(1.05); }
+        .game-container { max-width: 900px; margin: 4rem auto; padding: 2rem; background: #fff; border-radius: 30px; box-shadow: var(--shadow-lg); text-align: center; }
+        
+        #hud {
+            display: flex;
+            justify-content: space-between;
+            background: #FF8E53;
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(255, 142, 83, 0.4);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            perspective: 1000px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .memory-card {
+            background-color: transparent;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+        }
+
+        .memory-card.flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .memory-card.matched {
+            transform: rotateY(180deg) scale(0.95);
+            opacity: 0.8;
+            cursor: default;
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            user-select: none;
+        }
+
+        .card-front {
+            background: #fff;
+            border: 4px solid #FF6B6B;
+            transform: rotateY(180deg);
+        }
+
+        .card-back {
+            background: repeating-linear-gradient(45deg, #FF6B6B, #FF6B6B 10px, #FF8E53 10px, #FF8E53 20px);
+            border: 4px solid #fff;
+        }
+
+        .game-ui {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            background: #fdfdfd;
+            border: 4px dashed #FF6B6B;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .game-ui h2 { font-family: 'Fredoka One', cursive; font-size: 2.5rem; color: #FF6B6B; margin-bottom: 1rem; }
+        .game-ui p { font-size: 1.2rem; color: #555; margin-bottom: 2rem; }
+        
+        .btn-start {
+            background: #FF6B6B;
+            color: #fff;
+            padding: 1rem 3rem;
+            font-size: 1.5rem;
+            font-family: 'Fredoka One', cursive;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+        }
+        .btn-start:hover { transform: scale(1.05); }
+
+        @media (max-width: 500px) {
+            .memory-grid { gap: 8px; }
+            .card-face { font-size: 2.5rem; border-radius: 10px; }
+            #hud { font-size: 1.2rem; padding: 0.8rem 1.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -37,163 +142,61 @@
             </nav>
         </div>
     </header>
+    
     <main>
         <section class="game-hero">
-            <h1>Memory Card Match 🃏</h1>
-            <p>Match the cards to clear the board!</p>
+            <h1>Memory Card Match 🧠</h1>
+            <p>Find all the matching animal pairs as fast as you can!</p>
         </section>
+        
         <div class="game-container">
-            <div class="game-stats" style="display:flex; justify-content: space-around; margin-bottom: 2rem; font-family: 'Fredoka One', cursive; font-size: 1.2rem; color: #1a237e;">
-                <div>Moves: <span id="moves">0</span></div>
-                <div>Pairs: <span id="pairs">0</span>/8</div>
+            <!-- Start Screen -->
+            <div id="start-screen" class="game-ui">
+                <h2>Ready to Test Your Memory?</h2>
+                <p>Click on the cards to flip them. Find all 8 pairs of cute animals to win!</p>
+                <button class="btn-start" id="start-btn">Start Game</button>
             </div>
 
-            <div id="game-grid" class="memory-grid">
-                <!-- Cards will be generated via JavaScript -->
+            <!-- Game Area -->
+            <div id="game-area" style="display: none;">
+                <div id="hud">
+                    <div id="movesDisplay">Moves: 0</div>
+                    <div id="timeDisplay">Time: 0s</div>
+                </div>
+                <div class="memory-grid" id="memory-grid">
+                    <!-- Cards injected dynamically by JS -->
+                </div>
             </div>
 
-            <div id="result-message" style="margin-top: 2rem; font-family: 'Fredoka One', cursive; font-size: 1.5rem; display: none;"></div>
-            
-            <button id="reset-btn" class="btn-primary" style="margin: 2rem auto; padding: 1rem 3rem; border-radius: 50px; border: none; background: #2196F3; color: #fff; font-weight: 700; cursor: pointer; transition: 0.3s;" onclick="initGame()">Restart Game 🔄</button>
+            <!-- Game Over Screen -->
+            <div id="game-over-screen" class="game-ui" style="display: none;">
+                <h2 style="color: #FF8E53;">You Did It! 🎉</h2>
+                <p id="final-score-text">You found all pairs in 0 moves and 0 seconds!</p>
+                <button class="btn-start" id="restart-btn">Play Again</button>
+            </div>
 
-            <a href="../games.html" class="btn-back" style="display:inline-block; margin-top:1rem; color:#673AB7; font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Back to Games</a>
+            <div style="margin-top: 3rem;">
+                <a href="../games.html" class="btn-back" style="color: #FF6B6B; font-weight: 700;">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Games
+                </a>
+            </div>
         </div>
     </main>
 
-    <style>
-        .memory-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .memory-card {
-            aspect-ratio: 1;
-            position: relative;
-            cursor: pointer;
-            transform-style: preserve-3d;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .memory-card.flipped {
-            transform: rotateY(180deg);
-        }
-        .card-face {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 15px;
-            font-size: 2rem;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .card-front {
-            background: #e3f2fd;
-            border: 3px solid #2196F3;
-            color: #2196F3;
-        }
-        .card-back {
-            background: linear-gradient(135deg, #2196F3 0%, #673AB7 100%);
-            color: #fff;
-            transform: rotateY(180deg);
-        }
-        .memory-card.matched .card-back {
-            background: #4CAF50;
-            border-color: #4CAF50;
-        }
-    </style>
+    <footer>
+        <div class="container">
+            <p>© 2026 Little Genius Kids. All rights reserved.</p>
+            <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
+            <div class="footer-links">
+                <a href="../privacy-policy.html">Privacy Policy</a> |
+                <a href="../terms-and-conditions.html">Terms</a> |
+                <a href="../disclaimer.html">Disclaimer</a> |
+                <a href="../contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
 
-    <script>
-        const icons = [
-            'fa-cat', 'fa-dog', 'fa-robot', 'fa-rocket', 
-            'fa-star', 'fa-ghost', 'fa-hippo', 'fa-dragon'
-        ];
-        let cards = [...icons, ...icons];
-        let flippedCards = [];
-        let matchedPairs = 0;
-        let moves = 0;
-        let canFlip = true;
-
-        function shuffle(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[array[j]]] = [array[array[j]], array[i]];
-            }
-            return array;
-        }
-
-        function createCard(iconClass) {
-            const card = document.createElement('div');
-            card.className = 'memory-card';
-            card.innerHTML = `
-                <div class="card-face card-front"><i class="fa-solid fa-question"></i></div>
-                <div class="card-face card-back"><i class="fa-solid ${iconClass}"></i></div>
-            `;
-            card.addEventListener('click', () => flipCard(card, iconClass));
-            return card;
-        }
-
-        function flipCard(card, iconClass) {
-            if (!canFlip || flippedCards.includes(card) || card.classList.contains('matched')) return;
-
-            card.classList.add('flipped');
-            flippedCards.push({ card, iconClass });
-
-            if (flippedCards.length === 2) {
-                moves++;
-                document.getElementById('moves').innerText = moves;
-                canFlip = false;
-                checkMatch();
-            }
-        }
-
-        function checkMatch() {
-            const [c1, c2] = flippedCards;
-            if (c1.iconClass === c2.iconClass) {
-                c1.card.classList.add('matched');
-                c2.card.classList.add('matched');
-                matchedPairs++;
-                document.getElementById('pairs').innerText = matchedPairs;
-                flippedCards = [];
-                canFlip = true;
-                if (matchedPairs === 8) winGame();
-            } else {
-                setTimeout(() => {
-                    c1.card.classList.remove('flipped');
-                    c2.card.classList.remove('flipped');
-                    flippedCards = [];
-                    canFlip = true;
-                }, 1000);
-            }
-        }
-
-        function winGame() {
-            const msg = document.getElementById('result-message');
-            msg.innerHTML = `You Win! 🎉<br>Finished in ${moves} moves!`;
-            msg.style.display = 'block';
-            msg.style.color = '#4CAF50';
-        }
-
-        function initGame() {
-            const grid = document.getElementById('game-grid');
-            grid.innerHTML = '';
-            shuffle(cards);
-            cards.forEach(icon => {
-                grid.appendChild(createCard(icon));
-            });
-            matchedPairs = 0;
-            moves = 0;
-            flippedCards = [];
-            canFlip = true;
-            document.getElementById('moves').innerText = '0';
-            document.getElementById('pairs').innerText = '0';
-            document.getElementById('result-message').style.display = 'none';
-        }
-
-        initGame();
-    </script>
+    <script src="../js/main.js"></script>
+    <script src="../js/memory-card.js"></script>
 </body>
 </html>

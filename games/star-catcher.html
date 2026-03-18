@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Catcher - Little Genius Kids</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .game-hero {
+            padding: 8rem 5% 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, #673ab7 0%, #9c27b0 100%);
+            color: #fff;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+        .game-hero h1 { font-family: 'Fredoka One', cursive; font-size: 3rem; margin-bottom: 1rem; }
+        .game-container { max-width: 800px; margin: 4rem auto; padding: 2rem; background: #fff; border-radius: 30px; box-shadow: var(--shadow-lg); text-align: center; }
+        
+        #game-canvas {
+            background: #1a237e; /* Midnight blue */
+            border-radius: 20px;
+            border: 6px solid #4a148c;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            max-width: 100%;
+            height: auto;
+            display: none;
+            cursor: crosshair;
+            margin: 0 auto;
+        }
+
+        .game-ui {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            background: #fdfdfd;
+            border: 4px dashed #9c27b0;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .game-ui h2 { font-family: 'Fredoka One', cursive; font-size: 2.5rem; color: #9c27b0; margin-bottom: 1rem; }
+        .game-ui p { font-size: 1.2rem; color: #555; margin-bottom: 2rem; }
+        
+        .btn-start {
+            background: #9c27b0;
+            color: #fff;
+            padding: 1rem 3rem;
+            font-size: 1.5rem;
+            font-family: 'Fredoka One', cursive;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            box-shadow: 0 8px 20px rgba(156, 39, 176, 0.4);
+        }
+        .btn-start:hover { transform: scale(1.05); }
+
+        #hud {
+            display: none;
+            justify-content: space-between;
+            background: #ab47bc;
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.5rem;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 5px 15px rgba(171, 71, 188, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"><a href="../index.html"><i class="fa-solid fa-graduation-cap"></i> Little Genius</a></div>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../ai-course.html">AI Course</a>
+                <a href="../games.html" class="active">Games</a>
+                <a href="../blog/index.html">Blog</a>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="game-hero">
+            <h1>Star Catcher ⭐</h1>
+            <p>Catch as many shooting stars as you can in 30 seconds!</p>
+        </section>
+        
+        <div class="game-container">
+            <div id="hud">
+                <div id="scoreDisplay">Score: 0</div>
+                <div id="timeDisplay">Time: 30s</div>
+                <div id="highScoreDisplay">Best: 0</div>
+            </div>
+
+            <!-- Start Screen -->
+            <div id="start-screen" class="game-ui">
+                <h2>Catch the Stars!</h2>
+                <p>Tap or click on the yellow stars before they fly away. Be quick!</p>
+                <button class="btn-start" id="start-btn">Start Game</button>
+            </div>
+
+            <!-- Game Over Screen -->
+            <div id="game-over-screen" class="game-ui" style="display: none;">
+                <h2 style="color: #673ab7;">Time's Up!</h2>
+                <p id="final-score-text">You caught 0 stars!</p>
+                <button class="btn-start" id="restart-btn">Play Again</button>
+            </div>
+
+            <!-- The Canvas -->
+            <canvas id="game-canvas" width="500" height="400"></canvas>
+
+            <div style="margin-top: 2rem;">
+                <a href="../games.html" class="btn-back" style="color: #9c27b0; font-weight: 700;">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Games
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Little Genius Kids. All rights reserved.</p>
+            <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
+            <div class="footer-links">
+                <a href="../privacy-policy.html">Privacy Policy</a> |
+                <a href="../terms-and-conditions.html">Terms</a> |
+                <a href="../disclaimer.html">Disclaimer</a> |
+                <a href="../contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/star-catcher.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Ninja - Little Genius Kids</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .game-hero {
+            padding: 8rem 5% 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, #FF3D00 0%, #FF9100 100%);
+            color: #fff;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+        .game-hero h1 { font-family: 'Fredoka One', cursive; font-size: 3rem; margin-bottom: 1rem; }
+        .game-hero p { color: #FFF3E0; }
+        
+        .game-container { max-width: 800px; margin: 4rem auto; padding: 2rem; background: #fff; border-radius: 30px; box-shadow: var(--shadow-lg); text-align: center; }
+        
+        #hud {
+            display: flex;
+            justify-content: center;
+            background: #FF9100;
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.5rem;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 2rem auto;
+            box-shadow: 0 5px 15px rgba(255, 145, 0, 0.4);
+        }
+
+        .reaction-area {
+            width: 100%;
+            height: 400px;
+            border-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Fredoka One', cursive;
+            cursor: pointer;
+            transition: transform 0.1s;
+            user-select: none;
+            -webkit-user-select: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .reaction-area:active { transform: scale(0.97); }
+        
+        #icon { margin-bottom: 20px; font-size: 4rem; }
+        #main-text { font-size: 3.5rem; margin-bottom: 10px; }
+        #sub-text { font-size: 1.5rem; font-family: 'Outfit', sans-serif; font-weight: 700; opacity: 0.9; }
+        
+        /* The 4 Game States mapped to colorful engaging backgrounds */
+        .state-waiting { background: #1E88E5; }        /* Blue */
+        .state-ready { background: #E53935; }          /* Red */
+        .state-go { background: #4CAF50; }             /* Green */
+        .state-result { background: #8E24AA; }         /* Purple */
+        
+        @media (max-width: 600px) {
+            #main-text { font-size: 2.5rem; }
+            .reaction-area { height: 350px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"><a href="../index.html"><i class="fa-solid fa-graduation-cap"></i> Little Genius</a></div>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../ai-course.html">AI Course</a>
+                <a href="../games.html" class="active">Games</a>
+                <a href="../blog/index.html">Blog</a>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="game-hero">
+            <h1>Reaction Ninja 🥷</h1>
+            <p>Test your speed! Don't click until the screen turns GREEN!</p>
+        </section>
+        
+        <div class="game-container">
+            <div id="hud">
+                <div id="bestTimeDisplay">Best: -- ms</div>
+            </div>
+
+            <div id="reaction-area" class="reaction-area state-waiting">
+                <i id="icon" class="fa-solid fa-play"></i>
+                <div id="main-text">Start</div>
+                <div id="sub-text">Click anywhere to begin!</div>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <a href="../games.html" class="btn-back" style="color: #FF3D00; font-weight: 700;">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Games
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Little Genius Kids. All rights reserved.</p>
+            <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
+            <div class="footer-links">
+                <a href="../privacy-policy.html">Privacy Policy</a> |
+                <a href="../terms-and-conditions.html">Terms</a> |
+                <a href="../disclaimer.html">Disclaimer</a> |
+                <a href="../contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/reaction-ninja.js"></script>
+</body>
+</html>

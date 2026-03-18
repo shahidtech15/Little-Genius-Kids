@@ -3,314 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fun Learning Games for Kids - Play & Learn | Little Genius Kids</title>
-    <meta name="description" content="Play fun educational games for kids! Math puzzles, memory games, coloring activities, and AI quizzes to make learning enjoyable and interactive.">
-    <meta name="keywords" content="kids learning games, educational games, math puzzles for kids, memory games, coloring activities, AI quiz for kids">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
+    <title>Games Dashboard PRO - Little Genius Kids</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-
     <style>
-        :root {
-            --games-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-            --games-hero-bg: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .hero-games {
-            padding: 10rem 5% 6rem;
+        /* The user's PRO styles ported into the premium UI */
+        .pro-dashboard {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
             text-align: center;
-            background: var(--games-hero-bg);
-            border-bottom-left-radius: 80px;
-            border-bottom-right-radius: 80px;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
+            padding: 4rem 2rem 8rem 2rem;
+            min-height: 80vh;
         }
-        .hero-games::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/circles.png');
-            opacity: 0.1;
-        }
-        .hero-games h1 { font-size: 3.8rem; margin-bottom: 1.5rem; font-family: 'Fredoka One', cursive; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .hero-games p { font-size: 1.4rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
-        .section-header { text-align: center; margin: 5rem 0 3rem; }
-        .section-header h2 { font-size: 2.5rem; color: #d32f2f; font-family: 'Fredoka One', cursive; margin-bottom: 1rem; }
-        
-        /* Game Grid */
-        .game-grid {
+        .pro-dashboard h1 {
+            font-size: 3rem;
+            font-family: 'Fredoka One', cursive;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .high-score-banner {
+            font-size: 1.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 50px;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Grid Layout */
+        .pro-games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 5rem;
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
-        .game-card {
-            background: rgba(255, 255, 255, 0.8);
-            -webkit-backdrop-filter: blur(10px);
+
+        .pro-card {
+            background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 2.5rem;
-            border-radius: 30px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            transition: var(--transition-bounce);
-            text-decoration: none;
-            color: inherit;
-        }
-        .game-card:hover { transform: translateY(-10px); background: #fff; box-shadow: 0 20px 40px rgba(245, 87, 108, 0.2); }
-        .game-card i { font-size: 3.5rem; margin-bottom: 1.5rem; display: block; background: var(--games-hero-bg); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-        .game-card h3 { font-size: 1.6rem; color: #1a237e; margin-bottom: 1rem; font-family: 'Fredoka One', cursive; }
-        .game-card p { font-size: 1.1rem; opacity: 0.8; line-height: 1.6; margin-bottom: 1.5rem; }
-        
-        .play-btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: #f5576c;
+            padding: 40px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(255,255,255,0.5);
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             color: #fff;
-            border-radius: 50px;
-            font-weight: 700;
-            transition: var(--transition-bounce);
+            text-decoration: none;
         }
-        .game-card:hover .play-btn { transform: scale(1.1); }
 
-        /* Embed Section */
-        .embed-section {
-            background: #fff5f5;
-            padding: 5rem 0;
-            border-radius: 50px;
-            margin-bottom: 5rem;
+        .pro-card i {
+            font-size: 4rem;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
-        .embed-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
+
+        .pro-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            border-color: #fff;
         }
-        .embed-container {
-            background: #fff;
-            padding: 1.5rem;
-            border-radius: 30px;
-            box-shadow: var(--shadow-lg);
-            text-align: center;
+
+        /* User's Modal Injection */
+        .pro-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
         }
-        .embed-container h3 { margin-bottom: 1.5rem; color: #333; font-family: 'Fredoka One', cursive; }
-        .embed-frame {
-            width: 100%;
-            aspect-ratio: 4/3;
-            border-radius: 20px;
+
+        .pro-modal canvas {
+            background: #111;
+            border-radius: 15px;
+            border: 5px solid #00f2fe;
+            box-shadow: 0 0 40px rgba(0, 242, 254, 0.6);
+            max-width: 100%;
+        }
+
+        .pro-close {
+            position: absolute;
+            top: 25px;
+            right: 40px;
+            font-size: 50px;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.2s;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+        .pro-close:hover { color: #ff4757; transform: scale(1.1); text-shadow: 0 0 20px rgba(255, 71, 87, 0.8); }
+
+        .pro-controls {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .pro-controls button {
+            padding: 15px 40px;
             border: none;
-            background: #eee;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            background: #ffcc00;
+            color: #333;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(255, 204, 0, 0.5);
+            transition: transform 0.1s;
         }
-
-        @media (max-width: 600px) {
-            .embed-grid { grid-template-columns: 1fr; }
-            .hero-games h1 { font-size: 2.5rem; }
-        }
+        .pro-controls button:active { transform: scale(0.95); box-shadow: 0 2px 10px rgba(255, 204, 0, 0.5); }
     </style>
 </head>
 <body>
-
-<header>
-  <div class="container">
-    <div class="logo">
-        <a href="index.html">
-            <i class="fa-solid fa-graduation-cap"></i> Little Genius
-        </a>
-    </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="ai-course.html">AI Course</a>
-      <a href="games.html" class="active">Games</a>
-      <a href="blog/index.html">Blog</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-    <section class="hero-games">
+    <header>
         <div class="container">
-            <h1 class="bounce-in">Fun Learning Games 🎮</h1>
-            <p>Explore interactive games that make learning exciting and fun. From math puzzles to AI quizzes, there's always something new to discover!</p>
+            <div class="logo"><a href="index.html"><i class="fa-solid fa-graduation-cap"></i> Little Genius</a></div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="ai-course.html">AI Course</a>
+                <a href="games.html" class="active">Games</a>
+                <a href="blog/index.html">Blog</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
         </div>
-    </section>
+    </header>
 
-    <div class="container">
-        <!-- 1. Math & Logic Games -->
-        <div class="section-header">
-            <h2>Math & Logic Games 🧮</h2>
-            <p>Master numbers and logic with these fun challenges!</p>
-        </div>
-        <div class="game-grid">
-            <a href="games/math-puzzle.html" class="game-card">
+    <main class="pro-dashboard">
+        <h1>🎮 Kids Games Hub PRO</h1>
+        <div class="high-score-banner">🏆 High Score: <span id="highScore">0</span></div>
+
+        <div class="pro-games-grid">
+            <!-- Modal Game requested by snippet -->
+            <div class="pro-card" onclick="startGame()">
+                <i class="fa-solid fa-rocket"></i>
+                🚀 Space Game
+            </div>
+            
+            <!-- Restored existing premium games linked smoothly inside new UI! -->
+            <a href="games/space-explorer.html" class="pro-card">
+                <i class="fa-solid fa-globe"></i>
+                🪐 Space Explorer
+            </a>
+            <a href="games/flying-bird.html" class="pro-card">
+                <i class="fa-solid fa-dove"></i>
+                🐦 Flying Bird
+            </a>
+            <a href="games/speed-racer.html" class="pro-card">
+                <i class="fa-solid fa-car"></i>
+                🏎️ Speed Racer
+            </a>
+            <a href="games/hungry-snake.html" class="pro-card">
+                <i class="fa-solid fa-worm"></i>
+                🐍 Hungry Snake
+            </a>
+            <a href="games/star-catcher.html" class="pro-card">
+                <i class="fa-solid fa-star"></i>
+                ⭐ Star Catcher
+            </a>
+            <a href="games/fruit-catcher.html" class="pro-card">
+                <i class="fa-solid fa-apple-whole"></i>
+                🍎 Fruit Catcher
+            </a>
+            <a href="games/paddle-bounce.html" class="pro-card">
+                <i class="fa-solid fa-table-tennis-paddle-ball"></i>
+                🏓 Paddle Bounce
+            </a>
+            <a href="games/reaction-ninja.html" class="pro-card">
+                <i class="fa-solid fa-bolt"></i>
+                ⚡ Reaction Ninja
+            </a>
+            <a href="games/memory-card.html" class="pro-card">
+                <i class="fa-solid fa-brain"></i>
+                🧠 Memory Match
+            </a>
+            <a href="games/digital-coloring.html" class="pro-card">
+                <i class="fa-solid fa-palette"></i>
+                🎨 Coloring
+            </a>
+            <a href="games/math-adventure.html" class="pro-card">
                 <i class="fa-solid fa-calculator"></i>
-                <h3>Addition & Subtraction</h3>
-                <p>Sharpen your math skills with fun number puzzles!</p>
-                <span class="play-btn">Play Now</span>
-            </a>
-            <a href="games/multiplication-challenge.html" class="game-card">
-                <i class="fa-solid fa-xmark"></i>
-                <h3>Multiplication Challenge</h3>
-                <p>Test your times tables in a fun racing game!</p>
-                <span class="play-btn">Play Now</span>
-            </a>
-            <a href="games/number-maze.html" class="game-card">
-                <i class="fa-solid fa-route"></i>
-                <h3>Number Maze</h3>
-                <p>Find your way through numeric obstacles!</p>
-                <span class="play-btn">Play Now</span>
+                🧮 Math Adventure
             </a>
         </div>
+    </main>
 
-        <!-- 2. Memory & Brain Games -->
-        <div class="section-header">
-            <h2>Memory & Brain Games 🧠</h2>
-            <p>Train your brain with these interactive puzzles.</p>
+    <!-- Modal For Included Space Game -->
+    <div id="modal" class="pro-modal">
+        <div class="pro-close" onclick="closeGame()">❌</div>
+        <canvas id="gameCanvas" width="400" height="500"></canvas>
+        <div class="pro-controls">
+            <button onclick="jump()">⬆ Jump</button>
         </div>
-        <div class="game-grid">
-            <a href="games/memory-card.html" class="game-card">
-                <i class="fa-solid fa-clone"></i>
-                <h3>Memory Card Match</h3>
-                <p>Find all the matching pairs as fast as you can!</p>
-                <span class="play-btn">Play Now</span>
-            </a>
-            <a href="games/sequence-recall.html" class="game-card">
-                <i class="fa-solid fa-list-ol"></i>
-                <h3>Sequence Recall</h3>
-                <p>Watch the pattern and repeat it correctly.</p>
-                <span class="play-btn">Play Now</span>
-            </a>
-            <a href="games/pattern-recognition.html" class="game-card">
-                <i class="fa-solid fa-shapes"></i>
-                <h3>Pattern Recognition</h3>
-                <p>Spot the odd one out or complete the series!</p>
-                <span class="play-btn">Play Now</span>
-            </a>
-        </div>
+    </div>
 
-        <!-- 3. Coloring & Creativity Games -->
-        <div class="section-header">
-            <h2>Coloring & Creativity 🎨</h2>
-            <p>Unleash your inner artist with these creative tools.</p>
-        </div>
-        <div class="game-grid">
-            <a href="games/digital-coloring.html" class="game-card">
-                <i class="fa-solid fa-paint-brush"></i>
-                <h3>Digital Coloring</h3>
-                <p>Paint beautiful scenes with a click of a button!</p>
-                <span class="play-btn">Play Now</span>
-            </a>
-            <a href="games/shape-drawing.html" class="game-card">
-                <i class="fa-solid fa-pencil"></i>
-                <h3>Shape Drawing</h3>
-                <p>Learn to draw complex shapes with simple steps.</p>
-                <span class="play-btn">Play Now</span>
-            </a>
-            <a href="games/emoji-art.html" class="game-card">
-                <i class="fa-solid fa-face-smile"></i>
-                <h3>Emoji Art</h3>
-                <p>Create masterpieces using only your favorite emojis!</p>
-                <span class="play-btn">Play Now</span>
-            </a>
-        </div>
-
-        <!-- 4. Science & AI Games -->
-        <div class="section-header">
-            <h2>Science & AI Games 🤖</h2>
-            <p>Explore the wonders of technology and science.</p>
-        </div>
-        <div class="game-grid">
-            <a href="games/ai-quiz.html" class="game-card">
-                <i class="fa-solid fa-robot"></i>
-                <h3>AI Quiz for Kids</h3>
-                <p>Learn about smart machines with our interactive quiz!</p>
-                <span class="play-btn">Play Now</span>
-            </a>
-            <a href="games/science-lab.html" class="game-card">
-                <i class="fa-solid fa-flask"></i>
-                <h3>Science Lab</h3>
-                <p>Conduct safe and fun virtual experiments!</p>
-                <span class="play-btn">Play Now</span>
-            </a>
-            <a href="games/ai-puzzle.html" class="game-card">
-                <i class="fa-solid fa-puzzle-piece"></i>
-                <h3>AI Puzzle Challenge</h3>
-                <p>Help the robot reassemble its memory blocks!</p>
-                <span class="play-btn">Play Now</span>
-            </a>
-        </div>
-
-        <!-- 5. Language & Reading Games -->
-        <div class="section-header">
-            <h2>Language & Reading 📚</h2>
-            <p>Improve your vocabulary and reading skills.</p>
-        </div>
-        <div class="game-grid">
-            <a href="games/word-search.html" class="game-card">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <h3>Word Search</h3>
-                <p>Find hidden words in a grid of letters!</p>
-                <span class="play-btn">Play Now</span>
-            </a>
-            <a href="games/alphabet-puzzle.html" class="game-card">
-                <i class="fa-solid fa-font"></i>
-                <h3>Alphabet Puzzle</h3>
-                <p>Connect the letters to reveal secret words!</p>
-                <span class="play-btn">Play Now</span>
-            </a>
-            <a href="games/story-builder.html" class="game-card">
-                <i class="fa-solid fa-book-open"></i>
-                <h3>Story Builder</h3>
-                <p>Create your own adventure by choosing what happens next!</p>
-                <span class="play-btn">Play Now</span>
-            </a>
-        </div>
-
-        <!-- 6. Interactive Coding Games -->
-        <div class="embed-section">
-            <div class="container">
-                <div class="section-header" style="margin-top:0">
-                    <h2>Interactive Coding Games 💻</h2>
-                    <p>Try these amazing activities from our partners.</p>
-                </div>
-
-                <div class="embed-grid">
-                    <div class="embed-container">
-                        <h3>Scratch Coding Adventure</h3>
-                        <p style="margin-bottom:1.5rem">Learn the basics of coding while playing!</p>
-                        <iframe src="https://scratch.mit.edu/projects/123456789/embed" class="embed-frame" allowtransparency="true" title="Scratch Coding Game"></iframe>
-                    </div>
-                    <div class="embed-container">
-                        <h3>Code.org Activity</h3>
-                        <p style="margin-bottom:1.5rem">Puzzle-solving at its finest through visual blocks.</p>
-                        <iframe src="https://studio.code.org/projects/applab/abcdefgh/embed" class="embed-frame" title="Code.org Activity"></iframe>
-                    </div>
-                </div>
+    <footer>
+        <div class="container">
+            <p>© 2026 Little Genius Kids. All rights reserved.</p>
+            <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a> |
+                <a href="terms-and-conditions.html">Terms</a> |
+                <a href="disclaimer.html">Disclaimer</a> |
+                <a href="contact.html">Contact</a>
             </div>
         </div>
-    </div>
-</main>
+    </footer>
 
-<footer>
-  <div class="container">
-    <p>© 2026 Little Genius Kids. All rights reserved.</p>
-    <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
-    <div class="footer-links">
-        <a href="privacy-policy.html">Privacy Policy</a> |
-        <a href="terms-and-conditions.html">Terms</a> |
-        <a href="disclaimer.html">Disclaimer</a> |
-        <a href="contact.html">Contact</a>
-    </div>
-  </div>
-</footer>
+    <script src="js/main.js"></script>
+    <script>
+        // --- User's Provided Modal PRO Game Logic ---
+        let canvas = document.getElementById("gameCanvas");
+        let ctx = canvas.getContext("2d");
 
-<script src="js/main.js"></script>
+        let highScore = localStorage.getItem("hubHighScore") || 0;
+        document.getElementById("highScore").innerText = highScore;
+
+        let gameLoop;
+        let jumpSound = new Audio("https://www.soundjay.com/buttons/sounds/button-16.mp3");
+        let crashSound = new Audio("https://www.soundjay.com/button/sounds/button-10.mp3");
+
+        let bird, pipes, score, lives;
+
+        function startGame() {
+            document.getElementById("modal").style.display = "flex";
+            bird = {x: 50, y: 200, v: 0};
+            pipes = [];
+            score = 0;
+            lives = 3;
+            document.body.style.overflow = "hidden"; // Blocks parent scrolling
+            loop();
+        }
+
+        function jump() {
+            bird.v = -8;
+            jumpSound.play().catch(e => { console.log('Audio autoplay blocked until interaction'); });
+        }
+
+        function tapHandler(e) {
+            if(document.getElementById("modal").style.display === "flex") {
+                if(e.target.id === "gameCanvas" || e.target.tagName !== "BUTTON") {
+                    jump();
+                }
+            }
+        }
+        canvas.addEventListener('mousedown', tapHandler);
+        canvas.addEventListener('touchstart', (e) => { e.preventDefault(); tapHandler(e); }, {passive: false});
+
+        function loop() {
+            ctx.clearRect(0, 0, 400, 500);
+
+            // physics
+            bird.v += 0.5;
+            bird.y += bird.v;
+
+            // pipes
+            if (Math.random() < 0.02) {
+                pipes.push({x: 400, top: Math.random() * 250});
+            }
+
+            for (let i = 0; i < pipes.length; i++) {
+                let p = pipes[i];
+                p.x -= 3;
+
+                ctx.fillStyle = "#ff4757"; // Premium Red
+                ctx.fillRect(p.x, 0, 50, p.top);
+                ctx.fillRect(p.x, p.top + 150, 50, 500);
+
+                // collision
+                if (bird.x < p.x + 50 && bird.x + 20 > p.x && (bird.y < p.top || bird.y > p.top + 150)) {
+                    lives--;
+                    crashSound.play().catch(e => {});
+                    pipes = []; // Reset pipes on hit
+                    if (lives <= 0) {
+                        endGame();
+                        return;
+                    }
+                }
+            }
+
+            // draw bird
+            ctx.fillStyle = "#eccc68"; // Premium Yellow
+            ctx.beginPath();
+            ctx.arc(bird.x + 10, bird.y + 10, 10, 0, Math.PI*2);
+            ctx.fill();
+
+            // score
+            score++;
+            ctx.fillStyle = "white";
+            ctx.font = "20px 'Fredoka One'";
+            ctx.fillText("Score: " + score, 10, 30);
+            
+            // Draw Lives
+            let heartStr = "";
+            for(let l=0; l<lives; l++) heartStr += "❤️";
+            ctx.fillText("Lives: " + heartStr, 10, 60);
+
+            gameLoop = requestAnimationFrame(loop);
+        }
+
+        function endGame() {
+            cancelAnimationFrame(gameLoop);
+            if (score > highScore) {
+                localStorage.setItem("hubHighScore", score);
+                document.getElementById("highScore").innerText = score;
+                highScore = score;
+            }
+            alert("Game Over! Score: " + score);
+            closeGame();
+        }
+
+        function closeGame() {
+            document.getElementById("modal").style.display = "none";
+            document.body.style.overflow = "auto";
+            cancelAnimationFrame(gameLoop);
+        }
+    </script>
 </body>
 </html>
