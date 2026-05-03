@@ -36,7 +36,7 @@
     --font-body: 'Outfit', sans-serif;
 
     /* Effects */
-    --border-radius-lg: 40px;
+    --border-radius-lg: 50px;
     --border-radius-md: 25px;
     --btn-radius: 50px;
     --shadow-sm: 0 4px 15px hsla(0, 0%, 0%, 0.05);
@@ -502,6 +502,13 @@ nav a:hover {
     font-weight: 400;
 }
 
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
 .hero-content {
     flex: 1;
     max-width: 600px;
@@ -531,8 +538,14 @@ nav a:hover {
 }
 
 .section {
-    padding: 5rem 0;
+    padding: 6rem 0;
 }
+
+.bg-pastel-pink { background-color: hsl(343, 100%, 96%); }
+.bg-pastel-blue { background-color: hsl(208, 100%, 95%); }
+.bg-pastel-yellow { background-color: hsl(58, 100%, 93%); }
+.bg-pastel-green { background-color: hsl(110, 100%, 96%); }
+.bg-pastel-purple { background-color: hsl(279, 44%, 96%); }
 
 .section h2 {
     font-size: 3rem;
@@ -686,6 +699,17 @@ nav a:hover {
     box-shadow: 0 20px 0 rgba(0, 0, 0, 0.15);
 }
 
+/* Feature Card Specific Styles */
+.feature-card {
+    border-radius: 20px !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
+}
+
 /* =========================================================================
    Footer
    ========================================================================= */
@@ -789,10 +813,14 @@ footer {
         display: block;
     }
 
-    .hero {
+    .hero, .hero-flex {
         flex-direction: column;
         text-align: center;
         padding-top: 2rem;
+    }
+
+    .hero-buttons {
+        justify-content: center;
     }
 
     .hero-content {
@@ -815,5 +843,123 @@ footer {
     .categories h2 {
         font-size: 3rem;
         padding: 1rem 2rem;
+    }
+}
+
+/* =========================================================================
+   Mobile Optimization (Tablets & Phones)
+   ========================================================================= */
+@media (max-width: 768px) {
+    /* Global Adjustments */
+    body {
+        font-size: 1.15rem;
+    }
+
+    .section {
+        padding: 4rem 1rem;
+    }
+
+    /* Headings */
+    h1, .hero h1 {
+        font-size: 2.5rem !important;
+    }
+
+    h2, .section h2, .categories h2 {
+        font-size: 2.2rem !important;
+        margin-bottom: 2rem;
+    }
+
+    /* Refined Card Sizing */
+    .card {
+        padding: 2rem 1.2rem;
+    }
+
+    .card h3 {
+        font-size: 1.8rem;
+    }
+
+    /* Prevent Overlaps in Hero */
+    .hero {
+        padding: 6rem 1rem 4rem 1rem;
+        min-height: 0;
+    }
+
+    .hero-content {
+        padding: 1.5rem;
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+
+    /* Large, Tappable Buttons */
+    .btn {
+        width: 100%;
+        padding: 1.2rem;
+        font-size: 1.2rem;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .btn-primary, .btn-large {
+        padding: 1.4rem;
+        font-size: 1.35rem;
+        width: 100%;
+        display: block;
+    }
+
+    /* Stack Grids Properly */
+    .section .card-wrapper, 
+    .section:has(.card),
+    .section-grid,
+    .category-grid { 
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    header .container {
+        padding: 0 1rem;
+    }
+}
+
+/* Base Small Devices */
+@media (max-width: 480px) {
+    /* Even denser headings */
+    .hero-content h1 {
+        font-size: 2rem !important;
+    }
+    
+    .section h2, .categories h2 {
+        font-size: 1.8rem !important;
+    }
+    
+    .logo a {
+        font-size: 1.6rem;
+    }
+    
+    .hero-image img {
+        border-width: 4px;
+    }
+    
+    /* Demo section specific overlaps fix */
+    #demo .card > div {
+        flex-direction: column;
+        gap: 15px !important;
+    }
+    
+    #demo .scale-hover {
+        width: 70px !important;
+        height: 70px !important;
+    }
+
+    /* CTA / Pricing Card adjustments */
+    #pricing .card, .cta-card {
+        padding: 1.5rem 1rem;
+        transform: scale(1) !important; 
     }
 }

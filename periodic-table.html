@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="65e9cf65-8c38-4795-9951-24eff8c602be" type="text/javascript" async></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0MB4S6Q15T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0MB4S6Q15T');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Periodic Table - Little Genius Kids</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .pt-dashboard {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem 4rem 1rem;
+            min-height: 80vh;
+        }
+
+        .pt-dashboard h1 {
+            font-size: 3rem;
+            font-family: 'Fredoka One', cursive;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .pt-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .pt-controls input {
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: none;
+            font-size: 1.1rem;
+            width: 300px;
+            outline: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .pt-legend {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+            font-size: 0.85rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(0,0,0,0.3);
+            padding: 5px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .legend-item:hover {
+            background: rgba(0,0,0,0.6);
+        }
+        .legend-color {
+            width: 15px; height: 15px; border-radius: 50%;
+        }
+
+        /* Periodic Table Grid */
+        .pt-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 20px;
+        }
+        .periodic-table {
+            display: grid;
+            grid-template-columns: repeat(18, minmax(50px, 1fr));
+            grid-template-rows: repeat(9, minmax(50px, 1fr));
+            gap: 4px;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-width: 900px; /* Force scroll on small screens */
+        }
+
+        .element {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+            color: #111;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            user-select: none;
+            padding: 2px;
+        }
+        .element:hover {
+            transform: scale(1.15) !important;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+        .element.dimmed {
+            opacity: 0.15 !important;
+            filter: grayscale(100%);
+            pointer-events: none;
+        }
+
+        .element .number { font-size: 0.6rem; position: absolute; top: 2px; left: 3px; font-weight: bold; }
+        .element .symbol { font-size: 1.2rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-top: 5px; }
+        .element .name { font-size: 0.5rem; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 100%; }
+        .element .mass { font-size: 0.45rem; position: absolute; bottom: 2px; }
+
+        /* Color Categories */
+        .cat-alkali-metal { background-color: #ff6b6b; color: white; }
+        .cat-alkaline-earth-metal { background-color: #feca57; color: #333; }
+        .cat-transition-metal { background-color: #48dbfb; color: #111; }
+        .cat-post-transition-metal { background-color: #1dd1a1; color: #111; }
+        .cat-metalloid { background-color: #5f27cd; color: white; }
+        .cat-reactive-nonmetal { background-color: #ff9ff3; color: #111; }
+        .cat-noble-gas { background-color: #00d2d3; color: #111; }
+        .cat-lanthanide { background-color: #ffb8b8; color: #111; }
+        .cat-actinide { background-color: #c7ecee; color: #111; }
+        .cat-unknown { background-color: #c8d6e5; color: #111; }
+
+        /* Modal Styles */
+        .pt-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+        .pt-modal-content {
+            background: #fff;
+            color: #333;
+            width: 90%;
+            max-width: 450px;
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes modalPop {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .pt-close {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #888;
+            transition: 0.2s;
+        }
+        .pt-close:hover { color: #e74c3c; transform: scale(1.1); }
+        .modal-symbol {
+            font-size: 5rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            margin: 10px 0;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        .modal-name { font-size: 2rem; font-family: 'Fredoka One', cursive; margin-bottom: 5px; }
+        .modal-details { font-size: 1.1rem; margin-top: 15px; text-align: left; padding: 15px; background: #f1f2f6; border-radius: 10px; }
+        .modal-details p { margin: 5px 0; border-bottom: 1px solid #dfe4ea; padding-bottom: 5px; }
+        .modal-details p:last-child { border: none; }
+        
+        .btn-pronounce {
+            background: #ffcc00;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4);
+            transition: 0.2s;
+        }
+        .btn-pronounce:hover { transform: scale(1.05); }
+        .btn-pronounce:active { transform: scale(0.95); }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <i class="fa-solid fa-graduation-cap"></i> Little Genius
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="ai-course.html">AI Course</a>
+            <a href="games.html">Games</a>
+            <a href="worksheets.html">Worksheets</a>
+            <a href="blog/index.html">Blog</a>
+        </nav>
+        <div class="nav-actions">
+            <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
+            <a href="parents.html" class="btn-primary">Parents</a>
+        </div>
+    </header>
+
+    <main class="pt-dashboard">
+        <h1>🧪 Interactive Periodic Table</h1>
+        <p style="margin-bottom: 20px; font-size: 1.1rem;">Explore all 118 elements. Click on any element to learn more and hear its name!</p>
+
+        <div class="pt-controls">
+            <input type="text" id="searchInput" placeholder="Search element by name or symbol...">
+        </div>
+
+        <div class="pt-legend" id="legendContainer">
+            <!-- Legend rendered via JS -->
+        </div>
+
+        <div class="pt-wrapper">
+            <div class="periodic-table" id="periodicTable">
+                <!-- Elements will be generated here by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for Detailed Info -->
+    <div class="pt-modal" id="elementModal">
+        <div class="pt-modal-content">
+            <span class="pt-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></span>
+            <div id="modalCatBox" style="display:inline-block; padding: 5px 15px; border-radius: 15px; font-size: 0.8rem; font-weight:bold; letter-spacing:1px; text-transform:uppercase; margin-bottom:10px;">CATEGORY</div>
+            <div class="modal-name" id="modalName">Element</div>
+            <div class="modal-symbol" id="modalSymbol">El</div>
+            <div class="modal-details">
+                <p><strong>Atomic Number:</strong> <span id="modalNum">0</span></p>
+                <p><strong>Atomic Mass:</strong> <span id="modalMass">0</span></p>
+                <p><strong>Group:</strong> <span id="modalGroup">0</span></p>
+                <p><strong>Period:</strong> <span id="modalPeriod">0</span></p>
+            </div>
+            <button class="btn-pronounce" onclick="pronounceElement()"><i class="fa-solid fa-volume-high"></i> Listen to Name</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Little Genius Kids Learning. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/elements.js"></script>
+    <script>
+        const tableContainer = document.getElementById('periodicTable');
+        const legendContainer = document.getElementById('legendContainer');
+        const searchInput = document.getElementById('searchInput');
+        const modal = document.getElementById('elementModal');
+        
+        let currentVoiceName = '';
+
+        const categories = {
+            "alkali-metal": "Alkali Metals",
+            "alkaline-earth-metal": "Alkaline Earth Metals",
+            "transition-metal": "Transition Metals",
+            "post-transition-metal": "Post-Transition Metals",
+            "metalloid": "Metalloids",
+            "reactive-nonmetal": "Reactive Nonmetals",
+            "noble-gas": "Noble Gases",
+            "lanthanide": "Lanthanides",
+            "actinide": "Actinides",
+            "unknown": "Unknown Properties"
+        };
+
+        // Render Legend
+        for(let key in categories) {
+            let div = document.createElement('div');
+            div.className = 'legend-item';
+            div.onclick = () => filterByCategory(key);
+            div.innerHTML = `<div class="legend-color cat-${key}"></div> ${categories[key]}`;
+            legendContainer.appendChild(div);
+        }
+        
+        let activeCategory = null;
+
+        function filterByCategory(cat) {
+            if(activeCategory === cat) {
+                activeCategory = null; // deactivate
+                renderTable();
+            } else {
+                activeCategory = cat;
+                renderTable();
+            }
+        }
+
+        // Render Table
+        function renderTable(searchTerm = '') {
+            tableContainer.innerHTML = '';
+            
+            periodicElements.forEach(el => {
+                let div = document.createElement('div');
+                div.className = `element cat-${el.cat}`;
+                
+                // Position in grid
+                // Row 8 and 9 need visual gap from row 7. We'll simply let grid handle it 
+                // but Lanthanides (period 8) and Actinides (period 9) need to be pushed slightly down?
+                // For simplicity, CSS grid handles it natively if we row-gap, 
+                // but wait, standard layout usually has an empty row. Let's shift period 8 to row 9, and 9 to 10.
+                let row = el.period;
+                if(row === 8) row = 9;
+                if(row === 9) row = 10;
+                
+                div.style.gridColumn = el.group;
+                div.style.gridRow = row;
+
+                // Diming Logic
+                let isMatch = true;
+                if(activeCategory && el.cat !== activeCategory) isMatch = false;
+                if(searchTerm) {
+                    let s = searchTerm.toLowerCase();
+                    if(!el.name.toLowerCase().includes(s) && !el.sym.toLowerCase().includes(s)) {
+                        isMatch = false;
+                    }
+                }
+
+                if(!isMatch) div.classList.add('dimmed');
+
+                div.innerHTML = `
+                    <div class="number">${el.num}</div>
+                    <div class="symbol">${el.sym}</div>
+                    <div class="name">${el.name}</div>
+                    <div class="mass">${el.mass > 0 ? el.mass.toFixed(1) : ''}</div>
+                `;
+
+                div.onclick = () => openModal(el);
+                tableContainer.appendChild(div);
+            });
+        }
+
+        // Search Logic
+        searchInput.addEventListener('input', (e) => {
+            renderTable(e.target.value);
+        });
+
+        // Modal Logic
+        function openModal(el) {
+            document.getElementById('modalName').innerText = el.name;
+            document.getElementById('modalSymbol').innerText = el.sym;
+            document.getElementById('modalNum').innerText = el.num;
+            document.getElementById('modalMass').innerText = el.mass > 0 ? el.mass : 'Unknown';
+            document.getElementById('modalGroup').innerText = el.period > 7 ? 'N/A' : el.group;
+            document.getElementById('modalPeriod').innerText = el.period > 7 ? el.period - 1 : el.period; // Lanth/Act are actually period 6/7, but we used period 8/9 in JSON for grid
+            
+            let colorCat = el.cat;
+            let catBox = document.getElementById('modalCatBox');
+            catBox.innerText = categories[el.cat];
+            catBox.className = `cat-${colorCat}`;
+            
+            currentVoiceName = el.name;
+            
+            // Adjust text color based on background (rough)
+            if(colorCat === 'alkaline-earth-metal' || colorCat === 'transition-metal' || colorCat === 'post-transition-metal' || colorCat === 'reactive-nonmetal' || colorCat === 'noble-gas' || colorCat === 'lanthanide' || colorCat === 'actinide' || colorCat === 'unknown') {
+                catBox.style.color = '#111';
+            } else {
+                catBox.style.color = '#fff';
+            }
+
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Speech API
+        function pronounceElement() {
+            if(window.playSound && currentVoiceName) {
+                window.playSound(currentVoiceName);
+            } else if('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const msg = new SpeechSynthesisUtterance(currentVoiceName);
+                window.speechSynthesis.speak(msg);
+            }
+        }
+
+        // Init
+        renderTable();
+    </script>
+</body>
+</html>
