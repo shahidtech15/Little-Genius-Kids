@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="65e9cf65-8c38-4795-9951-24eff8c602be" type="text/javascript" async></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MB4S6Q15T"></script>
@@ -12,11 +14,10 @@
 
   gtag('config', 'G-0MB4S6Q15T');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Little Genius</title>
+    <meta name="description" content="Login on Little Genius Kids — 100% free and ad-free early learning activities, games, and printables.">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Nunito:wght@400;600;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"
         rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -109,39 +110,153 @@
             cursor: pointer;
         }
     </style>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="canonical" href="https://little-genius-kids.vercel.app/login.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Little Genius Kids">
+    <meta property="og:title" content="Login | Little Genius">
+    <meta property="og:description" content="Login on Little Genius Kids — 100% free and ad-free early learning activities, games, and printables.">
+    <meta property="og:url" content="https://little-genius-kids.vercel.app/login.html">
+    <meta property="og:image" content="https://little-genius-kids.vercel.app/images/hero_child_tablet.jpg">
+    <meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body>
-    <header class="navbar" style="justify-content: center;">
-        <div class="logo">
-            <a href="index.html">
-                <i class="fa-solid fa-graduation-cap"></i> Little Genius
-            </a>
+    <header class="site-header">
+  <div class="container navbar-inner">
+    <div class="logo">
+      <a href="index.html">
+        <i class="fa-solid fa-graduation-cap"></i> Little Genius
+      </a>
+    </div>
+    <nav class="nav-links" aria-label="Main Navigation">
+      <a href="index.html">Home</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+          Learn <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="abc.html"><i class="fa-solid fa-font"></i> ABC Learning</a>
+          <a href="numbers.html"><i class="fa-solid fa-hashtag"></i> Numbers</a>
+          <a href="colors-shapes.html"><i class="fa-solid fa-shapes"></i> Colors & Shapes</a>
+          <a href="animals.html"><i class="fa-solid fa-paw"></i> Animals</a>
+          <a href="rhymes.html"><i class="fa-solid fa-music"></i> Rhymes & Videos</a>
+          <a href="worksheets.html"><i class="fa-solid fa-file-pdf"></i> Worksheets</a>
+          <a href="periodic-table.html"><i class="fa-solid fa-flask"></i> Periodic Table</a>
         </div>
-    </header>
+      </div>
+      <a href="games.html">Games</a>
+      <a href="ai-course.html">AI Course</a>
+      <a href="blog/index.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="btn-icon" type="button" aria-label="Toggle Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <a href="parents.html" class="nav-parents-btn">Parents</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
 
     <main class="login-container">
         <div class="login-box">
-            <h1>Welcome Back!</h1>
-            <p class="mb-4">Sign in to sync your child's progress (Simulated)</p>
+            <h1 id="auth-title">Welcome Back!</h1>
+            <p id="auth-subtitle" class="mb-4">Sign in to manage your parent profile and track your child's stars saved locally on this device.</p>
 
-            <form onsubmit="event.preventDefault(); window.location.href='parents.html';">
-                <div class="form-group">
-                    <label>Parent Email</label>
-                    <input type="email" placeholder="parent@example.com" required>
+            <form id="parent-auth-form">
+                <div class="form-group" id="name-group" style="display: none;">
+                    <label for="parent-name">Parent / Teacher Name</label>
+                    <input type="text" id="parent-name" placeholder="e.g. Sarah Ahmed">
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" placeholder="••••••••" required>
+                    <label for="parent-email">Parent Email</label>
+                    <input type="email" id="parent-email" placeholder="parent@example.com" required>
                 </div>
-                <button type="submit" class="login-btn-full">Sign In</button>
+                <div class="form-group">
+                    <label for="parent-password">Passcode / Password</label>
+                    <input type="password" id="parent-password" placeholder="••••••••" minlength="4" required>
+                </div>
+                <button type="submit" id="auth-submit-btn" class="login-btn-full">Sign In</button>
             </form>
 
-            <a href="#" class="toggle-link">Don't have an account? Sign up</a>
+            <button type="button" id="toggle-auth-mode" class="toggle-link" style="background: none; border: none; font-family: inherit; font-size: 1rem;">Don't have a profile yet? Create Local Parent Profile</button>
         </div>
     </main>
 
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Little Genius Kids. All rights reserved.</p>
+    <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="parents.html">Parents</a>
+      <a href="worksheets.html">Worksheets</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-and-conditions.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
     <script src="js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('parent-auth-form');
+    const toggleBtn = document.getElementById('toggle-auth-mode');
+    const nameGroup = document.getElementById('name-group');
+    const nameInput = document.getElementById('parent-name');
+    const emailInput = document.getElementById('parent-email');
+    const titleEl = document.getElementById('auth-title');
+    const subtitleEl = document.getElementById('auth-subtitle');
+    const submitBtn = document.getElementById('auth-submit-btn');
+
+    let isSignup = false;
+
+    try {
+        const existing = JSON.parse(localStorage.getItem('littleGeniusParentProfile') || 'null');
+        if (existing && existing.email) {
+            emailInput.value = existing.email;
+            if (existing.name) nameInput.value = existing.name;
+        }
+    } catch (e) {}
+
+    toggleBtn.addEventListener('click', () => {
+        isSignup = !isSignup;
+        nameGroup.style.display = isSignup ? 'block' : 'none';
+        nameInput.required = isSignup;
+        titleEl.textContent = isSignup ? 'Create Local Parent Profile' : 'Welcome Back!';
+        subtitleEl.textContent = isSignup
+            ? 'Save your parent profile locally on this browser — no personal data is sent to a server.'
+            : "Sign in to manage your parent profile and track your child's stars saved locally on this device.";
+        submitBtn.textContent = isSignup ? 'Create Profile' : 'Sign In';
+        toggleBtn.textContent = isSignup
+            ? 'Already have a local profile? Sign In'
+            : "Don't have a profile yet? Create Local Parent Profile";
+    });
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = emailInput.value.trim();
+        let name = nameInput.value.trim();
+        if (!name) {
+            try {
+                const prev = JSON.parse(localStorage.getItem('littleGeniusParentProfile') || 'null');
+                name = (prev && prev.name) || email.split('@')[0];
+            } catch (err) {
+                name = email.split('@')[0];
+            }
+        }
+        localStorage.setItem('littleGeniusParentProfile', JSON.stringify({ name, email }));
+        window.location.href = 'parents.html';
+    });
+});
+</script>
 </body>
 
 </html>

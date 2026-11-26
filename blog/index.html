@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="65e9cf65-8c38-4795-9951-24eff8c602be" type="text/javascript" async></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MB4S6Q15T"></script>
@@ -11,9 +13,8 @@
 
   gtag('config', 'G-0MB4S6Q15T');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | Little Genius Kids</title>
+    <meta name="description" content="Read Blog on Little Genius Kids for practical early childhood learning tips and guides.">
     <!-- Google Fonts: Fredoka One and Outfit -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
@@ -112,24 +113,56 @@
         .read-more { font-family: var(--font-heading); color: var(--primary-color); text-decoration: none; font-size: 1.1rem; }
         .read-more:hover { text-decoration: underline; }
     </style>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <link rel="canonical" href="https://little-genius-kids.vercel.app/blog/index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Little Genius Kids">
+    <meta property="og:title" content="Blog | Little Genius Kids">
+    <meta property="og:description" content="Read Blog on Little Genius Kids for practical early childhood learning tips and guides.">
+    <meta property="og:url" content="https://little-genius-kids.vercel.app/blog/index.html">
+    <meta property="og:image" content="https://little-genius-kids.vercel.app/images/hero_child_tablet.jpg">
+    <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 
-<header>
-  <div class="container">
+<header class="site-header">
+  <div class="container navbar-inner">
     <div class="logo">
-        <a href="../index.html">
-            <i class="fa-solid fa-graduation-cap"></i> Little Genius
-        </a>
+      <a href="../index.html">
+        <i class="fa-solid fa-graduation-cap"></i> Little Genius
+      </a>
     </div>
-    <nav>
+    <nav class="nav-links" aria-label="Main Navigation">
       <a href="../index.html">Home</a>
-      <a href="../ai-course.html">AI Course</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+          Learn <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="../abc.html"><i class="fa-solid fa-font"></i> ABC Learning</a>
+          <a href="../numbers.html"><i class="fa-solid fa-hashtag"></i> Numbers</a>
+          <a href="../colors-shapes.html"><i class="fa-solid fa-shapes"></i> Colors & Shapes</a>
+          <a href="../animals.html"><i class="fa-solid fa-paw"></i> Animals</a>
+          <a href="../rhymes.html"><i class="fa-solid fa-music"></i> Rhymes & Videos</a>
+          <a href="../worksheets.html"><i class="fa-solid fa-file-pdf"></i> Worksheets</a>
+          <a href="../periodic-table.html"><i class="fa-solid fa-flask"></i> Periodic Table</a>
+        </div>
+      </div>
       <a href="../games.html">Games</a>
-      <a href="index.html" class="active">Blog</a>
+      <a href="../ai-course.html">AI Course</a>
+      <a href="../blog/index.html" class="active">Blog</a>
       <a href="../about.html">About</a>
       <a href="../contact.html">Contact</a>
     </nav>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="btn-icon" type="button" aria-label="Toggle Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <a href="../parents.html" class="nav-parents-btn">Parents</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -143,15 +176,17 @@
 
     <div class="container">
         <div class="category-nav">
-            <button class="cat-btn active">All Articles</button>
-            <button class="cat-btn">Learning Tips</button>
-            <button class="cat-btn">Activities</button>
-            <button class="cat-btn">Parent Guides</button>
+            <button type="button" class="cat-btn active" data-filter="all">All Articles</button>
+            <button type="button" class="cat-btn" data-filter="learning-tips">Learning Tips</button>
+            <button type="button" class="cat-btn" data-filter="activities">Activities</button>
+            <button type="button" class="cat-btn" data-filter="science-ai">Science &amp; AI</button>
+            <button type="button" class="cat-btn" data-filter="parent-guides">Parent Guides</button>
         </div>
+        <p id="article-count" class="text-center" style="margin: -2.25rem 0 2.5rem; font-weight: 700; opacity: 0.75;">Showing 12 articles</p>
 
         <div class="blog-grid">
             <!-- Article 1 -->
-            <article class="blog-card">
+            <article class="blog-card" data-category="learning-tips">
                 <div class="blog-image" style="background: linear-gradient(135deg, #a855f7, #ec4899);">
                     <span class="blog-tag">Learning Tips</span>
                     <i class="fa-solid fa-book-open fa-3x" style="color:#fff;"></i>
@@ -163,12 +198,12 @@
                 </div>
                 <div class="blog-footer">
                     <a href="teach-abc.html" class="read-more">Read More →</a>
-                    <span><i class="fa-solid fa-share-nodes"></i></span>
+                    <button type="button" class="share-btn" data-url="teach-abc.html" data-title="How to Teach ABC to Kids at Home" aria-label="Share article" style="background:none;border:none;cursor:pointer;color:var(--primary-color);font-size:1.1rem;font-weight:700;"><i class="fa-solid fa-share-nodes"></i></button>
                 </div>
             </article>
 
             <!-- Article 2 -->
-            <article class="blog-card">
+            <article class="blog-card" data-category="activities">
                 <div class="blog-image" style="background: linear-gradient(135deg, #0ea5e9, #06b6d4);">
                     <span class="blog-tag">Activities</span>
                     <i class="fa-solid fa-palette fa-3x" style="color:#fff;"></i>
@@ -180,12 +215,12 @@
                 </div>
                 <div class="blog-footer">
                     <a href="activities-for-kids.html" class="read-more">Read More →</a>
-                    <span><i class="fa-solid fa-share-nodes"></i></span>
+                    <button type="button" class="share-btn" data-url="activities-for-kids.html" data-title="Fun Learning Activities for 3 Year Olds" aria-label="Share article" style="background:none;border:none;cursor:pointer;color:var(--primary-color);font-size:1.1rem;font-weight:700;"><i class="fa-solid fa-share-nodes"></i></button>
                 </div>
             </article>
 
             <!-- Article 3 -->
-            <article class="blog-card">
+            <article class="blog-card" data-category="learning-tips">
                 <div class="blog-image" style="background: linear-gradient(135deg, #f97316, #eab308);">
                     <span class="blog-tag">Learning Tips</span>
                     <i class="fa-solid fa-calculator fa-3x" style="color:#fff;"></i>
@@ -197,12 +232,12 @@
                 </div>
                 <div class="blog-footer">
                     <a href="learn-numbers.html" class="read-more">Read More →</a>
-                    <span><i class="fa-solid fa-share-nodes"></i></span>
+                    <button type="button" class="share-btn" data-url="learn-numbers.html" data-title="Easy Ways to Teach Numbers to Kids" aria-label="Share article" style="background:none;border:none;cursor:pointer;color:var(--primary-color);font-size:1.1rem;font-weight:700;"><i class="fa-solid fa-share-nodes"></i></button>
                 </div>
             </article>
 
             <!-- Article 4 -->
-            <article class="blog-card">
+            <article class="blog-card" data-category="science-ai">
                 <div class="blog-image" style="background: linear-gradient(135deg, #22c55e, #06b6d4);">
                     <span class="blog-tag">Science</span>
                     <i class="fa-solid fa-flask fa-3x" style="color:#fff;"></i>
@@ -214,12 +249,12 @@
                 </div>
                 <div class="blog-footer">
                     <a href="simple-science-experiments.html" class="read-more">Read More →</a>
-                    <span><i class="fa-solid fa-share-nodes"></i></span>
+                    <button type="button" class="share-btn" data-url="simple-science-experiments.html" data-title="Simple Science Experiments for Kids at Home" aria-label="Share article" style="background:none;border:none;cursor:pointer;color:var(--primary-color);font-size:1.1rem;font-weight:700;"><i class="fa-solid fa-share-nodes"></i></button>
                 </div>
             </article>
 
             <!-- Article 5 -->
-            <article class="blog-card">
+            <article class="blog-card" data-category="activities">
                 <div class="blog-image" style="background: linear-gradient(135deg, #7c4dff, #3f51b5);">
                     <span class="blog-tag">Worksheets</span>
                     <i class="fa-solid fa-file-pdf fa-3x" style="color:#fff;"></i>
@@ -231,12 +266,12 @@
                 </div>
                 <div class="blog-footer">
                     <a href="free-worksheets.html" class="read-more">Read More →</a>
-                    <span><i class="fa-solid fa-share-nodes"></i></span>
+                    <button type="button" class="share-btn" data-url="free-worksheets.html" data-title="Free Printable Worksheets for Preschool Kids" aria-label="Share article" style="background:none;border:none;cursor:pointer;color:var(--primary-color);font-size:1.1rem;font-weight:700;"><i class="fa-solid fa-share-nodes"></i></button>
                 </div>
             </article>
 
             <!-- Article 6 -->
-            <article class="blog-card">
+            <article class="blog-card" data-category="learning-tips">
                 <div class="blog-image" style="background: linear-gradient(135deg, #e91e8c, #9c27b0);">
                     <span class="blog-tag">Learning Tips</span>
                     <i class="fa-solid fa-swatchbook fa-3x" style="color:#fff;"></i>
@@ -248,12 +283,12 @@
                 </div>
                 <div class="blog-footer">
                     <a href="teach-colors-to-kids.html" class="read-more">Read More →</a>
-                    <span><i class="fa-solid fa-share-nodes"></i></span>
+                    <button type="button" class="share-btn" data-url="teach-colors-to-kids.html" data-title="How to Teach Colors to Kids in Fun Ways" aria-label="Share article" style="background:none;border:none;cursor:pointer;color:var(--primary-color);font-size:1.1rem;font-weight:700;"><i class="fa-solid fa-share-nodes"></i></button>
                 </div>
             </article>
 
             <!-- Article 7 -->
-            <article class="blog-card">
+            <article class="blog-card" data-category="parent-guides">
                 <div class="blog-image" style="background: linear-gradient(135deg, #0097a7, #1565c0);">
                     <span class="blog-tag">Parent Guide</span>
                     <i class="fa-solid fa-mobile-screen fa-3x" style="color:#fff;"></i>
@@ -265,12 +300,12 @@
                 </div>
                 <div class="blog-footer">
                     <a href="best-educational-apps.html" class="read-more">Read More →</a>
-                    <span><i class="fa-solid fa-share-nodes"></i></span>
+                    <button type="button" class="share-btn" data-url="best-educational-apps.html" data-title="Best Educational Apps for Kids in 2026" aria-label="Share article" style="background:none;border:none;cursor:pointer;color:var(--primary-color);font-size:1.1rem;font-weight:700;"><i class="fa-solid fa-share-nodes"></i></button>
                 </div>
             </article>
 
             <!-- Article 8 -->
-            <article class="blog-card">
+            <article class="blog-card" data-category="science-ai">
                 <div class="blog-image" style="background: linear-gradient(135deg, #3f51b5, #7c4dff);">
                     <span class="blog-tag">Technology</span>
                     <i class="fa-solid fa-robot fa-3x" style="color:#fff;"></i>
@@ -282,12 +317,12 @@
                 </div>
                 <div class="blog-footer">
                     <a href="what-is-ai-for-kids.html" class="read-more">Read More →</a>
-                    <span><i class="fa-solid fa-share-nodes"></i></span>
+                    <button type="button" class="share-btn" data-url="what-is-ai-for-kids.html" data-title="What is Artificial Intelligence for Kids?" aria-label="Share article" style="background:none;border:none;cursor:pointer;color:var(--primary-color);font-size:1.1rem;font-weight:700;"><i class="fa-solid fa-share-nodes"></i></button>
                 </div>
             </article>
 
             <!-- Article 9 -->
-            <article class="blog-card">
+            <article class="blog-card" data-category="science-ai">
                 <div class="blog-image" style="background: linear-gradient(135deg, #0288d1, #00bcd4);">
                     <span class="blog-tag">Technology</span>
                     <i class="fa-solid fa-brain fa-3x" style="color:#fff;"></i>
@@ -299,12 +334,12 @@
                 </div>
                 <div class="blog-footer">
                     <a href="importance-of-ai-for-kids.html" class="read-more">Read More →</a>
-                    <span><i class="fa-solid fa-share-nodes"></i></span>
+                    <button type="button" class="share-btn" data-url="importance-of-ai-for-kids.html" data-title="Importance of Artificial Intelligence for Kids" aria-label="Share article" style="background:none;border:none;cursor:pointer;color:var(--primary-color);font-size:1.1rem;font-weight:700;"><i class="fa-solid fa-share-nodes"></i></button>
                 </div>
             </article>
 
             <!-- Article 10 -->
-            <article class="blog-card">
+            <article class="blog-card" data-category="science-ai">
                 <div class="blog-image" style="background: linear-gradient(135deg, #673ab7, #9c27b0);">
                     <span class="blog-tag">Technology</span>
                     <i class="fa-solid fa-rocket fa-3x" style="color:#fff;"></i>
@@ -316,7 +351,41 @@
                 </div>
                 <div class="blog-footer">
                     <a href="how-kids-can-learn-ai.html" class="read-more">Read More →</a>
-                    <span><i class="fa-solid fa-share-nodes"></i></span>
+                    <button type="button" class="share-btn" data-url="how-kids-can-learn-ai.html" data-title="How Kids Can Learn Artificial Intelligence" aria-label="Share article" style="background:none;border:none;cursor:pointer;color:var(--primary-color);font-size:1.1rem;font-weight:700;"><i class="fa-solid fa-share-nodes"></i></button>
+                </div>
+            </article>
+
+            <!-- Article 11 -->
+            <article class="blog-card" data-category="parent-guides">
+                <div class="blog-image" style="background: linear-gradient(135deg, #ff7043, #ffa726);">
+                    <span class="blog-tag">Parent Guide</span>
+                    <i class="fa-solid fa-lightbulb fa-3x" style="color:#fff;"></i>
+                </div>
+                <div class="blog-body">
+                    <div class="blog-meta">March 17, 2026 • 6 min read</div>
+                    <h3><a href="early-childhood-education-tips.html">Early Childhood Education Tips for Parents</a></h3>
+                    <p>Essential parent advice to support cognitive growth, emotional confidence, and joyful early learning habits.</p>
+                </div>
+                <div class="blog-footer">
+                    <a href="early-childhood-education-tips.html" class="read-more">Read More →</a>
+                    <button type="button" class="share-btn" data-url="early-childhood-education-tips.html" data-title="Early Childhood Education Tips for Parents" aria-label="Share article" style="background:none;border:none;cursor:pointer;color:var(--primary-color);font-size:1.1rem;font-weight:700;"><i class="fa-solid fa-share-nodes"></i></button>
+                </div>
+            </article>
+
+            <!-- Article 12 -->
+            <article class="blog-card" data-category="activities">
+                <div class="blog-image" style="background: linear-gradient(135deg, #26a69a, #66bb6a);">
+                    <span class="blog-tag">Activities</span>
+                    <i class="fa-solid fa-child-reaching fa-3x" style="color:#fff;"></i>
+                </div>
+                <div class="blog-body">
+                    <div class="blog-meta">March 17, 2026 • 5 min read</div>
+                    <h3><a href="best-learning-activities-for-3-year-olds.html">Best Learning Activities for 3-Year-Olds</a></h3>
+                    <p>Practical sensory, motor, and counting games designed specifically for curious 3-year-olds.</p>
+                </div>
+                <div class="blog-footer">
+                    <a href="best-learning-activities-for-3-year-olds.html" class="read-more">Read More →</a>
+                    <button type="button" class="share-btn" data-url="best-learning-activities-for-3-year-olds.html" data-title="Best Learning Activities for 3-Year-Olds" aria-label="Share article" style="background:none;border:none;cursor:pointer;color:var(--primary-color);font-size:1.1rem;font-weight:700;"><i class="fa-solid fa-share-nodes"></i></button>
                 </div>
             </article>
         </div>
@@ -325,16 +394,72 @@
 
 <footer>
   <div class="container">
-    <p>© 2026 Little Genius Kids. All rights reserved.</p>
+    <p>&copy; 2026 Little Genius Kids. All rights reserved.</p>
     <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
     <div class="footer-links">
-        <a href="../privacy-policy.html">Privacy Policy</a> |
-        <a href="../terms-and-conditions.html">Terms</a> |
-        <a href="../disclaimer.html">Disclaimer</a>
+      <a href="../about.html">About</a>
+      <a href="../parents.html">Parents</a>
+      <a href="../worksheets.html">Worksheets</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+      <a href="../terms-and-conditions.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+      <a href="../contact.html">Contact</a>
     </div>
   </div>
 </footer>
 
 <script src="../js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.cat-btn[data-filter]');
+    const cards = document.querySelectorAll('.blog-card[data-category]');
+    const countEl = document.getElementById('article-count');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.dataset.filter;
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            let visible = 0;
+            cards.forEach(card => {
+                const match = filter === 'all' || card.dataset.category === filter;
+                card.style.display = match ? 'flex' : 'none';
+                if (match) visible++;
+            });
+
+            if (countEl) {
+                countEl.textContent = `Showing ${visible} ${visible === 1 ? 'article' : 'articles'}`;
+            }
+        });
+    });
+
+    document.querySelectorAll('.share-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+            const url = new URL(btn.dataset.url, window.location.href).href;
+            const title = btn.dataset.title || document.title;
+
+            if (navigator.share) {
+                try {
+                    await navigator.share({ title, url });
+                    return;
+                } catch (e) {}
+            }
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                try {
+                    await navigator.clipboard.writeText(url);
+                    const original = btn.innerHTML;
+                    btn.innerHTML = '<span style="font-size:0.85rem;">Copied!</span>';
+                    setTimeout(() => { btn.innerHTML = original; }, 1500);
+                    return;
+                } catch (e) {}
+            }
+
+            window.prompt('Copy this article link:', url);
+        });
+    });
+});
+</script>
 </body>
 </html>

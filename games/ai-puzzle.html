@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="65e9cf65-8c38-4795-9951-24eff8c602be" type="text/javascript" async></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MB4S6Q15T"></script>
@@ -11,9 +13,8 @@
 
   gtag('config', 'G-0MB4S6Q15T');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Puzzle Challenge - Little Genius Kids</title>
+    <meta name="description" content="Play AI Puzzle Challenge free on Little Genius Kids — a 100% ad-free educational game for children.">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -31,35 +32,177 @@
         .puzzle-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; width: 300px; margin: 0 auto; }
         .puzzle-piece { aspect-ratio: 1; background: #e8eaf6; border: 2px solid #6200EA; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
     </style>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <link rel="canonical" href="https://little-genius-kids.vercel.app/games/ai-puzzle.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Little Genius Kids">
+    <meta property="og:title" content="AI Puzzle Challenge - Little Genius Kids">
+    <meta property="og:description" content="Play AI Puzzle Challenge free on Little Genius Kids — a 100% ad-free educational game for children.">
+    <meta property="og:url" content="https://little-genius-kids.vercel.app/games/ai-puzzle.html">
+    <meta property="og:image" content="https://little-genius-kids.vercel.app/images/hero_child_tablet.jpg">
+    <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo"><a href="../index.html"><i class="fa-solid fa-graduation-cap"></i> Little Genius</a></div>
-            <nav>
-                <a href="../index.html">Home</a>
-                <a href="../ai-course.html">AI Course</a>
-                <a href="../games.html" class="active">Games</a>
-                <a href="../blog/index.html">Blog</a>
-                <a href="../about.html">About</a>
-                <a href="../contact.html">Contact</a>
-            </nav>
+    <header class="site-header">
+  <div class="container navbar-inner">
+    <div class="logo">
+      <a href="../index.html">
+        <i class="fa-solid fa-graduation-cap"></i> Little Genius
+      </a>
+    </div>
+    <nav class="nav-links" aria-label="Main Navigation">
+      <a href="../index.html">Home</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+          Learn <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="../abc.html"><i class="fa-solid fa-font"></i> ABC Learning</a>
+          <a href="../numbers.html"><i class="fa-solid fa-hashtag"></i> Numbers</a>
+          <a href="../colors-shapes.html"><i class="fa-solid fa-shapes"></i> Colors & Shapes</a>
+          <a href="../animals.html"><i class="fa-solid fa-paw"></i> Animals</a>
+          <a href="../rhymes.html"><i class="fa-solid fa-music"></i> Rhymes & Videos</a>
+          <a href="../worksheets.html"><i class="fa-solid fa-file-pdf"></i> Worksheets</a>
+          <a href="../periodic-table.html"><i class="fa-solid fa-flask"></i> Periodic Table</a>
         </div>
-    </header>
+      </div>
+      <a href="../games.html" class="active">Games</a>
+      <a href="../ai-course.html">AI Course</a>
+      <a href="../blog/index.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="btn-icon" type="button" aria-label="Toggle Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <a href="../parents.html" class="nav-parents-btn">Parents</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
     <main>
         <section class="game-hero">
             <h1>AI Puzzle Challenge 🤖</h1>
             <p>Assemble the robot's logic core!</p>
         </section>
         <div class="game-container">
-            <div class="puzzle-grid">
-                <div class="puzzle-piece">1</div><div class="puzzle-piece">2</div><div class="puzzle-piece">3</div>
-                <div class="puzzle-piece">4</div><div class="puzzle-piece">5</div><div class="puzzle-piece">6</div>
-                <div class="puzzle-piece">7</div><div class="puzzle-piece">8</div><div class="puzzle-piece"> </div>
-            </div>
-            <p style="margin-top:2rem;">Slide the tiles to complete the image.</p>
+            <p id="puzzle-moves" style="font-weight:700; color:#6200EA; margin-bottom:1.25rem;">Moves: 0</p>
+            <div class="puzzle-grid" id="puzzle-grid"></div>
+            <p id="puzzle-status" role="status" aria-live="polite" style="margin-top:1.5rem; font-weight:700; min-height:1.5rem;">Slide a tile next to the empty spot to arrange 1–8 in order!</p>
+            <button type="button" id="puzzle-shuffle-btn" class="btn-primary" style="margin-top:1rem; padding:0.85rem 2rem; border-radius:50px; border:none; background:#6200EA; color:#fff; font-weight:700; cursor:pointer;">Shuffle Tiles</button>
+            <br>
             <a href="../games.html" class="btn-back" style="display:inline-block; margin-top:2rem; color:#6200EA; font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Back to Games</a>
         </div>
     </main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Little Genius Kids. All rights reserved.</p>
+    <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
+    <div class="footer-links">
+      <a href="../about.html">About</a>
+      <a href="../parents.html">Parents</a>
+      <a href="../worksheets.html">Worksheets</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+      <a href="../terms-and-conditions.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+    <script src="../js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const gridEl = document.getElementById('puzzle-grid');
+        const movesEl = document.getElementById('puzzle-moves');
+        const statusEl = document.getElementById('puzzle-status');
+        const shuffleBtn = document.getElementById('puzzle-shuffle-btn');
+
+        let board = [1, 2, 3, 4, 5, 6, 7, 8, 0];
+        let moves = 0;
+        let won = false;
+
+        function getNeighbors(idx) {
+            const r = Math.floor(idx / 3), c = idx % 3;
+            const list = [];
+            if (r > 0) list.push(idx - 3);
+            if (r < 2) list.push(idx + 3);
+            if (c > 0) list.push(idx - 1);
+            if (c < 2) list.push(idx + 1);
+            return list;
+        }
+
+        function isSolved() {
+            return board.every((v, i) => (i < 8 ? v === i + 1 : v === 0));
+        }
+
+        function shuffleBoard() {
+            board = [1, 2, 3, 4, 5, 6, 7, 8, 0];
+            let emptyIdx = 8;
+            let prev = -1;
+            for (let i = 0; i < 45; i++) {
+                const nbs = getNeighbors(emptyIdx).filter(n => n !== prev);
+                const pick = nbs[Math.floor(Math.random() * nbs.length)];
+                [board[emptyIdx], board[pick]] = [board[pick], board[emptyIdx]];
+                prev = emptyIdx;
+                emptyIdx = pick;
+            }
+            if (isSolved()) {
+                [board[7], board[8]] = [board[8], board[7]];
+            }
+            moves = 0;
+            won = false;
+            movesEl.textContent = 'Moves: 0';
+            statusEl.textContent = 'Slide a tile next to the empty spot to arrange 1–8 in order!';
+            statusEl.style.color = 'inherit';
+            render();
+        }
+
+        function render() {
+            gridEl.innerHTML = '';
+            board.forEach((val, idx) => {
+                const tile = document.createElement('button');
+                tile.type = 'button';
+                tile.className = 'puzzle-piece';
+                tile.style.fontFamily = "'Fredoka One', cursive";
+                tile.style.fontSize = '1.8rem';
+                tile.style.color = '#1a237e';
+                if (val === 0) {
+                    tile.style.background = 'transparent';
+                    tile.style.borderStyle = 'dashed';
+                    tile.style.cursor = 'default';
+                    tile.setAttribute('aria-label', 'Empty slot');
+                } else {
+                    tile.textContent = val;
+                    tile.addEventListener('click', () => moveTile(idx));
+                }
+                gridEl.appendChild(tile);
+            });
+        }
+
+        function moveTile(idx) {
+            if (won) return;
+            const emptyIdx = board.indexOf(0);
+            if (!getNeighbors(emptyIdx).includes(idx)) return;
+            [board[emptyIdx], board[idx]] = [board[idx], board[emptyIdx]];
+            moves++;
+            movesEl.textContent = `Moves: ${moves}`;
+            render();
+
+            if (isSolved()) {
+                won = true;
+                statusEl.textContent = `Robot Logic Core Assembled in ${moves} moves! +5 Stars!`;
+                statusEl.style.color = '#2e7d32';
+                if (window.addStars) window.addStars(5);
+            }
+        }
+
+        shuffleBtn.addEventListener('click', shuffleBoard);
+        shuffleBoard();
+    });
+    </script>
 </body>
 </html>

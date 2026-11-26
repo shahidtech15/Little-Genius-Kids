@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="65e9cf65-8c38-4795-9951-24eff8c602be" type="text/javascript" async></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MB4S6Q15T"></script>
@@ -11,9 +13,8 @@
 
   gtag('config', 'G-0MB4S6Q15T');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sequence Recall - Little Genius Kids</title>
+    <meta name="description" content="Play Sequence Recall free on Little Genius Kids — a 100% ad-free educational game for children.">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -32,37 +33,205 @@
         .seq-circle { width: 60px; height: 60px; border-radius: 50%; background: #e0e0e0; transition: 0.3s; }
         .active-red { background: #f44336; transform: scale(1.1); }
     </style>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <link rel="canonical" href="https://little-genius-kids.vercel.app/games/sequence-recall.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Little Genius Kids">
+    <meta property="og:title" content="Sequence Recall - Little Genius Kids">
+    <meta property="og:description" content="Play Sequence Recall free on Little Genius Kids — a 100% ad-free educational game for children.">
+    <meta property="og:url" content="https://little-genius-kids.vercel.app/games/sequence-recall.html">
+    <meta property="og:image" content="https://little-genius-kids.vercel.app/images/hero_child_tablet.jpg">
+    <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo"><a href="../index.html"><i class="fa-solid fa-graduation-cap"></i> Little Genius</a></div>
-            <nav>
-                <a href="../index.html">Home</a>
-                <a href="../ai-course.html">AI Course</a>
-                <a href="../games.html" class="active">Games</a>
-                <a href="../blog/index.html">Blog</a>
-                <a href="../about.html">About</a>
-                <a href="../contact.html">Contact</a>
-            </nav>
+    <header class="site-header">
+  <div class="container navbar-inner">
+    <div class="logo">
+      <a href="../index.html">
+        <i class="fa-solid fa-graduation-cap"></i> Little Genius
+      </a>
+    </div>
+    <nav class="nav-links" aria-label="Main Navigation">
+      <a href="../index.html">Home</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+          Learn <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="../abc.html"><i class="fa-solid fa-font"></i> ABC Learning</a>
+          <a href="../numbers.html"><i class="fa-solid fa-hashtag"></i> Numbers</a>
+          <a href="../colors-shapes.html"><i class="fa-solid fa-shapes"></i> Colors & Shapes</a>
+          <a href="../animals.html"><i class="fa-solid fa-paw"></i> Animals</a>
+          <a href="../rhymes.html"><i class="fa-solid fa-music"></i> Rhymes & Videos</a>
+          <a href="../worksheets.html"><i class="fa-solid fa-file-pdf"></i> Worksheets</a>
+          <a href="../periodic-table.html"><i class="fa-solid fa-flask"></i> Periodic Table</a>
         </div>
-    </header>
+      </div>
+      <a href="../games.html" class="active">Games</a>
+      <a href="../ai-course.html">AI Course</a>
+      <a href="../blog/index.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="btn-icon" type="button" aria-label="Toggle Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <a href="../parents.html" class="nav-parents-btn">Parents</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
     <main>
         <section class="game-hero">
             <h1>Sequence Recall 🔢</h1>
             <p>Repeat the sequence correctly!</p>
         </section>
         <div class="game-container">
-            <div class="sequence-box">
-                <div class="seq-circle active-red"></div>
-                <div class="seq-circle"></div>
-                <div class="seq-circle"></div>
-                <div class="seq-circle"></div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:1.5rem; font-weight:700; color:#5e35b1;">
+                <span id="seq-level">Level: 0</span>
+                <span id="seq-best">Best: 0</span>
             </div>
-            <p>Can you remember the pattern?</p>
-            <button class="btn-primary" style="padding:1rem 2rem; border-radius:50px; border:none; background:#2196F3; color:#fff; font-weight:700; margin-top:1rem; cursor:pointer;" onclick="alert('Game starts!')">Start Game</button>
+            <div id="seq-pad" style="display:grid; grid-template-columns:repeat(2, 130px); gap:1rem; justify-content:center; margin:0 auto 1.5rem;">
+                <button type="button" class="seq-btn" data-color="0" aria-label="Red button" style="height:110px; border-radius:20px; border:4px solid #fff; background:#ef5350; cursor:pointer; box-shadow:0 6px 15px rgba(0,0,0,0.15); transition:transform 0.15s, filter 0.15s;"></button>
+                <button type="button" class="seq-btn" data-color="1" aria-label="Blue button" style="height:110px; border-radius:20px; border:4px solid #fff; background:#42a5f5; cursor:pointer; box-shadow:0 6px 15px rgba(0,0,0,0.15); transition:transform 0.15s, filter 0.15s;"></button>
+                <button type="button" class="seq-btn" data-color="2" aria-label="Green button" style="height:110px; border-radius:20px; border:4px solid #fff; background:#66bb6a; cursor:pointer; box-shadow:0 6px 15px rgba(0,0,0,0.15); transition:transform 0.15s, filter 0.15s;"></button>
+                <button type="button" class="seq-btn" data-color="3" aria-label="Yellow button" style="height:110px; border-radius:20px; border:4px solid #fff; background:#ffee58; cursor:pointer; box-shadow:0 6px 15px rgba(0,0,0,0.15); transition:transform 0.15s, filter 0.15s;"></button>
+            </div>
+            <p id="seq-status" role="status" aria-live="polite" style="font-weight:700; min-height:1.8rem;">Press Start Game, watch the flashing colors, then repeat the order!</p>
+            <button type="button" id="seq-start-btn" class="btn-primary" style="padding:1rem 2rem; border-radius:50px; border:none; background:#2196F3; color:#fff; font-weight:700; margin-top:1rem; cursor:pointer;">Start Game</button>
+            <br>
             <a href="../games.html" class="btn-back" style="display:inline-block; margin-top:2rem; color:#673AB7; font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Back to Games</a>
         </div>
     </main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Little Genius Kids. All rights reserved.</p>
+    <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
+    <div class="footer-links">
+      <a href="../about.html">About</a>
+      <a href="../parents.html">Parents</a>
+      <a href="../worksheets.html">Worksheets</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+      <a href="../terms-and-conditions.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+    <script src="../js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const buttons = Array.from(document.querySelectorAll('.seq-btn'));
+        const levelEl = document.getElementById('seq-level');
+        const bestEl = document.getElementById('seq-best');
+        const statusEl = document.getElementById('seq-status');
+        const startBtn = document.getElementById('seq-start-btn');
+
+        const freqs = [329.63, 392.00, 493.88, 587.33];
+        let audioCtx = null;
+        let sequence = [];
+        let playerIndex = 0;
+        let acceptingInput = false;
+        let awardedStars = false;
+        let bestLevel = parseInt(localStorage.getItem('sequenceRecallBest') || '0', 10) || 0;
+        bestEl.textContent = `Best: ${bestLevel}`;
+
+        function playTone(idx) {
+            if (localStorage.getItem('littleGeniusSoundEnabled') === 'false') return;
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return;
+                if (!audioCtx) audioCtx = new AudioContext();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = freqs[idx];
+                gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.28);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.3);
+            } catch (e) {}
+        }
+
+        function flashButton(idx) {
+            const btn = buttons[idx];
+            btn.style.transform = 'scale(1.08)';
+            btn.style.filter = 'brightness(1.35)';
+            playTone(idx);
+            setTimeout(() => {
+                btn.style.transform = 'scale(1)';
+                btn.style.filter = 'brightness(1)';
+            }, 300);
+        }
+
+        function nextRound() {
+            acceptingInput = false;
+            playerIndex = 0;
+            sequence.push(Math.floor(Math.random() * 4));
+            levelEl.textContent = `Level: ${sequence.length}`;
+            statusEl.textContent = 'Watch carefully...';
+            statusEl.style.color = '#1565c0';
+
+            sequence.forEach((step, i) => {
+                setTimeout(() => {
+                    flashButton(step);
+                    if (i === sequence.length - 1) {
+                        setTimeout(() => {
+                            acceptingInput = true;
+                            statusEl.textContent = 'Your turn! Repeat the pattern.';
+                            statusEl.style.color = '#2e7d32';
+                        }, 360);
+                    }
+                }, (i + 1) * 580);
+            });
+        }
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (!acceptingInput) return;
+                const val = parseInt(btn.dataset.color, 10);
+                flashButton(val);
+
+                if (val === sequence[playerIndex]) {
+                    playerIndex++;
+                    if (playerIndex === sequence.length) {
+                        acceptingInput = false;
+                        if (sequence.length > bestLevel) {
+                            bestLevel = sequence.length;
+                            localStorage.setItem('sequenceRecallBest', String(bestLevel));
+                            bestEl.textContent = `Best: ${bestLevel}`;
+                        }
+                        if (sequence.length >= 4 && !awardedStars) {
+                            awardedStars = true;
+                            if (window.addStars) window.addStars(5);
+                            statusEl.textContent = 'Level 4+ reached! +5 Stars earned! Next round...';
+                        } else {
+                            statusEl.textContent = 'Nice memory! Get ready for the next step...';
+                        }
+                        setTimeout(nextRound, 900);
+                    }
+                } else {
+                    acceptingInput = false;
+                    statusEl.textContent = `Oops! You reached Level ${sequence.length}. Press Start Game to try again!`;
+                    statusEl.style.color = '#c62828';
+                    startBtn.textContent = 'Restart Game';
+                }
+            });
+        });
+
+        startBtn.addEventListener('click', () => {
+            sequence = [];
+            awardedStars = false;
+            startBtn.textContent = 'Restart Game';
+            nextRound();
+        });
+    });
+    </script>
 </body>
 </html>

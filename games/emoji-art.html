@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="65e9cf65-8c38-4795-9951-24eff8c602be" type="text/javascript" async></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MB4S6Q15T"></script>
@@ -11,9 +13,8 @@
 
   gtag('config', 'G-0MB4S6Q15T');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emoji Art - Little Genius Kids</title>
+    <meta name="description" content="Play Emoji Art free on Little Genius Kids — a 100% ad-free educational game for children.">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -32,34 +33,165 @@
         .emoji-item { font-size: 3rem; cursor: pointer; transition: 0.3s; }
         .emoji-item:hover { transform: scale(1.2); }
     </style>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <link rel="canonical" href="https://little-genius-kids.vercel.app/games/emoji-art.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Little Genius Kids">
+    <meta property="og:title" content="Emoji Art - Little Genius Kids">
+    <meta property="og:description" content="Play Emoji Art free on Little Genius Kids — a 100% ad-free educational game for children.">
+    <meta property="og:url" content="https://little-genius-kids.vercel.app/games/emoji-art.html">
+    <meta property="og:image" content="https://little-genius-kids.vercel.app/images/hero_child_tablet.jpg">
+    <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo"><a href="../index.html"><i class="fa-solid fa-graduation-cap"></i> Little Genius</a></div>
-            <nav>
-                <a href="../index.html">Home</a>
-                <a href="../ai-course.html">AI Course</a>
-                <a href="../games.html" class="active">Games</a>
-                <a href="../blog/index.html">Blog</a>
-                <a href="../about.html">About</a>
-                <a href="../contact.html">Contact</a>
-            </nav>
+    <header class="site-header">
+  <div class="container navbar-inner">
+    <div class="logo">
+      <a href="../index.html">
+        <i class="fa-solid fa-graduation-cap"></i> Little Genius
+      </a>
+    </div>
+    <nav class="nav-links" aria-label="Main Navigation">
+      <a href="../index.html">Home</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+          Learn <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="../abc.html"><i class="fa-solid fa-font"></i> ABC Learning</a>
+          <a href="../numbers.html"><i class="fa-solid fa-hashtag"></i> Numbers</a>
+          <a href="../colors-shapes.html"><i class="fa-solid fa-shapes"></i> Colors & Shapes</a>
+          <a href="../animals.html"><i class="fa-solid fa-paw"></i> Animals</a>
+          <a href="../rhymes.html"><i class="fa-solid fa-music"></i> Rhymes & Videos</a>
+          <a href="../worksheets.html"><i class="fa-solid fa-file-pdf"></i> Worksheets</a>
+          <a href="../periodic-table.html"><i class="fa-solid fa-flask"></i> Periodic Table</a>
         </div>
-    </header>
+      </div>
+      <a href="../games.html" class="active">Games</a>
+      <a href="../ai-course.html">AI Course</a>
+      <a href="../blog/index.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="btn-icon" type="button" aria-label="Toggle Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <a href="../parents.html" class="nav-parents-btn">Parents</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
     <main>
         <section class="game-hero">
             <h1>Emoji Art 🤩</h1>
             <p>Create masterpieces with your favorite emojis!</p>
         </section>
         <div class="game-container">
-            <div class="emoji-grid">
-                <span class="emoji-item">🍎</span><span class="emoji-item">🚀</span><span class="emoji-item">🎨</span><span class="emoji-item">🤖</span><span class="emoji-item">🧩</span>
-                <span class="emoji-item">🌈</span><span class="emoji-item">🍦</span><span class="emoji-item">🐱</span><span class="emoji-item">🌟</span><span class="emoji-item">🎸</span>
+            <div class="emoji-grid" id="emoji-palette" style="grid-template-columns: repeat(8, 1fr); margin-top: 0; margin-bottom: 1.5rem;"></div>
+            <div style="display:flex; justify-content:center; align-items:center; gap:0.75rem; flex-wrap:wrap; margin-bottom:1.25rem;">
+                <label for="emoji-size" style="font-weight:700;">Sticker Size:</label>
+                <select id="emoji-size" style="padding:0.45rem 0.9rem; border-radius:12px; border:2px solid #E91E63; font-weight:700;">
+                    <option value="28">Small</option>
+                    <option value="44" selected>Medium</option>
+                    <option value="64">Large</option>
+                </select>
+                <button type="button" id="emoji-undo" class="btn btn-small" style="background:#7e57c2; color:#fff;">Undo</button>
+                <button type="button" id="emoji-clear" class="btn btn-small" style="background:#ef5350; color:#fff;">Clear</button>
+                <button type="button" id="emoji-save" class="btn btn-small" style="background:#43a047; color:#fff;"><i class="fa-solid fa-download"></i> Save PNG</button>
             </div>
-            <p style="margin-top:2rem;">Drag and drop emojis to build your art!</p>
-            <a href="../games.html" class="btn-back" style="display:inline-block; margin-top:2rem; color:#E91E63; font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Back to Games</a>
+            <canvas id="emoji-canvas" width="600" height="380" style="max-width:100%; background:#fffdf5; border:3px dashed #E91E63; border-radius:20px; cursor:crosshair; touch-action:none;"></canvas>
+            <p style="margin-top:1rem;">Pick an emoji above, then click or tap anywhere on the canvas to stamp your art!</p>
+            <a href="../games.html" class="btn-back" style="display:inline-block; margin-top:1.5rem; color:#E91E63; font-weight:700;"><i class="fa-solid fa-arrow-left"></i> Back to Games</a>
         </div>
     </main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Little Genius Kids. All rights reserved.</p>
+    <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
+    <div class="footer-links">
+      <a href="../about.html">About</a>
+      <a href="../parents.html">Parents</a>
+      <a href="../worksheets.html">Worksheets</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+      <a href="../terms-and-conditions.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+    <script src="../js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const emojis = ['🍎','🚀','🎨','🤖','🧩','🌈','🍦','🐱','🌟','🎸','🦋','🐶','⚽','🌸','🎈','🦖'];
+        const paletteEl = document.getElementById('emoji-palette');
+        const sizeEl = document.getElementById('emoji-size');
+        const canvas = document.getElementById('emoji-canvas');
+        const ctx = canvas.getContext('2d');
+        const undoBtn = document.getElementById('emoji-undo');
+        const clearBtn = document.getElementById('emoji-clear');
+        const saveBtn = document.getElementById('emoji-save');
+
+        let activeEmoji = emojis[0];
+        let stamps = [];
+
+        function renderPalette() {
+            paletteEl.innerHTML = '';
+            emojis.forEach(em => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'emoji-item';
+                btn.textContent = em;
+                btn.style.cssText = 'font-size:2rem; background:#fff; border:2px solid ' + (em === activeEmoji ? '#E91E63' : '#eee') + '; border-radius:12px; padding:0.35rem; cursor:pointer;';
+                btn.addEventListener('click', () => {
+                    activeEmoji = em;
+                    renderPalette();
+                });
+                paletteEl.appendChild(btn);
+            });
+        }
+
+        function redraw() {
+            ctx.fillStyle = '#fffdf5';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            stamps.forEach(s => {
+                ctx.font = `${s.size}px "Segoe UI Emoji", "Apple Color Emoji", sans-serif`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(s.emoji, s.x, s.y);
+            });
+        }
+
+        function addStamp(clientX, clientY) {
+            const rect = canvas.getBoundingClientRect();
+            const x = (clientX - rect.left) * (canvas.width / rect.width);
+            const y = (clientY - rect.top) * (canvas.height / rect.height);
+            stamps.push({ emoji: activeEmoji, size: parseInt(sizeEl.value, 10), x, y });
+            redraw();
+        }
+
+        canvas.addEventListener('click', (e) => addStamp(e.clientX, e.clientY));
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const t = e.touches[0];
+            addStamp(t.clientX, t.clientY);
+        }, { passive: false });
+
+        undoBtn.addEventListener('click', () => { stamps.pop(); redraw(); });
+        clearBtn.addEventListener('click', () => { stamps = []; redraw(); });
+        saveBtn.addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.download = 'little-genius-emoji-art.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+
+        renderPalette();
+        redraw();
+    });
+    </script>
 </body>
 </html>

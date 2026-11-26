@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="65e9cf65-8c38-4795-9951-24eff8c602be" type="text/javascript" async></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MB4S6Q15T"></script>
@@ -12,11 +14,10 @@
 
   gtag('config', 'G-0MB4S6Q15T');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parent Dashboard | Little Genius</title>
+    <meta name="description" content="Parent Dashboard on Little Genius Kids — 100% free and ad-free early learning activities, games, and printables.">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Nunito:wght@400;600;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"
         rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -152,32 +153,66 @@
             transform: translateX(26px);
         }
     </style>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="canonical" href="https://little-genius-kids.vercel.app/parents.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Little Genius Kids">
+    <meta property="og:title" content="Parent Dashboard | Little Genius">
+    <meta property="og:description" content="Parent Dashboard on Little Genius Kids — 100% free and ad-free early learning activities, games, and printables.">
+    <meta property="og:url" content="https://little-genius-kids.vercel.app/parents.html">
+    <meta property="og:image" content="https://little-genius-kids.vercel.app/images/hero_child_tablet.jpg">
+    <meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body>
-    <header class="navbar">
-        <div class="logo">
-            <a href="index.html">
-                <i class="fa-solid fa-graduation-cap"></i> Little Genius
-            </a>
+    <header class="site-header">
+  <div class="container navbar-inner">
+    <div class="logo">
+      <a href="index.html">
+        <i class="fa-solid fa-graduation-cap"></i> Little Genius
+      </a>
+    </div>
+    <nav class="nav-links" aria-label="Main Navigation">
+      <a href="index.html">Home</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+          Learn <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="abc.html"><i class="fa-solid fa-font"></i> ABC Learning</a>
+          <a href="numbers.html"><i class="fa-solid fa-hashtag"></i> Numbers</a>
+          <a href="colors-shapes.html"><i class="fa-solid fa-shapes"></i> Colors & Shapes</a>
+          <a href="animals.html"><i class="fa-solid fa-paw"></i> Animals</a>
+          <a href="rhymes.html"><i class="fa-solid fa-music"></i> Rhymes & Videos</a>
+          <a href="worksheets.html"><i class="fa-solid fa-file-pdf"></i> Worksheets</a>
+          <a href="periodic-table.html"><i class="fa-solid fa-flask"></i> Periodic Table</a>
         </div>
-        <nav class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="games.html">Games</a>
-            <a href="parents.html" class="active">Parent Dashboard</a>
-        </nav>
-        <div class="nav-actions">
-            <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark Mode"><i
-                    class="fa-solid fa-moon"></i></button>
-            <a href="login.html" class="btn-primary">Logout</a>
-            <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
-        </div>
-    </header>
+      </div>
+      <a href="games.html">Games</a>
+      <a href="ai-course.html">AI Course</a>
+      <a href="blog/index.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="btn-icon" type="button" aria-label="Toggle Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <a href="parents.html" class="nav-parents-btn active">Parents</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
 
     <main class="dashboard-container">
         <div class="dashboard-header">
-            <h1>Parent / Teacher Dashboard</h1>
-            <p>Track your child's learning progress.</p>
+            <div>
+                <h1>Parent / Teacher Dashboard</h1>
+                <p id="parent-welcome">Track your child's learning progress.</p>
+            </div>
+            <a href="login.html" class="btn btn-small" style="background-color: var(--secondary-color); color: #fff;">Switch Profile</a>
         </div>
 
         <div class="stats-grid">
@@ -190,21 +225,24 @@
 
             <div class="stat-card">
                 <i class="fa-solid fa-clock" style="color: var(--card-blue); font-size: 4rem; margin-bottom: 1rem;"></i>
-                <h2>2h 15m</h2>
-                <p>Time Spent Learning (Simulated)</p>
+                <h2 id="learning-time">0m</h2>
+                <p>Time Spent Learning (This Device)</p>
             </div>
         </div>
 
         <div class="settings-section">
-            <h3>App Settings</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                <h3>App Settings</h3>
+                <span id="settings-saved-msg" role="status" aria-live="polite" style="font-weight: 700; color: #2e7d32;"></span>
+            </div>
 
             <div class="settings-item">
                 <div>
-                    <strong>Enable Sounds & Voice</strong>
+                    <strong>Enable Sounds &amp; Voice</strong>
                     <p style="font-size: 0.9rem; color: #666;">Allow text-to-speech for ABCs and Animals</p>
                 </div>
                 <label class="switch">
-                    <input type="checkbox" checked>
+                    <input type="checkbox" id="toggle-sound" checked>
                     <span class="slider"></span>
                 </label>
             </div>
@@ -214,40 +252,98 @@
                     <strong>Daily Time Limit</strong>
                     <p style="font-size: 0.9rem; color: #666;">Set maximum screen time</p>
                 </div>
-                <select style="padding: 0.5rem; border-radius: 10px; border: 1px solid #ccc;">
-                    <option>No Limit</option>
-                    <option>30 Minutes</option>
-                    <option>1 Hour</option>
-                    <option>2 Hours</option>
+                <select id="select-time-limit" style="padding: 0.5rem; border-radius: 10px; border: 1px solid #ccc;">
+                    <option value="none">No Limit</option>
+                    <option value="30">30 Minutes</option>
+                    <option value="60">1 Hour</option>
+                    <option value="120">2 Hours</option>
                 </select>
             </div>
         </div>
     </main>
 
     <footer>
-        <div class="footer-content">
-            <p>&copy; 2026 Little Genius Kids Learning.</p>
-        </div>
-    </footer>
+  <div class="container">
+    <p>&copy; 2026 Little Genius Kids. All rights reserved.</p>
+    <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="parents.html">Parents</a>
+      <a href="worksheets.html">Worksheets</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-and-conditions.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
 
     <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const starCountDisplay = document.getElementById('star-count');
+            const timeDisplay = document.getElementById('learning-time');
             const btnResetStars = document.getElementById('btn-reset-stars');
+            const toggleSound = document.getElementById('toggle-sound');
+            const selectTimeLimit = document.getElementById('select-time-limit');
+            const savedMsg = document.getElementById('settings-saved-msg');
+            const welcomeEl = document.getElementById('parent-welcome');
 
-            function updateStarDisplay() {
-                const stars = localStorage.getItem('littleGeniusStars') || '0';
-                starCountDisplay.textContent = stars;
+            function formatLearningTime(totalSeconds) {
+                const mins = Math.floor(totalSeconds / 60);
+                const hrs = Math.floor(mins / 60);
+                const remMins = mins % 60;
+                if (hrs > 0) return `${hrs}h ${String(remMins).padStart(2, '0')}m`;
+                return `${mins}m`;
             }
 
-            // Initial load
-            updateStarDisplay();
+            function updateStatsDisplay() {
+                const stars = localStorage.getItem('littleGeniusStars') || '0';
+                const secs = parseInt(localStorage.getItem('littleGeniusTimeSeconds'), 10) || 0;
+                starCountDisplay.textContent = stars;
+                timeDisplay.textContent = formatLearningTime(secs);
+            }
+
+            try {
+                const profile = JSON.parse(localStorage.getItem('littleGeniusParentProfile') || 'null');
+                if (profile && (profile.name || profile.email)) {
+                    const who = profile.name || profile.email;
+                    welcomeEl.textContent = `Welcome back, ${who}! Track your child's learning progress.`;
+                }
+            } catch (e) {}
+
+            // Load persisted settings
+            toggleSound.checked = localStorage.getItem('littleGeniusSoundEnabled') !== 'false';
+            const savedLimit = localStorage.getItem('littleGeniusDailyLimit') || 'none';
+            if (selectTimeLimit.querySelector(`option[value="${savedLimit}"]`)) {
+                selectTimeLimit.value = savedLimit;
+            }
+
+            let savedTimer;
+            function showSavedNotice() {
+                savedMsg.textContent = 'Settings saved!';
+                clearTimeout(savedTimer);
+                savedTimer = setTimeout(() => { savedMsg.textContent = ''; }, 2000);
+            }
+
+            toggleSound.addEventListener('change', () => {
+                localStorage.setItem('littleGeniusSoundEnabled', String(toggleSound.checked));
+                showSavedNotice();
+            });
+
+            selectTimeLimit.addEventListener('change', () => {
+                localStorage.setItem('littleGeniusDailyLimit', selectTimeLimit.value);
+                showSavedNotice();
+            });
+
+            updateStatsDisplay();
+            setInterval(updateStatsDisplay, 15000);
 
             btnResetStars.addEventListener('click', () => {
-                if (confirm("Are you sure you want to reset all earned stars?")) {
+                if (confirm("Are you sure you want to reset all earned stars and learning time?")) {
                     localStorage.setItem('littleGeniusStars', '0');
-                    updateStarDisplay();
+                    localStorage.setItem('littleGeniusTimeSeconds', '0');
+                    updateStatsDisplay();
                 }
             });
         });

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="65e9cf65-8c38-4795-9951-24eff8c602be" type="text/javascript" async></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MB4S6Q15T"></script>
@@ -11,13 +13,11 @@
 
   gtag('config', 'G-0MB4S6Q15T');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Little Genius Kids | Top Kids Learning App & Preschool Games</title>
     <meta name="description" content="Discover the best kids learning app featuring preschool learning games, interactive activities, and comprehensive toddler education. Start learning freely today!">
     <meta name="keywords" content="kids learning app, preschool learning games, toddler education, kids worksheets, kindergarten activities, learn ABC, numbers">
-    <!-- Google Fonts: Fredoka One and Outfit -->
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Fredoka One and Nunito -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -33,25 +33,57 @@
       "sameAs": []
     }
     </script>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="canonical" href="https://little-genius-kids.vercel.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Little Genius Kids">
+    <meta property="og:title" content="Little Genius Kids | Top Kids Learning App &amp; Preschool Games">
+    <meta property="og:description" content="Discover the best kids learning app featuring preschool learning games, interactive activities, and comprehensive toddler education. Start learning freely today!">
+    <meta property="og:url" content="https://little-genius-kids.vercel.app/">
+    <meta property="og:image" content="https://little-genius-kids.vercel.app/images/hero_child_tablet.jpg">
+    <meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body>
 
-<header>
-  <div class="container">
+<header class="site-header">
+  <div class="container navbar-inner">
     <div class="logo">
-        <a href="index.html">
-            <i class="fa-solid fa-graduation-cap"></i> Little Genius
-        </a>
+      <a href="index.html">
+        <i class="fa-solid fa-graduation-cap"></i> Little Genius
+      </a>
     </div>
-    <nav>
+    <nav class="nav-links" aria-label="Main Navigation">
       <a href="index.html" class="active">Home</a>
-      <a href="ai-course.html">AI Course</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+          Learn <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="abc.html"><i class="fa-solid fa-font"></i> ABC Learning</a>
+          <a href="numbers.html"><i class="fa-solid fa-hashtag"></i> Numbers</a>
+          <a href="colors-shapes.html"><i class="fa-solid fa-shapes"></i> Colors & Shapes</a>
+          <a href="animals.html"><i class="fa-solid fa-paw"></i> Animals</a>
+          <a href="rhymes.html"><i class="fa-solid fa-music"></i> Rhymes & Videos</a>
+          <a href="worksheets.html"><i class="fa-solid fa-file-pdf"></i> Worksheets</a>
+          <a href="periodic-table.html"><i class="fa-solid fa-flask"></i> Periodic Table</a>
+        </div>
+      </div>
       <a href="games.html">Games</a>
+      <a href="ai-course.html">AI Course</a>
       <a href="blog/index.html">Blog</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="btn-icon" type="button" aria-label="Toggle Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <a href="parents.html" class="nav-parents-btn">Parents</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -63,7 +95,7 @@
           <h1 class="bounce-in" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.15; margin-bottom: 20px; color: #ff6b6b; font-family: 'Fredoka One', cursive;">Spark Their Brilliant Future With Joyful Early Learning.</h1>
           <p style="font-size: 1.25rem; color: #555; line-height: 1.6; margin-bottom: 30px; font-weight: 500;">Turn screen time into brain-building time. Discover a 100% kid-safe world where your 2–6 year old masters reading, math, and problem-solving through play.</p>
           <div class="hero-buttons" style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
-            <a href="games.html" class="btn btn-primary bounce-pulse" style="font-size: 1.1rem; padding: 15px 30px; background-color: #ff8c00; box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4); border-radius: 50px;">Start My Free 7-Day Trial 🚀</a>
+            <a href="games.html" class="btn btn-primary bounce-pulse" style="font-size: 1.1rem; padding: 15px 30px; background-color: #ff8c00; box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4); border-radius: 50px;">Start Playing Free 🚀</a>
             <a href="#how-it-works" class="btn btn-large" style="font-size: 1.1rem; padding: 15px 30px; background-color: #fff; color: #ff8c00; border: 2px solid #ff8c00; border-radius: 50px;">See How It Works ▶️</a>
             <a href="worksheets.html" style="font-size: 1.1rem; color: #555; text-decoration: underline; font-weight: 600; margin-left: 5px;">Explore Curriculum 📚</a>
           </div>
@@ -72,7 +104,7 @@
           </div>
       </div>
       <div class="hero-image" style="position: relative;">
-          <img src="images/hero_child_tablet.png" alt="Smiling child learning on a tablet with glowing 3D educational elements" style="max-width: 100%; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 8px solid white; transform: rotate(-2deg); transition: transform 0.3s ease;">
+          <img src="images/hero_child_tablet.jpg" width="768" height="768" loading="eager" fetchpriority="high" alt="Child using a safe kids learning app for preschool education" style="max-width: 100%; height: auto; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 8px solid white; transform: rotate(-2deg); transition: transform 0.3s ease;">
       </div>
     </div>
   </div>
@@ -95,7 +127,7 @@
             <h3>Games</h3>
             <p>Interactive educational games.</p>
         </a>
-        <a href="#" class="card card-purple scale-hover">
+        <a href="rhymes.html" class="card card-purple scale-hover">
             <i class="fa-solid fa-play-circle fa-3x mb-2"></i>
             <h3>Videos</h3>
             <p>Engaging learning videos.</p>
@@ -222,20 +254,18 @@
   <section class="section" id="demo" style="background-color: #fff9e6;">
     <div class="container text-center">
       <h2 class="mb-4">Try a Sample Activity</h2>
-      <div class="card card-orange mx-auto" style="max-width: 600px; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-          <h3 class="mb-3">Animal Matching Game <i class="fa-solid fa-paw" style="margin-left: 8px; color: #ff8c00;"></i></h3>
-          <p class="mb-4">Can you find the matching pairs of animals? Try our demo!</p>
-          
-          <div style="background: #fff; border: 3px dashed #ffb74d; border-radius: 15px; padding: 30px; display: flex; align-items: center; justify-content: center; gap: 30px; margin-bottom: 25px;">
-              <div class="scale-hover" style="width: 80px; height: 80px; background: #ffe0b2; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-                  <i class="fa-solid fa-cat fa-3x" style="color: #f57c00;"></i>
-              </div>
-              <i class="fa-solid fa-arrows-left-right fa-2x" style="color: #ccc;"></i>
-              <div class="scale-hover" style="width: 80px; height: 80px; background: #ffe0b2; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-                  <i class="fa-solid fa-dog fa-3x" style="color: #f57c00;"></i>
-              </div>
+      <div class="card card-orange mx-auto" style="max-width: 640px; margin: 0 auto; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+          <h3 class="mb-2">Animal Matching Game <i class="fa-solid fa-paw" style="margin-left: 8px; color: #ff8c00;"></i></h3>
+          <p class="mb-2">Flip two cards to find all 3 matching animal pairs and earn <strong>+5 Stars</strong>!</p>
+          <p id="demo-status" style="font-weight: 700; color: #d84315; margin-bottom: 15px;" aria-live="polite">Pairs found: 0 / 3</p>
+
+          <div id="demo-board" style="background: #fff; border: 3px dashed #ffb74d; border-radius: 15px; padding: 20px; display: grid; grid-template-columns: repeat(3, minmax(80px, 1fr)); gap: 15px; margin-bottom: 25px;">
           </div>
-          <a href="games.html" class="btn btn-large bounce-pulse"><i class="fa-solid fa-play" style="margin-right: 8px;"></i>Try Now</a>
+
+          <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+              <button type="button" id="demo-reset-btn" class="btn btn-small" style="background-color: #ff8c00; color: #fff;"><i class="fa-solid fa-rotate-right" style="margin-right: 6px;"></i>Play Again</button>
+              <a href="games.html" class="btn btn-primary" style="font-size: 1rem; padding: 0.75rem 1.5rem;"><i class="fa-solid fa-gamepad" style="margin-right: 8px;"></i>Explore All Games</a>
+          </div>
       </div>
     </div>
   </section>
@@ -317,38 +347,39 @@
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section class="section" id="pricing">
+  <!-- FREE FOREVER ACCESS -->
+  <section class="section" id="free-access">
     <div class="container text-center">
-      <h2 class="mb-4">Choose Your Learning Plan</h2>
-      <div class="card-wrapper" style="max-width: 800px; margin: 0 auto;">
-        
-        <!-- Free Plan -->
+      <h2 class="mb-4">100% Free Early Learning — Always</h2>
+      <p style="max-width: 680px; margin: 0 auto 2.5rem auto; color: #555; font-size: 1.15rem;">Every game, lesson, printable worksheet, and parent guide on Little Genius Kids is completely free and ad-free.</p>
+      <div class="card-wrapper" style="max-width: 860px; margin: 0 auto;">
+
+        <!-- For Kids -->
         <div class="card card-cyan scale-hover text-center" style="display: flex; flex-direction: column; justify-content: space-between;">
             <div>
-                <h3>Free Plan</h3>
-                <h2 class="mb-3" style="font-size: 2.5rem;">$0<span style="font-size: 1rem; color: #555;">/mo</span></h2>
+                <h3>For Kids (Free Forever)</h3>
+                <p class="mb-3" style="font-size: 1.35rem; font-weight: 800; color: #00796b;">$0 — Unlimited Access</p>
                 <ul style="list-style: none; padding: 0; text-align: left; display: inline-block; margin: 0 auto 1.5rem auto;">
-                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-check text-success" style="margin-right: 10px; color: #4CAF50;"></i>Limited games</li>
-                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-check text-success" style="margin-right: 10px; color: #4CAF50;"></i>Limited videos</li>
+                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="margin-right: 10px; color: #2e7d32;"></i>All learning games &amp; arcade challenges</li>
+                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="margin-right: 10px; color: #2e7d32;"></i>Interactive ABC tracing, numbers &amp; animals</li>
+                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="margin-right: 10px; color: #2e7d32;"></i>Sing-along rhymes &amp; 100% ad-free play</li>
                 </ul>
             </div>
-            <a href="#" class="btn btn-small" style="background-color: #ddd; color: #333; margin-top: auto;">Current Plan</a>
+            <a href="games.html" class="btn btn-primary" style="width: 100%; box-sizing: border-box; margin-top: auto;">Start Playing</a>
         </div>
 
-        <!-- Premium Plan -->
-        <div class="card card-purple scale-hover text-center" style="transform: scale(1.05); border: 3px solid #9c27b0; position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: space-between;">
-            <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #ff4081; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; white-space: nowrap;">BEST VALUE</div>
+        <!-- For Parents & Teachers -->
+        <div class="card card-purple scale-hover text-center" style="border: 3px solid #8e63ce; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
-                <h3>Premium Plan</h3>
-                <h2 class="mb-3" style="font-size: 2.5rem; color: #9c27b0;">$5<span style="font-size: 1rem; color: #555;">/mo</span></h2>
+                <h3>For Parents &amp; Teachers (Free Forever)</h3>
+                <p class="mb-3" style="font-size: 1.35rem; font-weight: 800; color: #6a1b9a;">$0 — Full Toolkit</p>
                 <ul style="list-style: none; padding: 0; text-align: left; display: inline-block; margin: 0 auto 1.5rem auto;">
-                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-check text-success" style="margin-right: 10px; color: #4CAF50;"></i>Full access to all content</li>
-                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-check text-success" style="margin-right: 10px; color: #4CAF50;"></i>Worksheets & activities</li>
-                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-check text-success" style="margin-right: 10px; color: #4CAF50;"></i>No ads</li>
+                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="margin-right: 10px; color: #2e7d32;"></i>Printable ABC, math, coloring &amp; shape worksheets</li>
+                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="margin-right: 10px; color: #2e7d32;"></i>Parent progress &amp; star tracking dashboard</li>
+                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="margin-right: 10px; color: #2e7d32;"></i>Expert early-learning &amp; AI education guides</li>
                 </ul>
             </div>
-            <a href="#" class="btn btn-large bounce-pulse" style="margin-top: auto;">Start Free Trial</a>
+            <a href="worksheets.html" class="btn btn-primary" style="width: 100%; box-sizing: border-box; margin-top: auto;">Get Free Worksheets</a>
         </div>
 
       </div>
@@ -375,10 +406,11 @@
             </div>
             <h2>Join Our Community</h2>
             <p style="font-size: 1.3rem; font-weight: 500; color: #555; margin-bottom: 2.5rem;">Get free worksheets and learning tips!</p>
-            <form action="#" style="display: flex; gap: 10px; max-width: 500px; margin: 0 auto; justify-content: center; flex-wrap: wrap;">
-                <input type="email" placeholder="Enter your email address..." required style="flex: 1; min-width: 250px; padding: 1.1rem 1.5rem; border: 2px solid #ffe4b5; border-radius: 50px; font-size: 1.1rem; outline: none; font-family: var(--font-body); transition: 0.3s; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
+            <form id="newsletter-form" style="display: flex; gap: 10px; max-width: 500px; margin: 0 auto; justify-content: center; flex-wrap: wrap;">
+                <input type="email" id="newsletter-email" placeholder="Enter your email address..." required style="flex: 1; min-width: 250px; padding: 1.1rem 1.5rem; border: 2px solid #ffe4b5; border-radius: 50px; font-size: 1.1rem; outline: none; font-family: var(--font-body); transition: 0.3s; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
                 <button type="submit" class="btn btn-primary bounce-pulse" style="padding: 1.1rem 2rem; border-radius: 50px; border: none; font-size: 1.1rem; cursor: pointer; white-space: nowrap;">Subscribe</button>
             </form>
+            <p id="newsletter-feedback" role="status" aria-live="polite" style="margin-top: 1.25rem; font-weight: 700; color: #2e7d32; min-height: 1.5rem;"></p>
         </div>
     </div>
   </section>
@@ -387,18 +419,139 @@
 
 <footer>
   <div class="container">
-    <p>© 2026 Little Genius Kids. All rights reserved.</p>
+    <p>&copy; 2026 Little Genius Kids. All rights reserved.</p>
     <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
     <div class="footer-links">
-        <a href="about.html">About</a> |
-        <a href="privacy-policy.html">Privacy Policy</a> |
-        <a href="terms-and-conditions.html">Terms</a> |
-        <a href="disclaimer.html">Disclaimer</a> |
-        <a href="contact.html">Contact</a>
+      <a href="about.html">About</a>
+      <a href="parents.html">Parents</a>
+      <a href="worksheets.html">Worksheets</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-and-conditions.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="contact.html">Contact</a>
     </div>
   </div>
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Interactive Animal Matching Mini-Demo
+    const board = document.getElementById('demo-board');
+    const statusEl = document.getElementById('demo-status');
+    const resetBtn = document.getElementById('demo-reset-btn');
+
+    if (board && statusEl && resetBtn) {
+        const animals = [
+            { id: 'cat', label: 'Cat', icon: 'fa-cat', color: '#f57c00' },
+            { id: 'dog', label: 'Dog', icon: 'fa-dog', color: '#1e88e5' },
+            { id: 'lion', label: 'Lion', icon: 'fa-paw', color: '#8e24aa' }
+        ];
+        let flipped = [];
+        let matched = 0;
+        let locked = false;
+        let awardedRound = false;
+
+        function shuffle(arr) {
+            const copy = arr.slice();
+            for (let i = copy.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [copy[i], copy[j]] = [copy[j], copy[i]];
+            }
+            return copy;
+        }
+
+        function renderBoard() {
+            board.innerHTML = '';
+            flipped = [];
+            matched = 0;
+            locked = false;
+            awardedRound = false;
+            statusEl.textContent = 'Pairs found: 0 / 3';
+            statusEl.style.color = '#d84315';
+
+            const deck = shuffle([...animals, ...animals]);
+            deck.forEach(item => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.dataset.id = item.id;
+                btn.dataset.label = item.label;
+                btn.setAttribute('aria-label', 'Hidden animal card');
+                btn.style.cssText = 'height: 86px; border-radius: 16px; border: 2px solid #ffb74d; background: #ffe0b2; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-weight: 800; font-size: 0.9rem; color: #e65100; transition: transform 0.2s ease, background 0.2s ease;';
+                btn.innerHTML = '<i class="fa-solid fa-question fa-2x"></i>';
+
+                btn.addEventListener('click', () => {
+                    if (locked || btn.dataset.matched === 'true' || flipped.includes(btn)) return;
+
+                    btn.style.background = '#fff3e0';
+                    btn.innerHTML = `<i class="fa-solid ${item.icon} fa-2x" style="color:${item.color};"></i><span>${item.label}</span>`;
+                    btn.setAttribute('aria-label', item.label);
+                    if (window.playSound) window.playSound(item.label);
+
+                    flipped.push(btn);
+                    if (flipped.length === 2) {
+                        locked = true;
+                        const [first, second] = flipped;
+                        if (first.dataset.id === second.dataset.id) {
+                            first.dataset.matched = 'true';
+                            second.dataset.matched = 'true';
+                            first.style.background = '#d3f9d8';
+                            first.style.borderColor = '#43a047';
+                            second.style.background = '#d3f9d8';
+                            second.style.borderColor = '#43a047';
+                            matched++;
+                            flipped = [];
+                            locked = false;
+
+                            if (matched === animals.length) {
+                                statusEl.textContent = 'Awesome! You matched all 3 pairs! +5 Stars!';
+                                statusEl.style.color = '#2e7d32';
+                                if (!awardedRound && window.addStars) {
+                                    awardedRound = true;
+                                    window.addStars(5);
+                                }
+                                if (window.playSound) window.playSound('Awesome job! You matched all three pairs!');
+                            } else {
+                                statusEl.textContent = `Pairs found: ${matched} / 3`;
+                            }
+                        } else {
+                            setTimeout(() => {
+                                [first, second].forEach(c => {
+                                    c.style.background = '#ffe0b2';
+                                    c.innerHTML = '<i class="fa-solid fa-question fa-2x"></i>';
+                                    c.setAttribute('aria-label', 'Hidden animal card');
+                                });
+                                flipped = [];
+                                locked = false;
+                            }, 700);
+                        }
+                    }
+                });
+
+                board.appendChild(btn);
+            });
+        }
+
+        resetBtn.addEventListener('click', renderBoard);
+        renderBoard();
+    }
+
+    // Newsletter Form Handler
+    const newsletterForm = document.getElementById('newsletter-form');
+    const newsletterInput = document.getElementById('newsletter-email');
+    const newsletterFeedback = document.getElementById('newsletter-feedback');
+
+    if (newsletterForm && newsletterInput && newsletterFeedback) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterInput.value.trim();
+            if (!email) return;
+            localStorage.setItem('littleGeniusNewsletterEmail', email);
+            newsletterInput.value = '';
+            newsletterFeedback.innerHTML = `Subscribed (${email.replace(/</g, '&lt;')})! Grab your <a href="worksheets.html" style="text-decoration: underline; color: #1565c0;">free printable worksheets</a> anytime.`;
+        });
+    }
+});
+</script>
 </body>
 </html>

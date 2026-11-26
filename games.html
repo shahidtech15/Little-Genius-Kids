@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="65e9cf65-8c38-4795-9951-24eff8c602be" type="text/javascript" async></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MB4S6Q15T"></script>
@@ -11,16 +13,15 @@
 
   gtag('config', 'G-0MB4S6Q15T');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games Dashboard PRO - Little Genius Kids</title>
+    <meta name="description" content="Games Dashboard PRO on Little Genius Kids — 100% free and ad-free early learning activities, games, and printables.">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
         /* The user's PRO styles ported into the premium UI */
         .pro-dashboard {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Nunito', 'Outfit', sans-serif;
             background: linear-gradient(135deg, #4facfe, #00f2fe);
             color: white;
             text-align: center;
@@ -41,47 +42,93 @@
             display: inline-block;
             padding: 10px 30px;
             border-radius: 50px;
-            margin-bottom: 3rem;
+            margin-bottom: 1.5rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             font-family: 'Outfit', sans-serif;
             font-weight: 700;
         }
 
+        .games-filter-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 0 auto 1rem auto;
+            max-width: 900px;
+        }
+
+        .filter-pill {
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.55);
+            padding: 0.65rem 1.35rem;
+            border-radius: 50px;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-pill:hover,
+        .filter-pill.active {
+            background: #fff;
+            color: #0288d1;
+            border-color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .games-count {
+            font-weight: 700;
+            margin-bottom: 2.25rem;
+            font-size: 1.05rem;
+            opacity: 0.95;
+        }
+
         /* Grid Layout */
         .pro-games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            max-width: 1100px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            max-width: 1180px;
             margin: 0 auto;
         }
 
         .pro-card {
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(10px);
-            padding: 40px 20px;
+            padding: 32px 18px 24px;
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 2px solid rgba(255,255,255,0.5);
-            font-size: 1.8rem;
+            font-size: 1.45rem;
             font-weight: bold;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 14px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             color: #fff;
             text-decoration: none;
         }
 
         .pro-card i {
-            font-size: 4rem;
+            font-size: 3.4rem;
             text-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
+        .game-cat-pill {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            background: rgba(0, 0, 0, 0.22);
+            padding: 0.25rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+
         .pro-card:hover {
-            transform: translateY(-15px) scale(1.05);
+            transform: translateY(-10px) scale(1.03);
             background: rgba(255, 255, 255, 0.35);
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             border-color: #fff;
@@ -93,11 +140,19 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95);
+            background: rgba(0,0,0,0.92);
             justify-content: center;
             align-items: center;
             flex-direction: column;
             z-index: 9999;
+            padding: 1rem;
+        }
+
+        .modal-stage {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .pro-modal canvas {
@@ -106,247 +161,467 @@
             border: 5px solid #00f2fe;
             box-shadow: 0 0 40px rgba(0, 242, 254, 0.6);
             max-width: 100%;
+            height: auto;
+        }
+
+        .modal-gameover-overlay {
+            display: none;
+            position: absolute;
+            inset: 5px;
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 12px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            color: #fff;
+        }
+
+        .modal-gameover-overlay.active {
+            display: flex;
         }
 
         .pro-close {
             position: absolute;
-            top: 25px;
-            right: 40px;
-            font-size: 50px;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
             color: #fff;
             cursor: pointer;
             transition: 0.2s;
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+            background: none;
+            border: none;
         }
-        .pro-close:hover { color: #ff4757; transform: scale(1.1); text-shadow: 0 0 20px rgba(255, 71, 87, 0.8); }
+        .pro-close:hover { color: #ff4757; transform: scale(1.1); }
 
         .pro-controls {
-            margin-top: 25px;
+            margin-top: 20px;
             display: flex;
             gap: 15px;
         }
 
-        .pro-controls button {
-            padding: 15px 40px;
+        .pro-controls button,
+        .modal-gameover-overlay button {
+            padding: 14px 36px;
             border: none;
             border-radius: 50px;
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             background: #ffcc00;
             color: #333;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(255, 204, 0, 0.5);
+            box-shadow: 0 8px 20px rgba(255, 204, 0, 0.4);
             transition: transform 0.1s;
         }
-        .pro-controls button:active { transform: scale(0.95); box-shadow: 0 2px 10px rgba(255, 204, 0, 0.5); }
+        .pro-controls button:active,
+        .modal-gameover-overlay button:active { transform: scale(0.95); }
     </style>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="canonical" href="https://little-genius-kids.vercel.app/games.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Little Genius Kids">
+    <meta property="og:title" content="Games Dashboard PRO - Little Genius Kids">
+    <meta property="og:description" content="Games Dashboard PRO on Little Genius Kids — 100% free and ad-free early learning activities, games, and printables.">
+    <meta property="og:url" content="https://little-genius-kids.vercel.app/games.html">
+    <meta property="og:image" content="https://little-genius-kids.vercel.app/images/hero_child_tablet.jpg">
+    <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo"><a href="index.html"><i class="fa-solid fa-graduation-cap"></i> Little Genius</a></div>
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="ai-course.html">AI Course</a>
-                <a href="games.html" class="active">Games</a>
-                <a href="blog/index.html">Blog</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-            </nav>
+    <header class="site-header">
+  <div class="container navbar-inner">
+    <div class="logo">
+      <a href="index.html">
+        <i class="fa-solid fa-graduation-cap"></i> Little Genius
+      </a>
+    </div>
+    <nav class="nav-links" aria-label="Main Navigation">
+      <a href="index.html">Home</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+          Learn <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="abc.html"><i class="fa-solid fa-font"></i> ABC Learning</a>
+          <a href="numbers.html"><i class="fa-solid fa-hashtag"></i> Numbers</a>
+          <a href="colors-shapes.html"><i class="fa-solid fa-shapes"></i> Colors & Shapes</a>
+          <a href="animals.html"><i class="fa-solid fa-paw"></i> Animals</a>
+          <a href="rhymes.html"><i class="fa-solid fa-music"></i> Rhymes & Videos</a>
+          <a href="worksheets.html"><i class="fa-solid fa-file-pdf"></i> Worksheets</a>
+          <a href="periodic-table.html"><i class="fa-solid fa-flask"></i> Periodic Table</a>
         </div>
-    </header>
+      </div>
+      <a href="games.html" class="active">Games</a>
+      <a href="ai-course.html">AI Course</a>
+      <a href="blog/index.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="btn-icon" type="button" aria-label="Toggle Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <a href="parents.html" class="nav-parents-btn">Parents</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
 
     <main class="pro-dashboard">
         <h1>🎮 Kids Games Hub PRO</h1>
         <div class="high-score-banner">🏆 High Score: <span id="highScore">0</span></div>
 
+        <div class="games-filter-bar" role="tablist" aria-label="Filter games by category">
+            <button type="button" class="filter-pill active" data-cat="all">All Games (24)</button>
+            <button type="button" class="filter-pill" data-cat="arcade">Arcade &amp; Action</button>
+            <button type="button" class="filter-pill" data-cat="math">Math &amp; Logic</button>
+            <button type="button" class="filter-pill" data-cat="words">Words &amp; Creativity</button>
+            <button type="button" class="filter-pill" data-cat="brain">Brain, Science &amp; AI</button>
+        </div>
+        <p class="games-count" id="gamesCount">Showing 24 games</p>
+
         <div class="pro-games-grid">
-            <!-- Modal Game requested by snippet -->
-            <div class="pro-card" onclick="startGame()">
+            <!-- Arcade & Action -->
+            <button type="button" class="pro-card" data-category="arcade" onclick="startGame()">
                 <i class="fa-solid fa-rocket"></i>
-                🚀 Space Game
-            </div>
-            
-            <a href="periodic-table.html" class="pro-card">
-                <i class="fa-solid fa-flask"></i>
-                🧪 Periodic Table
+                <span>🚀 Space Rocket</span>
+                <span class="game-cat-pill">Arcade</span>
+            </button>
+            <a href="games/space-explorer.html" class="pro-card" data-category="arcade">
+                <i class="fa-solid fa-globe"></i>
+                <span>🪐 Space Explorer</span>
+                <span class="game-cat-pill">Arcade</span>
+            </a>
+            <a href="games/flying-bird.html" class="pro-card" data-category="arcade">
+                <i class="fa-solid fa-dove"></i>
+                <span>🐦 Flying Bird</span>
+                <span class="game-cat-pill">Arcade</span>
+            </a>
+            <a href="games/speed-racer.html" class="pro-card" data-category="arcade">
+                <i class="fa-solid fa-car"></i>
+                <span>🏎️ Speed Racer</span>
+                <span class="game-cat-pill">Arcade</span>
+            </a>
+            <a href="games/hungry-snake.html" class="pro-card" data-category="arcade">
+                <i class="fa-solid fa-worm"></i>
+                <span>🐍 Hungry Snake</span>
+                <span class="game-cat-pill">Arcade</span>
+            </a>
+            <a href="games/star-catcher.html" class="pro-card" data-category="arcade">
+                <i class="fa-solid fa-star"></i>
+                <span>⭐ Star Catcher</span>
+                <span class="game-cat-pill">Arcade</span>
+            </a>
+            <a href="games/fruit-catcher.html" class="pro-card" data-category="arcade">
+                <i class="fa-solid fa-apple-whole"></i>
+                <span>🍎 Fruit Catcher</span>
+                <span class="game-cat-pill">Arcade</span>
+            </a>
+            <a href="games/paddle-bounce.html" class="pro-card" data-category="arcade">
+                <i class="fa-solid fa-table-tennis-paddle-ball"></i>
+                <span>🏓 Paddle Bounce</span>
+                <span class="game-cat-pill">Arcade</span>
+            </a>
+            <a href="games/reaction-ninja.html" class="pro-card" data-category="arcade">
+                <i class="fa-solid fa-bolt"></i>
+                <span>⚡ Reaction Ninja</span>
+                <span class="game-cat-pill">Arcade</span>
             </a>
 
-            <!-- Restored existing premium games linked smoothly inside new UI! -->
-            <a href="games/space-explorer.html" class="pro-card">
-                <i class="fa-solid fa-globe"></i>
-                🪐 Space Explorer
-            </a>
-            <a href="games/flying-bird.html" class="pro-card">
-                <i class="fa-solid fa-dove"></i>
-                🐦 Flying Bird
-            </a>
-            <a href="games/speed-racer.html" class="pro-card">
-                <i class="fa-solid fa-car"></i>
-                🏎️ Speed Racer
-            </a>
-            <a href="games/hungry-snake.html" class="pro-card">
-                <i class="fa-solid fa-worm"></i>
-                🐍 Hungry Snake
-            </a>
-            <a href="games/star-catcher.html" class="pro-card">
-                <i class="fa-solid fa-star"></i>
-                ⭐ Star Catcher
-            </a>
-            <a href="games/fruit-catcher.html" class="pro-card">
-                <i class="fa-solid fa-apple-whole"></i>
-                🍎 Fruit Catcher
-            </a>
-            <a href="games/paddle-bounce.html" class="pro-card">
-                <i class="fa-solid fa-table-tennis-paddle-ball"></i>
-                🏓 Paddle Bounce
-            </a>
-            <a href="games/reaction-ninja.html" class="pro-card">
-                <i class="fa-solid fa-bolt"></i>
-                ⚡ Reaction Ninja
-            </a>
-            <a href="games/memory-card.html" class="pro-card">
-                <i class="fa-solid fa-brain"></i>
-                🧠 Memory Match
-            </a>
-            <a href="games/digital-coloring.html" class="pro-card">
-                <i class="fa-solid fa-palette"></i>
-                🎨 Coloring
-            </a>
-            <a href="games/math-adventure.html" class="pro-card">
+            <!-- Math & Logic -->
+            <a href="games/math-adventure.html" class="pro-card" data-category="math">
                 <i class="fa-solid fa-calculator"></i>
-                🧮 Math Adventure
+                <span>🧮 Math Adventure</span>
+                <span class="game-cat-pill">Math &amp; Logic</span>
+            </a>
+            <a href="games/math-puzzle.html" class="pro-card" data-category="math">
+                <i class="fa-solid fa-plus-minus"></i>
+                <span>➕ Math Puzzle</span>
+                <span class="game-cat-pill">Math &amp; Logic</span>
+            </a>
+            <a href="games/multiplication-challenge.html" class="pro-card" data-category="math">
+                <i class="fa-solid fa-xmark"></i>
+                <span>✖️ Multiplication</span>
+                <span class="game-cat-pill">Math &amp; Logic</span>
+            </a>
+            <a href="games/pattern-recognition.html" class="pro-card" data-category="math">
+                <i class="fa-solid fa-shapes"></i>
+                <span>🧩 Pattern Match</span>
+                <span class="game-cat-pill">Math &amp; Logic</span>
+            </a>
+            <a href="games/ai-puzzle.html" class="pro-card" data-category="math">
+                <i class="fa-solid fa-border-all"></i>
+                <span>🤖 AI Slide Puzzle</span>
+                <span class="game-cat-pill">Math &amp; Logic</span>
+            </a>
+
+            <!-- Words & Creativity -->
+            <a href="games/alphabet-puzzle.html" class="pro-card" data-category="words">
+                <i class="fa-solid fa-font"></i>
+                <span>🔤 Alphabet Puzzle</span>
+                <span class="game-cat-pill">Words &amp; Art</span>
+            </a>
+            <a href="games/word-search.html" class="pro-card" data-category="words">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>🔍 Word Search</span>
+                <span class="game-cat-pill">Words &amp; Art</span>
+            </a>
+            <a href="games/story-builder.html" class="pro-card" data-category="words">
+                <i class="fa-solid fa-book-open"></i>
+                <span>📖 Story Builder</span>
+                <span class="game-cat-pill">Words &amp; Art</span>
+            </a>
+            <a href="games/digital-coloring.html" class="pro-card" data-category="words">
+                <i class="fa-solid fa-palette"></i>
+                <span>🎨 Digital Coloring</span>
+                <span class="game-cat-pill">Words &amp; Art</span>
+            </a>
+            <a href="games/emoji-art.html" class="pro-card" data-category="words">
+                <i class="fa-solid fa-face-laugh-beam"></i>
+                <span>🤩 Emoji Art Studio</span>
+                <span class="game-cat-pill">Words &amp; Art</span>
+            </a>
+
+            <!-- Brain, Science & AI -->
+            <a href="games/memory-card.html" class="pro-card" data-category="brain">
+                <i class="fa-solid fa-brain"></i>
+                <span>🧠 Memory Match</span>
+                <span class="game-cat-pill">Brain &amp; Science</span>
+            </a>
+            <a href="games/sequence-recall.html" class="pro-card" data-category="brain">
+                <i class="fa-solid fa-circle-nodes"></i>
+                <span>🔢 Sequence Recall</span>
+                <span class="game-cat-pill">Brain &amp; Science</span>
+            </a>
+            <a href="games/ai-quiz.html" class="pro-card" data-category="brain">
+                <i class="fa-solid fa-robot"></i>
+                <span>🤖 AI Quiz</span>
+                <span class="game-cat-pill">Brain &amp; Science</span>
+            </a>
+            <a href="games/science-lab.html" class="pro-card" data-category="brain">
+                <i class="fa-solid fa-vial"></i>
+                <span>🧪 Virtual Science Lab</span>
+                <span class="game-cat-pill">Brain &amp; Science</span>
+            </a>
+            <a href="periodic-table.html" class="pro-card" data-category="brain">
+                <i class="fa-solid fa-flask"></i>
+                <span>⚛️ Periodic Table</span>
+                <span class="game-cat-pill">Brain &amp; Science</span>
             </a>
         </div>
     </main>
 
-    <!-- Modal For Included Space Game -->
-    <div id="modal" class="pro-modal">
-        <div class="pro-close" onclick="closeGame()">❌</div>
-        <canvas id="gameCanvas" width="400" height="500"></canvas>
+    <!-- Modal For Included Space Rocket Game -->
+    <div id="modal" class="pro-modal" role="dialog" aria-modal="true" aria-label="Space Rocket Game">
+        <button type="button" class="pro-close" onclick="closeGame()" aria-label="Close game">&times;</button>
+        <div class="modal-stage">
+            <canvas id="gameCanvas" width="400" height="500"></canvas>
+            <div id="modalGameOver" class="modal-gameover-overlay">
+                <h2 style="font-family:'Fredoka One',cursive; font-size:2.2rem; color:#ff6b6b; margin:0;">Game Over!</h2>
+                <p id="modalFinalScore" style="font-size:1.3rem; font-weight:700; margin:0;"></p>
+                <button type="button" onclick="startGame()">Play Again 🚀</button>
+            </div>
+        </div>
         <div class="pro-controls">
-            <button onclick="jump()">⬆ Jump</button>
+            <button type="button" onclick="jump()">⬆ Jump (Space / Tap)</button>
         </div>
     </div>
 
     <footer>
-        <div class="container">
-            <p>© 2026 Little Genius Kids. All rights reserved.</p>
-            <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
-            <div class="footer-links">
-                <a href="privacy-policy.html">Privacy Policy</a> |
-                <a href="terms-and-conditions.html">Terms</a> |
-                <a href="disclaimer.html">Disclaimer</a> |
-                <a href="contact.html">Contact</a>
-            </div>
-        </div>
-    </footer>
+  <div class="container">
+    <p>&copy; 2026 Little Genius Kids. All rights reserved.</p>
+    <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="parents.html">Parents</a>
+      <a href="worksheets.html">Worksheets</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-and-conditions.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
 
     <script src="js/main.js"></script>
     <script>
-        // --- User's Provided Modal PRO Game Logic ---
-        let canvas = document.getElementById("gameCanvas");
-        let ctx = canvas.getContext("2d");
+        // --- Category Filter Logic ---
+        document.querySelectorAll('.filter-pill').forEach(pill => {
+            pill.addEventListener('click', () => {
+                document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                const cat = pill.dataset.cat;
+                let shown = 0;
+                document.querySelectorAll('.pro-games-grid .pro-card').forEach(card => {
+                    const match = cat === 'all' || card.dataset.category === cat;
+                    card.style.display = match ? 'flex' : 'none';
+                    if (match) shown++;
+                });
+                document.getElementById('gamesCount').textContent = `Showing ${shown} ${shown === 1 ? 'game' : 'games'}`;
+            });
+        });
 
-        let highScore = localStorage.getItem("hubHighScore") || 0;
+        // --- Space Rocket Modal Game ---
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        const modalGameOver = document.getElementById("modalGameOver");
+        const modalFinalScore = document.getElementById("modalFinalScore");
+
+        let highScore = parseInt(localStorage.getItem("hubHighScore") || "0", 10) || 0;
         document.getElementById("highScore").innerText = highScore;
 
-        let gameLoop;
-        let jumpSound = new Audio("https://www.soundjay.com/buttons/sounds/button-16.mp3");
-        let crashSound = new Audio("https://www.soundjay.com/button/sounds/button-10.mp3");
+        let gameLoop = null;
+        let audioCtx = null;
+        let bird, pipes, score, lives, isRunning = false;
 
-        let bird, pipes, score, lives;
+        function playSynthBeep(freq, duration, type) {
+            if (localStorage.getItem("littleGeniusSoundEnabled") === "false") return;
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return;
+                if (!audioCtx) audioCtx = new AudioContext();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = type || "sine";
+                osc.frequency.value = freq;
+                gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch (e) {}
+        }
 
         function startGame() {
+            if (gameLoop) cancelAnimationFrame(gameLoop);
             document.getElementById("modal").style.display = "flex";
-            bird = {x: 50, y: 200, v: 0};
+            modalGameOver.classList.remove("active");
+            bird = { x: 50, y: 220, v: 0 };
             pipes = [];
             score = 0;
             lives = 3;
-            document.body.style.overflow = "hidden"; // Blocks parent scrolling
+            isRunning = true;
+            document.body.style.overflow = "hidden";
             loop();
         }
 
         function jump() {
+            if (!isRunning) return;
             bird.v = -8;
-            jumpSound.play().catch(e => { console.log('Audio autoplay blocked until interaction'); });
+            playSynthBeep(520, 0.1, "triangle");
         }
 
         function tapHandler(e) {
-            if(document.getElementById("modal").style.display === "flex") {
-                if(e.target.id === "gameCanvas" || e.target.tagName !== "BUTTON") {
+            if (document.getElementById("modal").style.display === "flex" && isRunning) {
+                if (e.target.id === "gameCanvas") {
                     jump();
                 }
             }
         }
-        canvas.addEventListener('mousedown', tapHandler);
-        canvas.addEventListener('touchstart', (e) => { e.preventDefault(); tapHandler(e); }, {passive: false});
+        canvas.addEventListener("mousedown", tapHandler);
+        canvas.addEventListener("touchstart", (e) => { e.preventDefault(); tapHandler(e); }, { passive: false });
+        document.addEventListener("keydown", (e) => {
+            if (document.getElementById("modal").style.display === "flex") {
+                if (e.code === "Space" || e.key === "ArrowUp") {
+                    e.preventDefault();
+                    jump();
+                } else if (e.key === "Escape") {
+                    closeGame();
+                }
+            }
+        });
+
+        function handleHit() {
+            lives--;
+            playSynthBeep(160, 0.22, "sawtooth");
+            pipes = [];
+            bird.y = 220;
+            bird.v = 0;
+            if (lives <= 0) {
+                endGame();
+                return true;
+            }
+            return false;
+        }
 
         function loop() {
+            if (!isRunning) return;
             ctx.clearRect(0, 0, 400, 500);
 
-            // physics
-            bird.v += 0.5;
+            bird.v += 0.48;
             bird.y += bird.v;
 
-            // pipes
-            if (Math.random() < 0.02) {
-                pipes.push({x: 400, top: Math.random() * 250});
+            // Ceiling & floor bounds check
+            if (bird.y < 0 || bird.y + 20 > 500) {
+                if (handleHit()) return;
             }
 
-            for (let i = 0; i < pipes.length; i++) {
-                let p = pipes[i];
-                p.x -= 3;
-
-                ctx.fillStyle = "#ff4757"; // Premium Red
-                ctx.fillRect(p.x, 0, 50, p.top);
-                ctx.fillRect(p.x, p.top + 150, 50, 500);
-
-                // collision
-                if (bird.x < p.x + 50 && bird.x + 20 > p.x && (bird.y < p.top || bird.y > p.top + 150)) {
-                    lives--;
-                    crashSound.play().catch(e => {});
-                    pipes = []; // Reset pipes on hit
-                    if (lives <= 0) {
-                        endGame();
-                        return;
-                    }
+            if (pipes.length === 0 || pipes[pipes.length - 1].x < 210) {
+                if (Math.random() < 0.04) {
+                    pipes.push({ x: 400, top: 40 + Math.random() * 220 });
                 }
             }
 
-            // draw bird
-            ctx.fillStyle = "#eccc68"; // Premium Yellow
+            for (let i = 0; i < pipes.length; i++) {
+                const p = pipes[i];
+                p.x -= 3;
+
+                ctx.fillStyle = "#ff4757";
+                ctx.fillRect(p.x, 0, 50, p.top);
+                ctx.fillRect(p.x, p.top + 150, 50, 500 - (p.top + 150));
+
+                if (bird.x < p.x + 50 && bird.x + 20 > p.x && (bird.y < p.top || bird.y + 20 > p.top + 150)) {
+                    if (handleHit()) return;
+                    break;
+                }
+            }
+
+            // Cleanup offscreen pipes
+            pipes = pipes.filter(p => p.x + 50 > 0);
+
+            // Draw rocket/bird
+            ctx.fillStyle = "#eccc68";
             ctx.beginPath();
-            ctx.arc(bird.x + 10, bird.y + 10, 10, 0, Math.PI*2);
+            ctx.arc(bird.x + 10, bird.y + 10, 10, 0, Math.PI * 2);
             ctx.fill();
 
-            // score
             score++;
             ctx.fillStyle = "white";
             ctx.font = "20px 'Fredoka One'";
             ctx.fillText("Score: " + score, 10, 30);
-            
-            // Draw Lives
+
             let heartStr = "";
-            for(let l=0; l<lives; l++) heartStr += "❤️";
+            for (let l = 0; l < lives; l++) heartStr += "❤️";
             ctx.fillText("Lives: " + heartStr, 10, 60);
 
             gameLoop = requestAnimationFrame(loop);
         }
 
         function endGame() {
+            isRunning = false;
             cancelAnimationFrame(gameLoop);
             if (score > highScore) {
-                localStorage.setItem("hubHighScore", score);
+                localStorage.setItem("hubHighScore", String(score));
                 document.getElementById("highScore").innerText = score;
                 highScore = score;
             }
-            alert("Game Over! Score: " + score);
-            closeGame();
+            let bonusMsg = "";
+            if (score >= 200 && window.addStars) {
+                window.addStars(3);
+                bonusMsg = " (+3 Stars!)";
+            }
+            modalFinalScore.textContent = `Score: ${score} | Best: ${highScore}${bonusMsg}`;
+            modalGameOver.classList.add("active");
         }
 
         function closeGame() {
+            isRunning = false;
             document.getElementById("modal").style.display = "none";
+            modalGameOver.classList.remove("active");
             document.body.style.overflow = "auto";
             cancelAnimationFrame(gameLoop);
         }

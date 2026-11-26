@@ -15,10 +15,10 @@ let level = 1;
 function generateQuestion() {
     let a, b, op;
     
-    // Dynamic difficulty progression!
-    if (score < 8) level = 1;     // Easy Addition
-    else if (score < 20) level = 2; // Addition & Subtraction
-    else level = 3;               // Addition, Subtraction & Multiplication
+    // Dynamic difficulty progression! (10 pts per correct answer)
+    if (score < 50) level = 1;      // Easy Addition
+    else if (score < 120) level = 2; // Addition & Subtraction
+    else level = 3;                 // Addition, Subtraction & Multiplication
 
     if (level === 1) {
         a = Math.floor(Math.random() * 10) + 1;
@@ -84,6 +84,9 @@ function submitAnswer() {
         // --- Correct Behavior ---
         score += 10; // 10 points per win
         streak++;
+        if (streak > 0 && streak % 5 === 0 && window.addStars) {
+            window.addStars(3);
+        }
         scoreDisplay.textContent = `Score: ${score}`;
         streakDisplay.textContent = `Streak: ${streak} 🔥`;
         

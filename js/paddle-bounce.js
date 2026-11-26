@@ -61,10 +61,10 @@ function render() {
     trails.push({x: ball.x, y: ball.y, age: 1.0});
     if(trails.length > 5) trails.shift();
     
-    TrailsDraw: for(let i=0; i<trails.length; i++) {
+    for(let i=0; i<trails.length; i++) {
         let t = trails[i];
         t.age -= 0.15;
-        if(t.age <= 0) continue ThreadsDraw;
+        if(t.age <= 0) continue;
         x.fillStyle = `rgba(0, 229, 255, ${t.age * 0.5})`;
         x.beginPath();
         x.arc(t.x, t.y, ball.radius * t.age, 0, Math.PI*2);

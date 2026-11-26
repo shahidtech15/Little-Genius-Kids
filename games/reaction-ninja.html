@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="65e9cf65-8c38-4795-9951-24eff8c602be" type="text/javascript" async></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MB4S6Q15T"></script>
@@ -11,9 +13,8 @@
 
   gtag('config', 'G-0MB4S6Q15T');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reaction Ninja - Little Genius Kids</title>
+    <meta name="description" content="Play Reaction Ninja free on Little Genius Kids — a 100% ad-free educational game for children.">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -82,21 +83,57 @@
             .reaction-area { height: 350px; }
         }
     </style>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <link rel="canonical" href="https://little-genius-kids.vercel.app/games/reaction-ninja.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Little Genius Kids">
+    <meta property="og:title" content="Reaction Ninja - Little Genius Kids">
+    <meta property="og:description" content="Play Reaction Ninja free on Little Genius Kids — a 100% ad-free educational game for children.">
+    <meta property="og:url" content="https://little-genius-kids.vercel.app/games/reaction-ninja.html">
+    <meta property="og:image" content="https://little-genius-kids.vercel.app/images/hero_child_tablet.jpg">
+    <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo"><a href="../index.html"><i class="fa-solid fa-graduation-cap"></i> Little Genius</a></div>
-            <nav>
-                <a href="../index.html">Home</a>
-                <a href="../ai-course.html">AI Course</a>
-                <a href="../games.html" class="active">Games</a>
-                <a href="../blog/index.html">Blog</a>
-                <a href="../about.html">About</a>
-                <a href="../contact.html">Contact</a>
-            </nav>
+    <header class="site-header">
+  <div class="container navbar-inner">
+    <div class="logo">
+      <a href="../index.html">
+        <i class="fa-solid fa-graduation-cap"></i> Little Genius
+      </a>
+    </div>
+    <nav class="nav-links" aria-label="Main Navigation">
+      <a href="../index.html">Home</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+          Learn <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="../abc.html"><i class="fa-solid fa-font"></i> ABC Learning</a>
+          <a href="../numbers.html"><i class="fa-solid fa-hashtag"></i> Numbers</a>
+          <a href="../colors-shapes.html"><i class="fa-solid fa-shapes"></i> Colors & Shapes</a>
+          <a href="../animals.html"><i class="fa-solid fa-paw"></i> Animals</a>
+          <a href="../rhymes.html"><i class="fa-solid fa-music"></i> Rhymes & Videos</a>
+          <a href="../worksheets.html"><i class="fa-solid fa-file-pdf"></i> Worksheets</a>
+          <a href="../periodic-table.html"><i class="fa-solid fa-flask"></i> Periodic Table</a>
         </div>
-    </header>
+      </div>
+      <a href="../games.html" class="active">Games</a>
+      <a href="../ai-course.html">AI Course</a>
+      <a href="../blog/index.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="btn-icon" type="button" aria-label="Toggle Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <a href="../parents.html" class="nav-parents-btn">Parents</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
     
     <main>
         <section class="game-hero">
@@ -124,17 +161,20 @@
     </main>
 
     <footer>
-        <div class="container">
-            <p>© 2026 Little Genius Kids. All rights reserved.</p>
-            <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
-            <div class="footer-links">
-                <a href="../privacy-policy.html">Privacy Policy</a> |
-                <a href="../terms-and-conditions.html">Terms</a> |
-                <a href="../disclaimer.html">Disclaimer</a> |
-                <a href="../contact.html">Contact</a>
-            </div>
-        </div>
-    </footer>
+  <div class="container">
+    <p>&copy; 2026 Little Genius Kids. All rights reserved.</p>
+    <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
+    <div class="footer-links">
+      <a href="../about.html">About</a>
+      <a href="../parents.html">Parents</a>
+      <a href="../worksheets.html">Worksheets</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+      <a href="../terms-and-conditions.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
 
     <script src="../js/main.js"></script>
     <script src="../js/reaction-ninja.js"></script>

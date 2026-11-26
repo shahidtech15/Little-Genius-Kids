@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="65e9cf65-8c38-4795-9951-24eff8c602be" type="text/javascript" async></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MB4S6Q15T"></script>
@@ -11,8 +13,6 @@
 
   gtag('config', 'G-0MB4S6Q15T');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Printable Worksheets for Preschool Kids - Little Genius Kids</title>
     <meta name="description" content="Download free printable worksheets for preschool kids including ABC tracing, numbers, colors, and fun learning activities.">
     <!-- Google Fonts: Fredoka One and Outfit -->
@@ -114,7 +114,7 @@
             padding: 0;
             margin: 3rem 0;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1max));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
         }
         .benefits-list li {
@@ -152,24 +152,56 @@
         }
         .related-list a:hover { transform: translateX(10px); color: var(--p-pink-dark); }
     </style>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <link rel="canonical" href="https://little-genius-kids.vercel.app/blog/free-worksheets.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Little Genius Kids">
+    <meta property="og:title" content="Free Printable Worksheets for Preschool Kids - Little Genius Kids">
+    <meta property="og:description" content="Download free printable worksheets for preschool kids including ABC tracing, numbers, colors, and fun learning activities.">
+    <meta property="og:url" content="https://little-genius-kids.vercel.app/blog/free-worksheets.html">
+    <meta property="og:image" content="https://little-genius-kids.vercel.app/images/hero_child_tablet.jpg">
+    <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 
-<header>
-  <div class="container">
+<header class="site-header">
+  <div class="container navbar-inner">
     <div class="logo">
-        <a href="../index.html">
-            <i class="fa-solid fa-graduation-cap"></i> Little Genius
-        </a>
+      <a href="../index.html">
+        <i class="fa-solid fa-graduation-cap"></i> Little Genius
+      </a>
     </div>
-    <nav>
+    <nav class="nav-links" aria-label="Main Navigation">
       <a href="../index.html">Home</a>
-      <a href="../ai-course.html">AI Course</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+          Learn <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="../abc.html"><i class="fa-solid fa-font"></i> ABC Learning</a>
+          <a href="../numbers.html"><i class="fa-solid fa-hashtag"></i> Numbers</a>
+          <a href="../colors-shapes.html"><i class="fa-solid fa-shapes"></i> Colors & Shapes</a>
+          <a href="../animals.html"><i class="fa-solid fa-paw"></i> Animals</a>
+          <a href="../rhymes.html"><i class="fa-solid fa-music"></i> Rhymes & Videos</a>
+          <a href="../worksheets.html"><i class="fa-solid fa-file-pdf"></i> Worksheets</a>
+          <a href="../periodic-table.html"><i class="fa-solid fa-flask"></i> Periodic Table</a>
+        </div>
+      </div>
       <a href="../games.html">Games</a>
-      <a href="index.html" class="active">Blog</a>
+      <a href="../ai-course.html">AI Course</a>
+      <a href="../blog/index.html" class="active">Blog</a>
       <a href="../about.html">About</a>
       <a href="../contact.html">Contact</a>
     </nav>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="btn-icon" type="button" aria-label="Toggle Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <a href="../parents.html" class="nav-parents-btn">Parents</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -205,7 +237,7 @@
             <div class="download-box">
                 <span class="download-title"><i class="fa-solid fa-file-pdf"></i> Get Your Free Learning Pack</span>
                 <p>Ready to start practicing? Download our curated set of 20+ worksheets covering all the topics above. Perfect for home or classroom use!</p>
-                <a href="#" class="btn-download"><i class="fa-solid fa-circle-down"></i> Download Worksheets (PDF)</a>
+                <a href="../worksheets.html" class="btn-download"><i class="fa-solid fa-print"></i> Open Printable Worksheets</a>
             </div>
 
             <h3>Benefits of Worksheets</h3>
@@ -233,13 +265,16 @@
 
 <footer>
   <div class="container">
-    <p>© 2026 Little Genius Kids. All rights reserved.</p>
+    <p>&copy; 2026 Little Genius Kids. All rights reserved.</p>
     <p><a href="mailto:support@little-genius-kids.vercel.app">support@little-genius-kids.vercel.app</a></p>
     <div class="footer-links">
-        <a href="../privacy-policy.html">Privacy Policy</a> |
-        <a href="../terms-and-conditions.html">Terms</a> |
-        <a href="../disclaimer.html">Disclaimer</a> |
-        <a href="../contact.html">Contact</a>
+      <a href="../about.html">About</a>
+      <a href="../parents.html">Parents</a>
+      <a href="../worksheets.html">Worksheets</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+      <a href="../terms-and-conditions.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+      <a href="../contact.html">Contact</a>
     </div>
   </div>
 </footer>
