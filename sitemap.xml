@@ -49,55 +49,55 @@
   <!-- Blog Posts -->
   <url>
     <loc>https://little-genius-kids.vercel.app/blog/teach-abc.html</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://little-genius-kids.vercel.app/blog/activities-for-kids.html</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://little-genius-kids.vercel.app/blog/learn-numbers.html</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://little-genius-kids.vercel.app/blog/simple-science-experiments.html</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://little-genius-kids.vercel.app/blog/free-worksheets.html</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://little-genius-kids.vercel.app/blog/teach-colors-to-kids.html</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://little-genius-kids.vercel.app/blog/best-educational-apps.html</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://little-genius-kids.vercel.app/blog/what-is-ai-for-kids.html</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://little-genius-kids.vercel.app/blog/importance-of-ai-for-kids.html</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <priority>0.8</priority>
   </url>
 
@@ -193,7 +193,7 @@
 
   <url>
     <loc>https://little-genius-kids.vercel.app/blog/how-kids-can-learn-ai.html</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <priority>0.8</priority>
   </url>
 
@@ -303,21 +303,35 @@
 
   <!-- Additional Blog Posts -->
   <url>
-    <loc>https://little-genius-kids.vercel.app/blog/best-learning-activities-for-3-year-olds.html</loc>
-    <lastmod>2026-11-26</lastmod>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
     <loc>https://little-genius-kids.vercel.app/blog/early-childhood-education-tips.html</loc>
     <lastmod>2026-11-26</lastmod>
     <priority>0.8</priority>
   </url>
 
-  <url>
-    <loc>https://little-genius-kids.vercel.app/blog/how-to-teach-abc-to-kids.html</loc>
-    <lastmod>2026-11-26</lastmod>
-    <priority>0.8</priority>
-  </url>
+  <!-- 2.0 Age-Based Learning Dashboards -->
+  <url><loc>https://little-genius-kids.vercel.app/learning/index.html</loc><lastmod>2026-11-26</lastmod><priority>0.9</priority></url>
+  <url><loc>https://little-genius-kids.vercel.app/learning/ages-2-3.html</loc><lastmod>2026-11-26</lastmod><priority>0.9</priority></url>
+  <url><loc>https://little-genius-kids.vercel.app/learning/ages-3-5.html</loc><lastmod>2026-11-26</lastmod><priority>0.9</priority></url>
+  <url><loc>https://little-genius-kids.vercel.app/learning/ages-5-7.html</loc><lastmod>2026-11-26</lastmod><priority>0.9</priority></url>
+  <url><loc>https://little-genius-kids.vercel.app/learning/ages-8-12.html</loc><lastmod>2026-11-26</lastmod><priority>0.9</priority></url>
+
+  <!-- 2.0 Subject Modules -->
+  <url><loc>https://little-genius-kids.vercel.app/subjects/index.html</loc><lastmod>2026-11-26</lastmod><priority>0.9</priority></url>
+  <url><loc>https://little-genius-kids.vercel.app/subjects/english.html</loc><lastmod>2026-11-26</lastmod><priority>0.9</priority></url>
+  <url><loc>https://little-genius-kids.vercel.app/subjects/math.html</loc><lastmod>2026-11-26</lastmod><priority>0.9</priority></url>
+  <url><loc>https://little-genius-kids.vercel.app/subjects/science.html</loc><lastmod>2026-11-26</lastmod><priority>0.9</priority></url>
+  <url><loc>https://little-genius-kids.vercel.app/subjects/geography.html</loc><lastmod>2026-11-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://little-genius-kids.vercel.app/subjects/general-knowledge.html</loc><lastmod>2026-11-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://little-genius-kids.vercel.app/subjects/art.html</loc><lastmod>2026-11-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://little-genius-kids.vercel.app/subjects/coding.html</loc><lastmod>2026-11-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://little-genius-kids.vercel.app/subjects/ai.html</loc><lastmod>2026-11-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://little-genius-kids.vercel.app/subjects/urdu.html</loc><lastmod>2026-11-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://little-genius-kids.vercel.app/subjects/logic.html</loc><lastmod>2026-11-26</lastmod><priority>0.8</priority></url>
+
+  <!-- 2.0 Trust & Policy Pages -->
+  <url><loc>https://little-genius-kids.vercel.app/children-privacy.html</loc><lastmod>2026-11-26</lastmod><priority>0.7</priority></url>
+  <url><loc>https://little-genius-kids.vercel.app/editorial-policy.html</loc><lastmod>2026-11-26</lastmod><priority>0.7</priority></url>
+  <url><loc>https://little-genius-kids.vercel.app/accessibility.html</loc><lastmod>2026-11-26</lastmod><priority>0.7</priority></url>
+  <url><loc>https://little-genius-kids.vercel.app/copyright-policy.html</loc><lastmod>2026-11-26</lastmod><priority>0.7</priority></url>
 
 </urlset>

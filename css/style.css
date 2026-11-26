@@ -1,11 +1,13 @@
+@import url('./design-system.css');
+
 :root {
-    /* Premium Kids Palette */
-    --primary-color: #FF6B6B; /* Sunset Orange */
-    --primary-color-dark: #D94A4A; /* For button shadows/hover */
-    --secondary-color: #4DABF7; /* Sky Blue */
-    --accent-color: #FCC419; /* Sunshine Yellow */
-    --bg-color: #FFFDF8; /* Soft Cream */
-    --text-color: #2B3A4A; /* Charcoal Navy */
+    /* Little Genius Kids 2.0 Palette */
+    --primary-color: #7C3AED; /* Primary Purple */
+    --primary-color-dark: #6D28D9;
+    --secondary-color: #38BDF8; /* Sky Blue */
+    --accent-color: #FBBF24; /* Accent Yellow */
+    --bg-color: #F8FAFC; /* Background */
+    --text-color: #1E293B; /* Primary Text */
     
     /* Card Backgrounds - Pastel variants */
     --card-purple: #E5D9F2;
@@ -452,15 +454,61 @@ body > header h1 {
     transform: translateY(-2px);
 }
 
-#theme-toggle.btn-icon {
-    width: 42px;
-    height: 42px;
+#theme-toggle.btn-icon,
+#contrast-toggle.btn-icon,
+.nav-search-btn {
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     background-color: rgba(0, 0, 0, 0.05);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-bounce);
+}
+
+.nav-search-btn:hover,
+#contrast-toggle.btn-icon:hover,
+#contrast-toggle.btn-icon.is-active {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.nav-lang-btn {
+    height: 44px;
+    padding: 0 0.75rem;
+    border-radius: var(--btn-radius);
+    border: 2px solid var(--lg-border, #E2E8F0);
+    background: transparent;
+    color: var(--text-color);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition-bounce);
+}
+
+.nav-lang-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.nav-dropdown-menu-wide {
+    min-width: 420px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+    gap: 0.3rem;
+}
+
+[data-theme="dark"] #contrast-toggle.btn-icon,
+[data-theme="dark"] .nav-search-btn,
+[data-theme="dark"] .nav-lang-btn {
+    color: #F8F9FA;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .hamburger {
@@ -468,8 +516,8 @@ body > header h1 {
     background: rgba(0, 0, 0, 0.05);
     border: none;
     border-radius: 12px;
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     align-items: center;
     justify-content: center;
     font-size: 1.4rem;
@@ -1080,7 +1128,7 @@ footer .footer-links a:hover {
 /* =========================================================================
    Media Queries for Responsiveness
    ========================================================================= */
-@media (max-width: 1024px) {
+@media (max-width: 1120px) {
     .nav-links,
     .nav-parents-btn {
         display: none;
